@@ -1,6 +1,8 @@
 <?php
 // VISIBLE SEULEMENT POUR USERS CONNECTES ET VALIDES
+session_start();
 include('inc/pdo.php');
+include('inc/function.php');
 include('inc/header.php'); ?>
 
 

@@ -12,11 +12,20 @@
       <nav>
         <ul>
           <li><a href="index.php">Home</a></li>
-          <li><a href="register.php">Inscription</a></li>
-          <li><a href="login.php">Connexion</a></li>
+          <?php if(isLoggedAdmin()) { ?>
+          <li><a href="admin/index.php">Admin</a></li>
+          <?php } ?>
+          <?php if(isLoggedUser() || isLoggedAdmin()) { ?>
+            <li>Bonjour <?= $_SESSION['user']['pseudo'] ?></li>
+            <li><a href="user_see_vacs.php">Mon carnet de vaccination</a></li>
+            <li><a href="user_profil.php">Mon profil</a></li>
+            <li><a href="logout.php">Deconnexion</a></li>
+          <?php } else { ?>
+            <li><a href="register.php">Inscription</a></li>
+            <li><a href="login.php">Connexion</a></li>
+          <?php } ?>
           <li><a href="contact.php">Contact</a></li>
           <li><a href="mentions.php">Mentions</a></li>
-          <li><a href="admin/index.php">Admin</a></li>
         </ul>
       </nav>
     </header>

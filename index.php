@@ -6,7 +6,7 @@ include('inc/header.php'); ?>
 
 
 <div class="wrap">
-  <p>Hello world !</p>
+  <p>Home</p>
 </div>
 
 

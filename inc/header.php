@@ -9,7 +9,15 @@
   </head>
   <body>
     <header>
-
-
+      <nav>
+        <ul>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="register.php">Inscription</a></li>
+          <li><a href="login.php">Connexion</a></li>
+          <li><a href="contact.php">Contact</a></li>
+          <li><a href="mentions.php">Mentions</a></li>
+          <li><a href="admin/index.php">Admin</a></li>
+        </ul>
+      </nav>
     </header>
     <section>

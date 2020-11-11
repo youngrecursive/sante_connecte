@@ -1,13 +1,11 @@
 <?php
 
 
-include('inc/function.php');
+include('../inc/function.php'); ?>
 
-
-
-include('inc/header.php'); ?>
-
-
-
-
-<?php include('inc/footer.php');
+<nav>
+  <ul>
+    <li><a href="../index.php">FRONT</a></li>
+    <li><a href="index.php">Admin</a></li>
+  </ul>
+</nav>

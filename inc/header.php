@@ -25,7 +25,7 @@
               <li class="underline"><a href="contact.php">Contact</a></li>
               <li class="underline"><a href="mentions.php">Mentions</a></li>
               <?php if(isLoggedAdmin()) { ?>
-                <li class="underline"><a href="admin/index.php">Admin</a></li>
+                <li class="underline"><a href="admin/startbootstrap-sb-admin-2-gh-pages/tables.php">Admin</a></li>
               <?php } ?>
               <?php if(isLoggedUser() || isLoggedAdmin()) { ?>
                 <li>Bonjour <?= $_SESSION['user']['pseudo'] ?></li>

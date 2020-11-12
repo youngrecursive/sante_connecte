@@ -413,8 +413,8 @@
                                     <tbody>
                                       <?php
                                       $errors = array();
-                                      include('inc/pdo.php');
-                                      include('inc/function.php');
+                                      include('../../inc/pdo.php');
+                                      include('../../inc/function.php');
 
                                       $sql = "SELECT * FROM nf_users";
                                       $query = $pdo->prepare($sql);

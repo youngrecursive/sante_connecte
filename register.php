@@ -25,8 +25,8 @@ if(!empty($_POST['submitted'])){
   $errors = validText($errors, $prenom, 'prenom',2,50);
   $errors = validText($errors, $civilitee, 'civilitee',4,10);
   $errors = validMail($errors, $email, 'email');
-  // $errors = validDate().... ;
   $errors = validPass($errors,$password,'password',$password2,2,100);
+
 
 
   if(count($errors) == 0){

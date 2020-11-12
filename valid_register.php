@@ -5,6 +5,7 @@ require('inc/function.php');
 
 if (!empty($_GET['id'])){
   $token = $_GET['id'];
+  $token = cleanXss($token);
   $sql = "SELECT * FROM nf_users WHERE token = '$token'";
   $query = $pdo->prepare($sql);
   $query->execute();

@@ -1,11 +1,15 @@
 <?php
 
+include('../inc/pdo.php');
+include('../inc/function.php');
+include('../tables.php');
+?>
 
-include('../inc/function.php'); ?>
 
-<nav>
-  <ul>
-    <li><a href="../index.php">FRONT</a></li>
-    <li><a href="index.php">Admin</a></li>
-  </ul>
-</nav>
+
+
+<ul>
+  <?php while($u = $users->fetch()) { ?>
+  <li><?= $u['id'] ?> : <?= $u['nom'] ?> - <a href"tables.php?supprime=<?= $m['id'] ?>">Supprimer</a></li>
+</ul>
+  }

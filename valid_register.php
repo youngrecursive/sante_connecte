@@ -11,16 +11,19 @@ if (!empty($_GET['id'])){
   $user = $query->fetch();
 
   if(!empty($user)) {
-    $newtoken = generateRandomString(120);
-    $sql = "UPDATE nf_users SET token = '$newtoken', token_at = NOW() WHERE token = '$token'";
+
+    // UPDATE TOKEN_AT
+    $sql = "UPDATE nf_users SET token_at = NOW() WHERE token = '$token'";
     $query = $pdo->prepare($sql);
     $query->execute();
 
-     ?>
-    <div class="">Bonjour <?= $user['prenom'] ?>, un lien de confirmation vient de vous être envoyé par email.
-    </div>
-    <a href="z_mail_inscription.php?id=<?= $newtoken ?>">Voir le mail</a>
-  <?php }
+
+    // ENVOIE DU MAIL AVEC LES INFOS DU USER CONCERNE
+
+
+    header('Location: z_mail_inscription.php?id='.$token.'');
+    exit();
+  }
 
   else{
     die('404');

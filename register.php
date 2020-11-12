@@ -25,8 +25,8 @@ if(!empty($_POST['submitted'])){
   $errors = validText($errors, $prenom, 'prenom',2,50);
   $errors = validText($errors, $civilitee, 'civilitee',4,10);
   $errors = validMail($errors, $email, 'email');
-  // $errors = validDate().... ;
   $errors = validPass($errors,$password,'password',$password2,2,100);
+
 
 
   if(count($errors) == 0){
@@ -84,31 +84,31 @@ if(!empty($_POST['submitted'])){
         exit();
       }
     }
-
   }
-
 }
-
  ?>
 
 <?php
 include('inc/header.php'); ?>
 
-
+<section id="mainSection">
+  <div class="sectionBis">
 <div class="wrap">
   <h1>Inscription</h1>
-  <p>Créez votre compte</p>
+  <p>Je créer mon compte</p>
 </div>
-
-<form class="" action="" method="post">
+<div class="box">
+<form class="formulaire" action="" method="post">
   <!-- PRENOM -->
-  <label id="prenom" for="prenom">Prénom</label>
-  <input type="text" name="prenom" value="<?php if(!empty($_POST['prenom'])) { echo $_POST['prenom']; } ?>">
+
+  <label id="prenom"  for="prenom">Prenom</label>
+  <input type="text" name="prenom" placeholder="Jean" value="<?php if(!empty($_POST['prenom'])) { echo $_POST['prenom']; } ?>">
   <span class="error"><?php if(!empty($errors['prenom'])) { echo $errors['prenom']; } ?></span>
 
   <!-- NOM -->
+
   <label id="nom" for="nom">Nom</label>
-  <input type="text" name="nom" value="<?php if(!empty($_POST['nom'])) { echo $_POST['nom']; } ?>">
+  <input type="text" name="nom" placeholder="Dupont" value="<?php if(!empty($_POST['nom'])) { echo $_POST['nom']; } ?>">
   <span class="error"><?php if(!empty($errors['nom'])) { echo $errors['nom']; } ?></span>
 
   <!-- CIVILITEE -->
@@ -128,25 +128,26 @@ include('inc/header.php'); ?>
 
   <!-- EMAIL -->
   <label id="email" for="email">Email</label>
-  <input type="text" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
+  <input type="text" name="email" placeholder="Email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
   <span><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
 
   <!-- PASSWORD -->
-  <label for="password">Mot de passe</label>
-  <input type="password" name="password" value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
+  <label for="password"></label>
+  <input type="password" name="password" placeholder="3 caractères min"value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
   <span><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
 
   <!-- CONFIRM PASSWORD -->
-  <label for="password2">Confirmez le mot de passe</label>
-  <input type="password" name="password2" value="<?php if(!empty($_POST['password2'])) { echo $_POST['password2']; } ?>">
+  <label for="password2"></label>
+  <input type="password" name="password2" placeholder="Confirmation Mot de passe" value="<?php if(!empty($_POST['password2'])) { echo $_POST['password2']; } ?>">
   <span><?php if(!empty($errors['password2'])) { echo $errors['password2']; } ?></span>
 
   <!-- SUBMIT -->
-  <input type="submit" name="submitted" value="GO">
+  <input class"go" type="submit" name="submitted" value="Envoyer">
 
 </form>
-
-
+</div>
+</div>
+</section>
 
 <?php
 include('inc/footer.php');

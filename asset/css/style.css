@@ -124,6 +124,7 @@
 	font-family: 'Roboto', sans-serif;
 }
 
+
 #section2 div.wrap_section2 div.menu div.box1{
   background-color: #1DA187;
 }
@@ -228,4 +229,99 @@
 		justify-content: center;
 	}
 }
+}
+
+.wrap {
+  background-color: #1B5385;
+}
+
+.wrap ,h1 p {
+font-size: 2em;
+}
+
+.formulaire  {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color :rgba(27,83,133,0.4);
+
+}
+
+label {
+  padding-top: 35px;
+
+}
+
+::placeholder {
+  font-family: 'Merriweather', serif;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1em;
+}
+
+#mainSection {
+    background-color: lime;
+    height: 45rem;
+    width: 100%;
+    background-image: url("../img/virus.jpg");
+    background-size: cover;
+
+}
+.sectionBis {
+  height : 100%;
+}
+
+/* .formulaire{
+  padding: 0;
+  margin: 0;
+  background: cover;
+}
+
+.formulaire div input{
+  -webkit-box-shadow: -2px 6px 12px -11px #000;
+          box-shadow: -2px 6px 12px -11px #000;
+  border:1px solid #241d13;
+  padding: 1%;
+}
+
+.formulaire div textarea{
+  resize: none;
+  -webkit-box-shadow: -2px 6px 12px -11px #000;
+          box-shadow: -2px 6px 12px -11px #000;
+  border:1px solid #241d13;
+  padding: 1%;
+}
+
+.formulaire div.submit input{
+  -webkit-box-shadow: -2px 6px 12px -11px #000;
+          box-shadow: -2px 6px 12px -11px #000;
+    border:1px solid #000;
+    display:inline-block;
+    cursor:pointer;
+    /* color:#000; */
+    /*font-size:16px;
+    font-weight:bold;
+    padding:9px 23px;
+    text-decoration:none;
+}*/
+
+.formulaire div.submit input:hover{
+  background-color: #D90011;
+  color: #FFF;
+  -webkit-transition-duration: 0.3s;
+       -o-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+
+.formulaire form{ /* Pour center le formulaire*/
+    margin-left: 35%;
+}
+
+.formulaire span{
+    color: #D90011;
+    font-family: 'sfrbold';
+}
+.formulaire span.green{
+    color: darkgreen;
 }

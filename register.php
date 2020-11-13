@@ -58,11 +58,11 @@ if(!empty($_POST['submitted'])){
         $adminpass = true;
         $password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO nf_users (nom,prenom,civilitee,date_naissance,email,role,password,created_at,token,token_at) VALUES (:nom,:prenom,:civilitee,:datenaissance,:email,'admin',:password,NOW(),'$token',NOW())";
-      }
-      else {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO nf_users (nom,prenom,civilitee,date_naissance,email,password,created_at,token,token_at) VALUES (:nom,:prenom,:civilitee,:datenaissance,:email,:password,NOW(),'$token',NOW())";
-      }
+        }
+        else {
+          $password = password_hash($password, PASSWORD_DEFAULT);
+          $sql = "INSERT INTO nf_users (nom,prenom,civilitee,date_naissance,email,password,created_at,token,token_at) VALUES (:nom,:prenom,:civilitee,:datenaissance,:email,:password,NOW(),'$token',NOW())";
+        }
 
       // INSERT
 

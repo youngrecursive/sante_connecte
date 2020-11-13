@@ -107,8 +107,7 @@ if(!empty($_POST['submitted'])) {
 
 
 include('inc/header.php'); ?>
-<h1>Connexion</h1>
-
+<section id="section1-login">
 
 
   <?php
@@ -120,22 +119,27 @@ include('inc/header.php'); ?>
     <?php }
    ?>
   <form action="" method="post">
+    <h1>Connexion</h1>
     <!-- LOGIN -->
-    <div class="">
-      <label for="email">Email</label>
-      <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
-      <input type="text" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
+    <div class="email">
+      <label for="email">Email : </label><br>
+      <input placeholder="Michel.Dupont@vacbook.fr" type="text" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
+      <span class="error"><br><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
     </div>
 
     <!-- PASSWORD -->
-    <div class="">
-      <label for="password">Mot de passe*</label>
-      <input type="password" name="password" id="password" class="form-control" value="" />
+    <div class="password">
+      <label for="password">Mot de passe : </label><br>
+      <input placeholder="Mot de passe" type="password" name="password" id="password" class="form-control" value="" />
     </div>
 
-    <input type="submit" name="submitted" value="Connexion" />
+    <input type="submit" name="submitted" value="Connexion" class="submit"/>
 
   </form>
+
+</section>
+
   <a href="forgot_form_auth.php">Mot de passe oublié ?</a>
+
 
 <?php include('inc/footer.php');

@@ -6,7 +6,12 @@ include('inc/header.php'); ?>
 <section id="section1">
   <div class="wrap_section1">
     <div class="background">
-
+      <div class="text">
+        <p><img src="asset/img/logo.png" alt="">
+          <span class="line1">VacBook</span></p>
+          <p><span class="line2">Votre carnet de vacination en ligne</span>
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -43,6 +48,17 @@ include('inc/header.php'); ?>
   </div>
 </section>
 
+<section id="section3">
+    <div>
+    </div>
+</section>
+
+<section id="section4">
+  <div class="wrap_section3">
+    <div class="background">
+    </div>
+  </div>
+</section>
 
 
 <?php

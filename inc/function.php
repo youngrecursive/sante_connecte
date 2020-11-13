@@ -17,9 +17,9 @@ function cleanXss($value){
 function validText($errors,$value,$key,$min,$max){
   if(!empty($value)) {
     if(mb_strlen($value) < $min) {
-      $errors[$key] = 'Veuillez renseigner au moins' .$min . 'caractères';
+      $errors[$key] = 'Veuillez renseigner au moins ' .$min . ' caractères';
     } elseif(mb_strlen($value) > $max) {
-      $errors[$key] =  'Veuillez renseigner au moins' .$max . 'caractères';
+      $errors[$key] =  'Veuillez renseigner moins de ' .$max . ' caractères';
     }
   } else {
     $errors[$key] = 'Veuillez renseigner ce champ';

@@ -5,6 +5,8 @@
 <?php if(!isLoggedAdmin()) {
   header('Location: ../index.php');
   exit(); } ?>
+
+<!-- valiation du formulaire -->
 <?php
 $errors = array();
 if (!empty($_POST['submitted'])) {
@@ -32,9 +34,8 @@ if (!empty($_POST['submitted'])) {
 
 }
 
-
-
 ?>
+
 <?php include('inc/header.php'); ?>
 
   <div class="container-fluid">
@@ -71,4 +72,5 @@ if (!empty($_POST['submitted'])) {
         </form>
 
   </div>
+
 <?php include('inc/footer.php'); ?>

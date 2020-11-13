@@ -103,16 +103,17 @@ include('inc/header.php'); ?>
   <!-- PRENOM -->
 
   <label id="prenom"  for="prenom">Prenom</label>
-  <input type="text" name="prenom" placeholder="Jean" value="<?php if(!empty($_POST['prenom'])) { echo $_POST['prenom']; } ?>">
+  <input type="text" name="prenom"   value="<?php if(!empty($_POST['prenom'])) { echo $_POST['prenom']; } ?>">
   <span class="error"><?php if(!empty($errors['prenom'])) { echo $errors['prenom']; } ?></span>
 
   <!-- NOM -->
 
   <label id="nom" for="nom">Nom</label>
-  <input type="text" name="nom" placeholder="Dupont" value="<?php if(!empty($_POST['nom'])) { echo $_POST['nom']; } ?>">
+  <input type="text" name="nom"  value="<?php if(!empty($_POST['nom'])) { echo $_POST['nom']; } ?>">
   <span class="error"><?php if(!empty($errors['nom'])) { echo $errors['nom']; } ?></span>
-
+ 
   <!-- CIVILITEE -->
+
   <label id="civilitee" for="civlitee">Civilitée</label>
   <select name="civilitee">
     <option value="">--Veuillez choisir une option--</option>
@@ -123,18 +124,19 @@ include('inc/header.php'); ?>
   <span class="error"><?php if(!empty($errors['civilitee'])) { echo $errors['civilitee']; } ?></span>
 
   <!-- DATE NAISSANCE -->
+
   <label id="datenaissance" for="datenaissance">Date de naissance</label>
   <input type="date" name="datenaissance" value="<?php if(!empty($_POST['datenaissance'])) { echo $_POST['datenaissance']; } ?>">
   <span class="error"><?php if(!empty($errors['datenaissance'])) { echo $errors['datenaissance']; } ?></span>
 
   <!-- EMAIL -->
   <label id="email" for="email">Email</label>
-  <input type="text" name="email" placeholder="Email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
+  <input type="text" name="email"  value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
   <span><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
 
   <!-- PASSWORD -->
-  <label for="password"></label>
-  <input type="password" name="password" placeholder="3 caractères min"value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
+  <label for="password">Mot de passe</label>
+  <input type="password" name="password" placeholder="7 caractères min"value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
   <span><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
 
   <!-- CONFIRM PASSWORD -->
@@ -148,7 +150,7 @@ include('inc/header.php'); ?>
 </form>
 </div>
 </div>
-</section>
+
 
 <?php
 include('inc/footer.php');

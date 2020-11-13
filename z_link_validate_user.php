@@ -17,6 +17,7 @@ if (!empty($_GET['id'])){
 
 
 
+
   if(!empty($user))
     {
       // Ici on doit récupérer $user['token_at'] et déterminer au bout de combien de temps le lien n'est plus valide.

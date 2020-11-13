@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="asset/css/reset.css">
     <link rel="stylesheet" href="asset/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Oswald&display=swap" rel="stylesheet">
     <title>Sante Connecte</title>

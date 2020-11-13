@@ -24,6 +24,8 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        </td>
+                      </tr>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -67,18 +69,15 @@
                       $query->execute();
                       $data = $query->fetchAll();
                       foreach ($data as $value) {
-                      echo'<tr><td>'.$value['id'].'</td><td>'.$value['nom'].'</td><td>'.$value['prenom'].'</td><td>'.$value['civilitee'].'</td><td>'.$value['date_naissance'].'</td><td>'.$value['adresse1'].'</td><td>'.$value['adresse2'].'</td><td>'.$value['ville'].'</td><td>'.$value['codepostal'].'</td><td>'.$value['role'].'</td><td>'.$value['email'].'</td><td>'.$value['password'].'</td><td>'.$value['created_at'].'</td></tr>';}
-
-                      if(isset($GET['supprime']) AND !empty($_GET['supprime'])) {
-                        $supprime = (int) $_GET['supprime'];
-                        $sql = "DELETE FROM nf_users WHERE id = ?";
-                        $sql = $do->prepare($sql);
-                        $query->execute();
-                        }
-                        ?>
-
-                    </tbody>
-                </table>
+                      echo'<tr><td>'.$value['id'].'</td><td>'.$value['nom'].'</td><td>'.$value['prenom'].'</td><td>'.$value['civilitee'].'</td><td>'.$value['date_naissance'].'</td><td>'.$value['adresse1'].'</td><td>'.$value['adresse2'].'</td><td>'.$value['ville'].'</td><td>'.$value['codepostal'].'</td><td>'.$value['role'].'</td><td>'.$value['email'].'</td><td>'.$value['password'].'</td><td>'.$value['created_at'].'</td></tr>';
+                    }
+                      ?>
+                    <table>
+                      <td><a href="#" >Ajouter</a></td>
+                      <td><a href="#" >Modifier</a></td>
+                      <td><a href="#" >Suppprimer</a></td>
+                    </table>
+                </tbody>
             </div>
         </div>
     </div>
@@ -115,7 +114,12 @@
                       $data = $query->fetchAll();
                       foreach ($data as $value) {
                       echo'<tr><td>'.$value['id'].'</td><td>'.$value['user_id'].'</td><td>'.$value['vaccin_id'].'</td><td>'.$value['date_vaccin'].'</td></tr>';}
-                      ?> }
+                      ?>
+                      <table>
+                        <td><a href="#" >Ajouter</a></td>
+                        <td><a href="#" >Modifier</a></td>
+                        <td><a href="#" >Suppprimer</a></td>
+                      </table>
                     </tbody>
                 </table>
             </div>
@@ -156,6 +160,11 @@
                       foreach ($data as $value) {
                       echo'<tr><td>'.$value['id'].'</td><td>'.$value['nomvaccin'].'</td><td>'.$value['description'].'</td><td>'.$value['nombrerappel'].'</td><td>'.$value['intervallerappel'].'</td></tr>';}
                       ?>
+                      <table>
+                        <td><a href="#" >Ajouter</a></td>
+                        <td><a href="#" >Modifier</a></td>
+                        <td><a href="#" >Suppprimer</a></td>
+                      </table>
                     </tbody>
                 </table>
             </div>

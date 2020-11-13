@@ -109,6 +109,7 @@ if(!empty($_POST['submitted'])) {
 include('inc/header.php'); ?>
 <section id="section1-login">
 
+
   <?php
     if (!empty($success)) { ?>
       <div class="">
@@ -135,5 +136,10 @@ include('inc/header.php'); ?>
     <input type="submit" name="submitted" value="Connexion" class="submit"/>
 
   </form>
+
 </section>
+
+  <a href="forgot_form_auth.php">Mot de passe oublié ?</a>
+
+
 <?php include('inc/footer.php');

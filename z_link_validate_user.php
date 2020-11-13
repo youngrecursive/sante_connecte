@@ -13,16 +13,18 @@ if (!empty($_GET['id'])){
   $query->execute();
   $user = $query->fetch();
 
-  // Ici on doit récupérer $user['token_at'] et déterminer au bout de combien de temps le lien n'est plus valide.
-  $now = New DateTime("now");
-  $tokenlimit = New DateTime($user['token_at']);
-  $tokenlimit->add(new DateInterval('PT1M'));
-  //$tokenlimit->add(new DateInterval('PT4H'));
+
+
 
 
 
   if(!empty($user))
     {
+      // Ici on doit récupérer $user['token_at'] et déterminer au bout de combien de temps le lien n'est plus valide.
+      $now = New DateTime("now");
+      $tokenlimit = New DateTime($user['token_at']);
+      $tokenlimit->add(new DateInterval('PT1M'));
+      //$tokenlimit->add(new DateInterval('PT4H'));
       if($now < $tokenlimit == true) {
         // Token2 permet d'identifier un utilisateur qui se connecte pour la première fois
         $token2 = generateRandomString(120);

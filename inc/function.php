@@ -64,6 +64,23 @@ function validPass($errors,$password1,$key1,$password2,$min,$max){
   return $errors;
 }
 
+function validDate($errors,$value,$key){
+  if(!empty($value)){
+    $now = New DateTime("now");
+    $date = New DateTime($value);
+
+
+    if ($date > $now == true) {
+      $errors[$key] = 'Veuillez renseigner une date passée';
+    }
+  }
+  else {
+    $errors[$key] = 'Veuillez renseigner une date';
+  }
+  return $errors;
+
+}
+
 function generateRandomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);

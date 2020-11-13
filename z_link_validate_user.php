@@ -7,6 +7,7 @@ require('inc/function.php');
 
 if (!empty($_GET['id'])){
   $token = $_GET['id'];
+  $token = cleanXss($token);
   $sql = "SELECT * FROM nf_users WHERE token = '$token'";
   $query = $pdo->prepare($sql);
   $query->execute();
@@ -19,17 +20,20 @@ if (!empty($_GET['id'])){
   //$tokenlimit->add(new DateInterval('PT4H'));
 
 
+
   if(!empty($user))
     {
       if($now < $tokenlimit == true) {
-        $sql = "UPDATE nf_users SET token = NULL, role = 'user' WHERE token = '$token'";
+        // Token2 permet d'identifier un utilisateur qui se connecte pour la première fois
+        $token2 = generateRandomString(120);
+        $sql = "UPDATE nf_users SET token = NULL, token2 = '$token2', role = 'user' WHERE token = '$token'";
         $query = $pdo->prepare($sql);
         $query->execute();
 
         //echo $now->format('Y-m-d H:i:s');
         //echo '<br>';
         //echo $tokenlimit->format('Y-m-d H:i:s');
-        header('Location: login.php');
+        header('Location: login.php?id='.$token2.'');
         exit();
       }
       else {

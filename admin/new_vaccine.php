@@ -21,8 +21,9 @@ if (!empty($_POST['submitted'])) {
   if (count($errors) == 0) {
     $success = true;
     $nombrerappel = $_POST['nombrerappel'];
-    $sql = "INSERT INTO vaccins (nomvaccin,description,nombrerappel)
-            VALUES (:nomvaccin,:description, $nombrerappel)";
+    $intervallerappel = $_POST ['intervallerappel'];
+    $sql = "INSERT INTO vaccins (nomvaccin,description,nombrerappel,intervallerappel)
+            VALUES (:nomvaccin,:description, $nombrerappel,$intervallerappel)";
     $query = $pdo->prepare($sql);
     $query->bindValue(':nomvaccin',$nomvaccin,PDO::PARAM_STR);
     $query->bindValue(':description',$description,PDO::PARAM_STR);
@@ -59,14 +60,15 @@ if (!empty($_POST['submitted'])) {
 
           <div class="form_group">
             <label for="nombrerappel">Nombre de rappel</label>
-            <input type="number" name="nombrerappel" id="nombrerappel" value="0" min ="0" max="999" >
+            <input type="number" name="nombrerappel" id="nombrerappel" value="0" min ="0" >
             <span class="error_form"></span>
           </div>
 
-          <!-- <div class="form_group">
+          <div class="form_group">
             <label for="intervallerappel">Nombre de rappel</label>
-            <input type="number" name="" value="" min ="0" max="999">
-          </div> -->
+            <input type="number" name="intervallerappel" value="0" min ="0">
+            <span class="error_form"></span>
+          </div>
 
           <input type="submit" name="submitted" value="Ajouter un vaccin">
         </form>
@@ -74,4 +76,3 @@ if (!empty($_POST['submitted'])) {
   </div>
 
 <?php include('inc/footer.php'); ?>
-

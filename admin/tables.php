@@ -68,7 +68,77 @@
                       $query = $pdo->prepare($sql);
                       $query->execute();
                       $data = $query->fetchAll();
+
                       for ($i=0; $i < count($data) ; $i++) { ?>
+
+                      foreach ($data as $value) {
+                      echo'<tr><td>'.$value['id'].'</td><td>'.$value['nom'].'</td><td>'.$value['prenom'].'</td><td>'.$value['civilitee'].'</td><td>'.$value['date_naissance'].'</td><td>'.$value['adresse1'].'</td><td>'.$value['adresse2'].'</td><td>'.$value['ville'].'</td><td>'.$value['codepostal'].'</td><td>'.$value['role'].'</td><td>'.$value['email'].'</td><td>'.$value['password'].'</td><td>'.$value['created_at'].'</td></tr>';
+                    }
+                      ?>
+                    <table>
+                      <td><a href="#" >Ajouter</a></td>
+                      <td><a href="#" >Modifier</a></td>
+                      <td><a href="#" >Suppprimer</a></td>
+                    </table>
+                </tbody>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- TABLE USERS VACCINES -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Table des utilisateurs vaccinés:</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ID de l'utilisateur</th>
+                            <th>ID du vaccin</th>
+                            <th>Date de vaccination</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                          <th>ID</th>
+                          <th>ID de l'utilisateur</th>
+                          <th>ID du vaccin</th>
+                          <th>Date de vaccination</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                      <?php
+                      $sql = "SELECT * FROM vaccins_user";
+                      $query = $pdo->prepare($sql);
+                      $query->execute();
+                      $data = $query->fetchAll();
+                      foreach ($data as $value) {
+                      echo'<tr><td>'.$value['id'].'</td><td>'.$value['user_id'].'</td><td>'.$value['vaccin_id'].'</td><td>'.$value['date_vaccin'].'</td></tr>';}
+                      ?>
+                      <table>
+                        <td><a href="#" >Ajouter</a></td>
+                        <td><a href="#" >Modifier</a></td>
+                        <td><a href="#" >Suppprimer</a></td>
+                      </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- TABLE UTILISATEURS -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Table des vaccins:</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+
                         <tr>
                           <td><?php echo($data[$i]['id']); ?></td>
                           <td><?php echo($data[$i]['nom']); ?></td>

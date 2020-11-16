@@ -13,16 +13,18 @@ if (!empty($_GET['id'])){
   $query->execute();
   $user = $query->fetch();
 
-  // Ici on doit récupérer $user['token_at'] et déterminer au bout de combien de temps le lien n'est plus valide.
-  $now = New DateTime("now");
-  $tokenlimit = New DateTime($user['token_at']);
-  $tokenlimit->add(new DateInterval('PT1M'));
-  //$tokenlimit->add(new DateInterval('PT4H'));
 
 
 
-  if(!empty($user))
+
+  // On vérifie que l'user n'est pas encore validé
+  if(!empty($user) && $user['role'] == 'user_novalid')
     {
+      // Ici on doit récupérer $user['token_at'] et déterminer au bout de combien de temps le lien n'est plus valide.
+      $now = New DateTime("now");
+      $tokenlimit = New DateTime($user['token_at']);
+      $tokenlimit->add(new DateInterval('PT1M'));
+      //$tokenlimit->add(new DateInterval('PT4H'));
       if($now < $tokenlimit == true) {
         // Token2 permet d'identifier un utilisateur qui se connecte pour la première fois
         $token2 = generateRandomString(120);
@@ -30,24 +32,28 @@ if (!empty($_GET['id'])){
         $query = $pdo->prepare($sql);
         $query->execute();
 
-        //echo $now->format('Y-m-d H:i:s');
-        //echo '<br>';
-        //echo $tokenlimit->format('Y-m-d H:i:s');
+
         header('Location: login.php?id='.$token2.'');
         exit();
       }
       else {
-        die('Le lien de validation a expiré.');
+        include('inc/header.php'); ?>
+          <p>Le lien de validation a expiré...</p>
+          <p>Pour obtenir un nouveau lien, veuillez renseigner votre adresse mail et mot de passe<a href="valid_register.php?id=<?= $user['token'] ?>">ICI</a></p>
+          <p>Mot de passe oublié ? <a href="forgot_form_auth.php">Demander un nouveau mot de passe</a></p>
+        <?php
+        include('inc/footer.php');
       }
-
    }
 
   else{
-    die('Erreur 404');
+    header('Location: 404.php');
+    exit();
   }
 }
 else {
-  die('404');
+  header('Location: 404.php');
+  exit();
 }
 
 ?>

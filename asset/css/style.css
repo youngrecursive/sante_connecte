@@ -400,11 +400,7 @@
 }
 
 #section1-login input::placeholder{
-<<<<<<< HEAD
-    color: lime;
-=======
-	color: #fff;
->>>>>>> 991ddf3d4a603735bce8c50c9459e14a2be68d96
+color: #fff;
 }
 
 #section1-login form span.error{
@@ -413,11 +409,11 @@
 	font-weight: 800;
 }
 
-<<<<<<< HEAD
+
 #section1-login input::placeholder{
     color: lime;
 }
-=======
+
 /* SECTION 2 login */
 
 #section2-login{
@@ -776,17 +772,17 @@
 	background-size: cover;
 }
 
->>>>>>> 991ddf3d4a603735bce8c50c9459e14a2be68d96
+
 
 
 /* INSCRIPTION  */
 
-<<<<<<< HEAD
+
 .wrapregister {
-=======
+
 
 .wrap {
->>>>>>> 991ddf3d4a603735bce8c50c9459e14a2be68d96
+
 	display: inline-block;
   background-color: rgba(200, 214, 229);
 	border-radius: 6.5px;
@@ -796,9 +792,9 @@
   border-radius: 20px 20px 20px 20px;
 }
 
-<<<<<<< HEAD
+
 .wrapregister ,h1 p {
-=======
+
 /* .wrap ,h1 p {
 >>>>>>> 991ddf3d4a603735bce8c50c9459e14a2be68d96
 	font-family: 'Merriweather', serif;
@@ -818,7 +814,7 @@
   padding-top: 35px;
 } */
 
-<<<<<<< HEAD
+
 ::placeholder {
   font-family: 'Merriweather', serif;
   font-family: 'Oswald', sans-serif;
@@ -826,14 +822,9 @@
 	font-weight: 500;
 	color: #403939;
 }
-=======
 
-/* ::placeholder {
-  font-family: 'Merriweather', serif;
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.1em;
-} */
->>>>>>> 991ddf3d4a603735bce8c50c9459e14a2be68d96
+
+
 
 #mainSection {
 		padding-top: 80px;
@@ -847,9 +838,6 @@
   height : 100%;
 }
 
-<<<<<<< HEAD
-.boxregister {
-=======
 
 
 
@@ -989,12 +977,11 @@ background: transparent;
 
 
 
-<<<<<<< HEAD
-=======
-.formulaire form{
-  margin-left: 35%; }
 
->>>>>>> 991ddf3d4a603735bce8c50c9459e14a2be68d96
+/* .formulaire form{
+  margin-left: 35%; } */
+
+
 /* .formulaire form{ /* Pour center le formulaire*/
     /* margin-left: 35%;
 }

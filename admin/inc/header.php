@@ -122,12 +122,25 @@
                 </div>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tableaux</span></a>
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Base de données</span>
+                </a>
+                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Tableaux:</h6>
+                        <a class="collapse-item" href="../admin/tables.php">Liste des utilisateurs</a>
+                        <a class="collapse-item" href="../admin/tables1.php">Utilisateurs vaccinés</a>
+                        <a class="collapse-item" href="../admin/tables2.php">Liste des vaccins</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->

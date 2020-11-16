@@ -1,3 +1,7 @@
 pdo.php
 inc/pdo.php
 admin/startbootstrap-sb-admin-2-gh-pages/
+vendor/
+composer.json
+composer.lock
+.env

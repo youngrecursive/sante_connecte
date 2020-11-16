@@ -401,8 +401,8 @@
 	top:1px;
 }
 
-::placeholder{
-	color: rgba(200, 214, 229,1.0);
+#section1-login input::placeholder{
+    color: lime;
 }
 
 #section1-login form span.error{
@@ -411,50 +411,47 @@
 	font-weight: 800;
 }
 
+#section1-login input::placeholder{
+    color: lime;
+}
+
 
 /* INSCRIPTION  */
 
-
-.wrap {
+.wrapregister {
 	display: inline-block;
-  background-color: #1B5385;
+  background-color: rgba(200, 214, 229);
 	border-radius: 6.5px;
   margin-left: 5%;
 	padding: 5px;
-	border: 11px double #1C6EA4;
-border-radius: 20px 20px 20px 20px;
+	border: 11px double rgba(200, 214, 229);
+  border-radius: 20px 20px 20px 20px;
 }
 
-.wrap ,h1 p {
+.wrapregister ,h1 p {
 	font-family: 'Merriweather', serif;
 	font-family: 'Oswald', sans-serif;
 	font-size: 2.2em;
 }
 
-.formulaire  {
+.boxregister .formulaire  {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color :rgba(27,83,133,0.4);
+  background-color:rgb(200 214 229 / 55%);
 }
 
 /* label {
   padding-top: 35px;
-
-
 } */
-
-	font-family: 'Merriweather', serif;
-  font-family: 'Oswald', sans-serif;
-	color: #DCDCDC;
-}
-
 
 ::placeholder {
   font-family: 'Merriweather', serif;
   font-family: 'Oswald', sans-serif;
   font-size: 1.1em;
+	font-weight: 500;
+	color: #403939;
 }
 
 #mainSection {
@@ -465,49 +462,43 @@ border-radius: 20px 20px 20px 20px;
     background-size: cover;
 }
 
-
-
 .sectionBis {
   height : 100%;
 }
 
-
-
-
-
-.box {
+.boxregister {
 position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%,-50%);
 width: 400px;
 padding: 40px;
-background: rgba(6,6,10,95%);
+background: rgba(20,27,39,82%);
 box-sizing: border-box;
-box-shadow:0 15px 25px rgba(8,8,8,95%);
+box-shadow:0 15px 25px rgba(8,8,8,34%);
 border-radius: 10px;
 }
 
-input:focus {
+input:focus .inputa{
 	background: #DCDCDC;
 }
 
-input {
+input .inputa {
 	border-radius: 7px;
 }
-.box h2 {
+.boxregister h2 {
 margin:0 0 30px;
 padding: 0;
 color: #fff;
 text-align:center;
 }
 
-.box .inputBox
+.boxregister .inputBox
 {
   position: relative;
 }
 
-.box .inputBox input{
+.boxregister .inputBox input{
 width: 100%;
 padding:10px 0;
 font-size:16px;
@@ -520,7 +511,7 @@ outline: none;
 background: transparent;
 }
 
-.box .inputBox label
+.boxregister .inputBox label
 {
   position: absolute;
   top:0;
@@ -532,15 +523,15 @@ background: transparent;
   transition:.5s;
 
 }
-.box .inputBox input:focus  ~ label,
-.box .inputBox input:valid  ~ label {
+.boxregister .inputBox input:focus  ~ label,
+.boxregister .inputBox input:valid  ~ label {
   top: -18px;
   left: 0;
   color: #03a9f4;
   font-size:12px;
 }
 
-.box .input[type="submit"]
+.boxregister .input[type="submit"]
 {
   background:transparent;
   border:none;
@@ -553,18 +544,17 @@ background: transparent;
 }
 
 @media screen and (max-width:1025px) and (min-width:801px){
-	#mainSection div.wrap div.box{
+	#mainSection div.wrap div.boxregister{
 	  flex-direction: row;
 		flex-wrap: wrap;
 	}
-	#mainSection div.wrap div.box{
+	#mainSection div.wrap div.boxregister{
 		width: 50%;
 	}
-	#mainSection div.wrap div.box{
+	#mainSection div.wrap div.boxregister{
 		justify-content: center;
 	}
 }
-
 
 /* .formulaire{
   padding: 0;
@@ -610,9 +600,6 @@ background: transparent;
 
 
 
-.formulaire form{
-  margin-left: 35%; }
-  
 /* .formulaire form{ /* Pour center le formulaire*/
     /* margin-left: 35%;
 }

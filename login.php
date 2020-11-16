@@ -122,14 +122,14 @@ include('inc/header.php'); ?>
     <h1>Connexion</h1>
     <!-- LOGIN -->
     <div class="email">
-      <label for="email">Email : </label><br>
-      <input placeholder="Michel.Dupont@vacbook.fr" type="text" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
+      <label for="email">Email : </label>
+      <input placeholder="Email" type="text" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
       <span class="error"><br><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
     </div>
 
     <!-- PASSWORD -->
     <div class="password">
-      <label for="password">Mot de passe : </label><br>
+      <label for="password">Mot de passe : </label>
       <input placeholder="Mot de passe" type="password" name="password" id="password" class="form-control" value="" />
     </div>
 
@@ -138,8 +138,28 @@ include('inc/header.php'); ?>
   </form>
 
 </section>
+<section id="section2-login">
+  <div class="box box1">
+    <p class="titre">
+      <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="18" y1="8" x2="23" y2="13"></line><line x1="23" y1="8" x2="18" y2="13"></line></svg>
+      <span>Mot de passe oublié ?</span>
+    </p>
+    <p class="text">Si tu as oubliés ton mot de passe pas de panique tu as juste à
+      <a href="forgot_form_auth.php">cliquer ici.</a>
+    </p>
 
-  <a href="forgot_form_auth.php">Mot de passe oublié ?</a>
+  </div>
+  <div class="box box2">
+    <p class="titre">
+      <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+      <span>Pas encore Inscrit</span>
+    </p>
+    <p class="text">Si tu n'es pas encore inscrit, tu peux t'inscrire en
+      <a href="register.php">cliquant ici.</a>
+    </p>
+  </div>
+
+</section>
 
 
 <?php include('inc/footer.php');

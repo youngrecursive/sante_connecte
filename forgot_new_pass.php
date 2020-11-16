@@ -67,26 +67,36 @@ else {
 
 
 include('inc/header.php'); ?>
+<section id="section1-forgot" class="backgrounda">
 
 <form class="formulaire" action="" method="post">
+  <h1 class="debug-forgot">Nouveau mot de passe</h1>
+  <h2>Saisit ton nouveau mot de passe.</h2>
   <!-- EMAIL -->
-  <label id="email" for="email">Email</label>
-  <input type="text" name="email" placeholder="Email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
-  <span><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+  <div class="">
+    <label id="email" for="email">Email : </label>
+    <input type="text" name="email" placeholder="Email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
+    <br><span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+  </div>
 
   <!-- PASSWORD -->
-  <label for="password"></label>
-  <input type="password" name="password" placeholder="3 caractères min"value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
-  <span><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
+  <div class="">
+    <label for="password">Mot de passe : </label>
+    <input type="password" name="password" placeholder="3 caractères min"value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
+    <br><span class="error"><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
+  </div>
 
   <!-- CONFIRM PASSWORD -->
-  <label for="password2"></label>
-  <input type="password" name="password2" placeholder="Confirmation Mot de passe" value="<?php if(!empty($_POST['password2'])) { echo $_POST['password2']; } ?>">
-  <span><?php if(!empty($errors['password2'])) { echo $errors['password2']; } ?></span>
+  <div class="">
+    <label for="password2">Vérification du mot de passe : </label>
+    <input type="password" name="password2" placeholder="Confirmation Mot de passe" value="<?php if(!empty($_POST['password2'])) { echo $_POST['password2']; } ?>">
+    <br><span class="error"><?php if(!empty($errors['password2'])) { echo $errors['password2']; } ?></span>
+  </div>
 
   <!-- SUBMIT -->
-  <input class"go" type="submit" name="submitted" value="Envoyer">
+  <input class="submit go" type="submit" name="submitted" value="Envoyer">
 </form>
+</section>
 
 <?php
 include('inc/footer.php');

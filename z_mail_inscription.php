@@ -11,7 +11,8 @@ if (!empty($_GET['id'])){
   $query->execute();
   $user = $query->fetch();
 
-  if(!empty($user)) { ?>
+  // On vérifie que l'user est bien en cours de validation de création de compte même si ici le mail qui apparaît est fictif
+  if(!empty($user) && $user['role'] == 'user_novalid') { ?>
 
     <p>Un mail vient de vous être envoyé, il comporte un lien permettant l'activation de votre compte</p>
     <a href="valid_register.php?id=<?= $user['token'] ?>">Recevoir de nouveau le mail</a>
@@ -25,11 +26,13 @@ if (!empty($_GET['id'])){
   <?php }
 
   else{
-    die('404');
+    header('Location: 404.php');
+    exit();
   }
 }
 else {
-  die('404');
+  header('Location: 404.php');
+  exit();
 }
 
 ?>

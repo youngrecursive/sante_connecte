@@ -2,35 +2,57 @@
 
 require('inc/pdo.php');
 require('inc/function.php');
+require('inc/function_mail.php');
 
-if (!empty($_GET['id']) && is_numeric($_GET['id'])){
-  $id = $_GET['id'];
-  $sql = "SELECT * FROM nf_users WHERE id = '$id'";
+
+if (!empty($_GET['id'])){
+  $token = $_GET['id'];
+  $token = cleanXss($token);
+  $sql = "SELECT * FROM nf_users WHERE token = '$token'";
   $query = $pdo->prepare($sql);
   $query->execute();
   $user = $query->fetch();
 
   if(!empty($user)) {
 
-    $token = generateRandomString(120);
-    $sql = "UPDATE nf_users SET token = '$token', token_at = NOW() WHERE id = '$id'";
+    $sql = "UPDATE nf_users SET token_at = NOW() WHERE token = '$token'";
     $query = $pdo->prepare($sql);
     $query->execute();
 
+    /* Ici un user qui est en train de valider son compte
+     pourrait accéder à cette page avec le token de son lien de validation
+     inscription mais cela importe peu puisque
+     le fait de réinitialiser son mot de passe permet de valider son compte */
 
-    // ENVOIE DU MAIL AVEC LES INFOS DU USER CONCERNE
+    $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+    $dotenv->load();
+
+    // Ici on utilise $_SERVER pour que le lien marche chez tout le monde en dev
+    $link = '<a href="http://localhost'.dirname($_SERVER['PHP_SELF']).'/forgot_new_pass.php?id='. $user['token'].'">Lien</a>';
 
 
-    header('Location: forgot-mail.php?id='.$id.'');
+    $mailexpediteur = getenv('COMP_MAIL');
+    $passwordmail = getenv('MAIL_PASS');
+    $mailrecepteur = getenv('PERSO_MAIL');
+    $object = 'Votre nouveau mot de passe';
+    $message = 'Veuillez cliquer sur ce '.$link.' afin de choisir un nouveau mot de passe';
+
+
+    sendMailer($mailexpediteur,$passwordmail,$mailrecepteur,$object,$message);
+
+
+    header('Location: forgot-mail.php?id='.$user['token'].'');
     exit();
   }
 
   else{
-    die('404');
+    header('Location: 404.php');
+    exit();
   }
 }
 else {
-  die('404');
+  header('Location: 404.php');
+  exit();
 }
 
 ?>

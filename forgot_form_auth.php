@@ -15,7 +15,12 @@ $errors = array();
      $user = $query->fetch();
 
      if(!empty($user)){
-       header('Location: forgot_send_mail.php?id='.$user['id'].'');
+       $token = generateRandomString(120);
+       $sql = "UPDATE nf_users SET token = '$token' WHERE email = '$email'";
+       $query = $pdo->prepare($sql);
+       $query->execute();
+
+       header('Location: forgot_send_mail.php?id='.$token.'');
        exit();
      }
 

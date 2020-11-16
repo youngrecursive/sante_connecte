@@ -7,9 +7,7 @@ $_SESSION = array();
 session_destroy();
 header('Location: index.php');
 }
-else { ?>
-
-  <div class="">
-    Cette page n'est pas accessible.
-  </div>
-<?php }
+else {
+  header('Location: 404.php');
+  exit();
+}

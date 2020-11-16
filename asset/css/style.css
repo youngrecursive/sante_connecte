@@ -4,7 +4,7 @@
 #header{
 	background-color: #ecf0f1;
 	width: 100%;
-	position: fixed;
+	/* position: fixed; */
 	z-index: 99;
 }
 
@@ -612,7 +612,7 @@ background: transparent;
 
 .formulaire form{
   margin-left: 35%; }
-  
+
 /* .formulaire form{ /* Pour center le formulaire*/
     /* margin-left: 35%;
 }

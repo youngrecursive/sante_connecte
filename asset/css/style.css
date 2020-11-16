@@ -3,6 +3,9 @@
 
 #header{
 	background-color: #ecf0f1;
+	width: 100%;
+	position: fixed;
+	z-index: 99;
 }
 
 #header div.logo{
@@ -116,7 +119,46 @@
 	height: 45rem;
 	width: 100%;
 	background-image: url("../img/background_section1.jpg");
-	background-size: 2000px 1125px;
+	background-size: cover;
+}
+
+#section1 div.text{
+	/* border: solid 2px lime; */
+	height: 250px;
+	width: 580px;
+	position: relative;
+	top: 30%;
+	left: 5%;
+}
+
+#section1 div.text p{
+	font-family: 'Overpass', sans-serif;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: #FFFFFF;
+
+}
+
+#section1 div.text p img{
+	width: 150px;
+	height: 150px;
+}
+
+#section1 div.text p span.line1{
+	margin-left: 15px;
+	font-size: 4em;
+	letter-spacing: 9px;
+	word-spacing: 6px;
+	text-transform: uppercase;
+}
+
+#section1 div.text p span.line2{
+	position: relative;
+	left: 29%;
+	bottom: 40px;
+	font-size: 2em;
+
 }
 
 /* SECTION 2  */
@@ -170,7 +212,7 @@
   height: 15rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: baseline;
+	justify-content: center;
 	align-items: center;
 	padding-bottom: 2rem;
 }
@@ -180,8 +222,8 @@
 }
 
 #section2 div.wrap_section2 div.menu div.box svg{
-	width: 35%;
-	height: 35%;
+	width: 80px;
+	height: 80px;
 }
 
 #section2 div.wrap_section2 div.menu div.box div.border{
@@ -200,7 +242,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-	align-items: stretch;
+	align-items: center;
 }
 
 
@@ -231,43 +273,185 @@
 }
 
 
+/* SECTION 3 */
+
+#section3 div{
+	height: 25em;
+	width: 100%;
+	background-color: lime;
+	z-index: 99;
+	background-image: url("../img/background_section3.jpg");
+	background-size: cover;
+}
+
+#section4{
+	padding: 2% 0 0 0;
+}
+
+#section4 div.background{
+	height: 15em;
+	width: 100%;
+	background-color: lime;
+	z-index: 99;
+	background-image: url("../img/background_section4.png");
+	background-size: cover;
+}
+
+#section4 div.wrap_section3{
+	max-width: 90%;
+	width: 100%;
+	margin: 0 auto;
+}
+
+/* LOGIN */
+
+/* Section1_login */
+
+#section1-login{
+	margin: 0;
+	padding: 0;
+	padding: 30% 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-image: url("../img/background_section-login.jpg");
+	background-size: cover;
+}
+
+#section1-login form{
+	background-color: rgba(47, 54, 64,0.5);
+	padding: 4%;
+	border: 0px solid rgba(47, 54, 64,0.5);
+	border-radius: 19px;
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	bottom: 15em;
+}
+
+#section1-login form div input{
+	padding: 3%;
+	border: 0px;
+	border-radius: 5px;
+	background-color:rgba(29, 209, 161);
+}
+
+#section1-login form div input:focus{
+	background-color:rgba(200, 214, 229);
+	transition-duration: 0.5s;
+}
+
+#section1-login form div{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#section1-login form h1{
+	font-size: 2em;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	padding-bottom: 3%;
+	margin-bottom: 2%;
+	border-bottom: 1px #fff solid;
+}
+
+#section1-login form div label{
+	font-size: 1.1em;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 2px;
+	line-height: 40px;
+}
+
+
+#section1-login form input.submit{
+	margin-top: 10%;
+	background-color: rgba(29, 209, 161);
+	border-radius:5px;
+	border: none;
+	cursor:pointer;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.1em;
+	padding: 1% 0;
+	width: 250px;
+	letter-spacing: 6px;
+	font-weight: 800;
+}
+
+#section1-login form input.submit:hover{
+	color:rgb(29, 209, 161);
+	background-color:rgb(200, 214, 229);
+	transition-duration: 0.5s;
+}
+
+#section1-login form input:focus{
+	outline: none;
+}
+
+#section1-login form input.submit:active{
+	position:relative;
+	top:1px;
+}
+
+#section1-login input::placeholder{
+    color: lime;
+}
+
+#section1-login form span.error{
+	color: #ee5253;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 800;
+}
+
+#section1-login input::placeholder{
+    color: lime;
+}
+
+
 /* INSCRIPTION  */
 
-.wrap {
+.wrapregister {
 	display: inline-block;
-  background-color: #1B5385;
+  background-color: rgba(200, 214, 229);
 	border-radius: 6.5px;
   margin-left: 5%;
 	padding: 5px;
-	border: 11px double #1C6EA4;
-border-radius: 20px 20px 20px 20px;
+	border: 11px double rgba(200, 214, 229);
+  border-radius: 20px 20px 20px 20px;
 }
 
-.wrap ,h1 p {
+.wrapregister ,h1 p {
 	font-family: 'Merriweather', serif;
 	font-family: 'Oswald', sans-serif;
 	font-size: 2.2em;
 }
 
-.formulaire  {
+.boxregister .formulaire  {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color :rgba(27,83,133,0.4);
+  background-color:rgb(200 214 229 / 55%);
 }
 
-label {
+/* label {
   padding-top: 35px;
-	font-family: 'Merriweather', serif;
-  font-family: 'Oswald', sans-serif;
-	color: #DCDCDC;
-}
+} */
 
 ::placeholder {
   font-family: 'Merriweather', serif;
   font-family: 'Oswald', sans-serif;
   font-size: 1.1em;
+	font-weight: 500;
+	color: #403939;
 }
 
 #mainSection {
@@ -278,49 +462,43 @@ label {
     background-size: cover;
 }
 
-
-
 .sectionBis {
   height : 100%;
 }
 
-
-
-
-
-.box {
+.boxregister {
 position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%,-50%);
 width: 400px;
 padding: 40px;
-background: rgba(6,6,10,95%);
+background: rgba(20,27,39,82%);
 box-sizing: border-box;
-box-shadow:0 15px 25px rgba(8,8,8,95%);
+box-shadow:0 15px 25px rgba(8,8,8,34%);
 border-radius: 10px;
 }
 
-input:focus {
+input:focus .inputa{
 	background: #DCDCDC;
 }
 
-input {
+input .inputa {
 	border-radius: 7px;
 }
-.box h2 {
+.boxregister h2 {
 margin:0 0 30px;
 padding: 0;
 color: #fff;
 text-align:center;
 }
 
-.box .inputBox
+.boxregister .inputBox
 {
   position: relative;
 }
 
-.box .inputBox input{
+.boxregister .inputBox input{
 width: 100%;
 padding:10px 0;
 font-size:16px;
@@ -333,7 +511,7 @@ outline: none;
 background: transparent;
 }
 
-.box .inputBox label
+.boxregister .inputBox label
 {
   position: absolute;
   top:0;
@@ -345,15 +523,15 @@ background: transparent;
   transition:.5s;
 
 }
-.box .inputBox input:focus  ~ label,
-.box .inputBox input:valid  ~ label {
+.boxregister .inputBox input:focus  ~ label,
+.boxregister .inputBox input:valid  ~ label {
   top: -18px;
   left: 0;
   color: #03a9f4;
   font-size:12px;
 }
 
-.box .input[type="submit"]
+.boxregister .input[type="submit"]
 {
   background:transparent;
   border:none;
@@ -366,18 +544,17 @@ background: transparent;
 }
 
 @media screen and (max-width:1025px) and (min-width:801px){
-	#mainSection div.wrap div.box{
+	#mainSection div.wrap div.boxregister{
 	  flex-direction: row;
 		flex-wrap: wrap;
 	}
-	#mainSection div.wrap div.box{
+	#mainSection div.wrap div.boxregister{
 		width: 50%;
 	}
-	#mainSection div.wrap div.box{
+	#mainSection div.wrap div.boxregister{
 		justify-content: center;
 	}
 }
-
 
 /* .formulaire{
   padding: 0;
@@ -420,6 +597,7 @@ background: transparent;
        -o-transition-duration: 0.3s;
           transition-duration: 0.3s;
 } */
+
 
 
 /* .formulaire form{ /* Pour center le formulaire*/

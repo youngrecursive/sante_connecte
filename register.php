@@ -94,11 +94,11 @@ include('inc/header.php'); ?>
 
 <section id="mainSection">
   <div class="sectionBis">
-<div class="wrap">
+<div class="wrapregister">
   <h1>Inscription</h1>
   <p>Je créer mon compte</p>
 </div>
-<div class="box">
+<div class="boxregister">
 <form class="formulaire" action="" method="post">
   <!-- PRENOM -->
 
@@ -111,7 +111,7 @@ include('inc/header.php'); ?>
   <label id="nom" for="nom">Nom</label>
   <input type="text" name="nom"  value="<?php if(!empty($_POST['nom'])) { echo $_POST['nom']; } ?>">
   <span class="error"><?php if(!empty($errors['nom'])) { echo $errors['nom']; } ?></span>
- 
+
   <!-- CIVILITEE -->
 
   <label id="civilitee" for="civlitee">Civilitée</label>

@@ -4,29 +4,48 @@ session_start();
 include('inc/pdo.php');
 include('inc/function.php');
 $errors = array();
+$flash = array();
 
-// Si success est true, on affiche un msg de bienvenu, sinon c'est que l'user n'est pas nouveau.
+// Si success est true, on affiche un msg de bienvenu, sinon c'est que l'user n'est pas nouveau ou qu'il ne vient pas de reset son password.
 $success = false;
 // Ci dessous on récupère le token qui est généré seulement au moment où le compte utilisateur est validé via le mail
-if (!empty($_GET)) {
-  $token2 = $_GET['id'];
-}
 
 
-// CI DESSOUS ON VERIFIE SI C LA PREMIERE VENUE DE USER
-if(!empty($token2)){
-  $token2 = cleanXss($token2);
-  $sql = "SELECT * FROM nf_users WHERE token2 = '$token2'";
+
+// CI DESSOUS ON VERIFIE SI C LA PREMIERE VENUE DE USER OU SI IL VIENT DE CHANGER DE MOT DE PASSE
+// SI AUCUN DES 2 ALORS ON LE REDIRIGE VERS LA PAGE STANDARD...
+if(!empty($_GET)){
+
+  $token = $_GET['id'];
+  $token = cleanXss($token);
+  $sql = "SELECT * FROM nf_users WHERE token2 = '$token' OR token3 ='$token'";
   $query = $pdo->prepare($sql);
   $query->execute();
   $firstuser = $query->fetch();
 
   if (!empty($firstuser)) {
-    $success = true;
+    $sql = "SELECT * FROM nf_users WHERE token2 = '$token'";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $firstuser = $query->fetch();
+    if(!empty($firstuser)){
+      $success = true;
+      $flash['message'] = 'Bienvenue sur Vacbook. Vous pouvez maintenant accéder à votre espace personnel.';
+    }
+    else {
+      $sql = "SELECT * FROM nf_users WHERE token3 = '$token'";
+      $query = $pdo->prepare($sql);
+      $query->execute();
+      $firstuser = $query->fetch();
+      if(!empty($firstuser)){
+        $success = true;
+        $flash['message'] = 'Votre mot passe a bien été modifié. Vous pouvez accéder de nouveau à votre espace personnel.';
+      }
+    }
   }
   else {
     header('Location: login.php');
-    die();
+    exit();
   }
 }
 
@@ -47,9 +66,10 @@ if(!empty($_POST['submitted'])) {
         $hashpassword = $user['password'];
         if(password_verify($password,$hashpassword)){
 
-          // Si c'est un nouvel user, au moment de la connexion il n'aura plus de token2 donc il ne verra plus de message de bienvenue par la suite...
-          if(!empty($token2) && !empty($user['token2']) && $token2 = $user['token2']) {
-            $sql = "UPDATE nf_users SET token2 = NULL WHERE token2 = '$token2'";
+          // Que l'user vienne de reset mot de passe ou que ce soit sa première venue on reset token 2 et 3
+          if(!empty($token)) {
+            if($token == $user['token2'] || $token == $user['token3'])
+            $sql = "UPDATE nf_users SET token2 = NULL, token3 = NULL WHERE token2 = '$token' OR token3 = '$token'";
             $query = $pdo->prepare($sql);
             $query->execute();
           }
@@ -64,7 +84,7 @@ if(!empty($_POST['submitted'])) {
             );
 
             header('Location: index.php');
-            die();
+            exit();
           }
           elseif($user['role'] == 'admin') {
             $_SESSION['user'] = array(
@@ -75,7 +95,7 @@ if(!empty($_POST['submitted'])) {
             );
 
             header('Location: index.php');
-            die();
+            exit();
           }
 
           elseif($user['role'] == 'user_novalid'){
@@ -83,19 +103,20 @@ if(!empty($_POST['submitted'])) {
           }
 
           else {
-            die('404');
+            header('Location: 404.php');
+            exit();
           }
 
 
         }
         else {
-          $errors['email'] = 'ERROR CREDENTIAL';
+          $errors['email'] = 'ERREUR';
         }
 
       }
 
       else {
-        $errors['email'] = 'ERROR CREDENTIAL';
+        $errors['email'] = 'ERREUR';
       }
     }
 
@@ -113,7 +134,7 @@ include('inc/header.php'); ?>
   <?php
     if (!empty($success)) { ?>
       <div class="">
-        Bonjour, votre compte a bien été validé. Vous pouvez dès à présent vous connecter et accéder à votre espace personnel.
+        <?= $flash['message']; ?>
       </div>
 
     <?php }

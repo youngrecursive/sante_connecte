@@ -29,6 +29,16 @@ function validText($errors,$value,$key,$min,$max){
 }
 
 
+function validTextNull($errors,$value,$key,$min,$max){
+    if(mb_strlen($value) > 0 && mb_strlen($value) < $min) {
+      $errors[$key] = 'Veuillez renseigner au moins ' .$min . ' caractères ou ne mettez rien';
+    } elseif(mb_strlen($value) > $max) {
+      $errors[$key] =  'Veuillez renseigner moins de ' .$max . ' caractères';
+    }
+  return $errors;
+}
+
+
 function validMail($errors,$value,$key){
   if(!empty($value)) {
     if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
@@ -65,21 +75,66 @@ function validPass($errors,$password1,$key1,$password2,$min,$max){
 }
 
 function validDate($errors,$value,$key){
+  // PENSER A METTRE max="9999-12-31" comme attribut dans l'input date
   if(!empty($value)){
     $now = New DateTime("now");
+    $datelimit = New DateTime("now");
+    $datelimit->sub(new DateInterval('P120Y'));
     $date = New DateTime($value);
 
 
-    if ($date > $now == true) {
-      $errors[$key] = 'Veuillez renseigner une date passée';
+    $dateformate = $date->format('m-d-Y');
+    $datexplode = explode('-', $dateformate);
+    $month = $datexplode[0];
+    $day = $datexplode[1];
+    $year = $datexplode[2];
+
+    if (checkdate($month, $day, $year) == true){
+      if ($date < $datelimit == true) {
+        $errors[$key] = 'Maître yoda vous n\'êtes pas...';
+      }
+      if ($date > $now == true) {
+        $errors[$key] = 'Veuillez renseigner une date passée';
+      }
+    // SI checkdate renvoie false
+    }
+    else {
+      $errors[$key] = 'Veuillez renseigner une date valide';
     }
   }
+  // SI DATE EST VIDE
   else {
     $errors[$key] = 'Veuillez renseigner une date';
   }
   return $errors;
-
 }
+
+function validPostal($errors,$value,$key){
+  if(!empty($value)){
+    if(!is_numeric($value) || strlen($value) != 5) {
+      $errors[$key] = 'Veuillez renseigner un code postal à 5 chiffres';
+    }
+  }
+  else {
+    $errors[$key] = 'Veuillez renseigner un code postal';
+  }
+  return $errors;
+}
+
+
+function validPostalNull($errors,$value,$key){
+  if(strlen($value) == 0) {
+    return $errors;
+  }
+  if(!is_numeric($value) || strlen($value) != 5) {
+    $errors[$key] = 'Veuillez renseigner un code postal à 5 chiffres';
+  }
+  return $errors;
+}
+
+
+
+
 
 function generateRandomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

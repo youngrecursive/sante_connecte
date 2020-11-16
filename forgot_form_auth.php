@@ -39,17 +39,21 @@ $errors = array();
 
 
 include('inc/header.php'); ?>
+<section id="section1-forgot" class="background">
+  <form action="" method="post">
+    <h1>Mot de passe oublié</h1>
+        <h2>Si tu as perdues ton mot de passe saisit ton Email et un mail va t'étre envoyer pour pouvoirs réinitialiser ton mot de passe</h2>
+    <!-- EMAIL -->
+    <div class="">
+      <label for="email">Email : </label>
+      <input placeholder="Email" type="text" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>"><br>
+      <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+    </div>
 
-<form action="" method="post">
-  <!-- EMAIL -->
-  <div class="">
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
-    <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
-  </div>
+    <input class="submit" type="submit" name="submitted" value="Envoyer" />
 
-  <input type="submit" name="submitted" value="Envoyer" />
+  </form>
 
-</form>
+</section>
 
 <?php include('inc/footer.php'); ?>

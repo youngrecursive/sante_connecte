@@ -100,6 +100,37 @@ else {
 
 
 include('inc/header.php'); ?>
+<section id="section1-forgot" class="backgrounda">
+
+
+<form class="formulaire" action="" method="post">
+  <h1 class="debug-forgot">Nouveau mot de passe</h1>
+  <h2>Saisit ton nouveau mot de passe.</h2>
+  <!-- EMAIL -->
+  <div class="">
+    <label id="email" for="email">Email : </label>
+    <input type="text" name="email" placeholder="Email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
+    <br><span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+  </div>
+
+  <!-- PASSWORD -->
+  <div class="">
+    <label for="password">Mot de passe : </label>
+    <input type="password" name="password" placeholder="3 caractères min"value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
+    <br><span class="error"><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
+  </div>
+
+  <!-- CONFIRM PASSWORD -->
+  <div class="">
+    <label for="password2">Vérification du mot de passe : </label>
+    <input type="password" name="password2" placeholder="Confirmation Mot de passe" value="<?php if(!empty($_POST['password2'])) { echo $_POST['password2']; } ?>">
+    <br><span class="error"><?php if(!empty($errors['password2'])) { echo $errors['password2']; } ?></span>
+  </div>
+
+  <!-- SUBMIT -->
+  <input class="submit go" type="submit" name="submitted" value="Envoyer">
+</form>
+</section>
 
 <?php if(empty($perime)) { ?>
   <form class="formulaire" action="" method="post">
@@ -126,6 +157,7 @@ include('inc/header.php'); ?>
   <p>Le lien de changement de mot de passe a expiré...</p>
   <p>Recevoir de nouveau le mail <a href="forgot_send_mail.php?id=<?= $user['token'] ?>">Recevoir de nouveau le mail</a></p>
 <?php } ?>
+
 
 <?php
 include('inc/footer.php');

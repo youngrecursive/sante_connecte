@@ -68,6 +68,9 @@
                       $query = $pdo->prepare($sql);
                       $query->execute();
                       $data = $query->fetchAll();
+
+                      for ($i=0; $i < count($data) ; $i++) { ?>
+
                       foreach ($data as $value) {
                       echo'<tr><td>'.$value['id'].'</td><td>'.$value['nom'].'</td><td>'.$value['prenom'].'</td><td>'.$value['civilitee'].'</td><td>'.$value['date_naissance'].'</td><td>'.$value['adresse1'].'</td><td>'.$value['adresse2'].'</td><td>'.$value['ville'].'</td><td>'.$value['codepostal'].'</td><td>'.$value['role'].'</td><td>'.$value['email'].'</td><td>'.$value['password'].'</td><td>'.$value['created_at'].'</td></tr>';
                     }
@@ -135,39 +138,30 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
+
                         <tr>
-                            <th>ID</th>
-                            <th>Nom du vaccin</th>
-                            <th>Description</th>
-                            <th>Nombre de rappel</th>
-                            <th>Intervalle de rappel</th>
+                          <td><?php echo($data[$i]['id']); ?></td>
+                          <td><?php echo($data[$i]['nom']); ?></td>
+                          <td><?php echo($data[$i]['prenom']); ?></td>
+                          <td><?php echo($data[$i]['civilitee']); ?></td>
+                          <td><?php echo($data[$i]['date_naissance']); ?></td>
+                          <td><?php echo($data[$i]['adresse1']); ?></td>
+                          <td><?php echo($data[$i]['adresse2']); ?></td>
+                          <td><?php echo($data[$i]['ville']); ?></td>
+                          <td><?php echo($data[$i]['codepostal']); ?></td>
+                          <td><?php echo($data[$i]['role']); ?></td>
+                          <td><?php echo($data[$i]['email']); ?></td>
+                          <td><?php echo($data[$i]['password']); ?></td>
+                          <td><?php echo($data[$i]['created_at']); ?></td>
+                          <td><?php echo($data[$i]['updated_at']); ?></td>
+                          <td><a href=edit.php?m=<?php echo ($data[$i]['id']); ?> >Modifier</a></td>
+                          <td><a href=delete.php?m=<?php echo ($data[$i]['id']); ?> >Supprimer</a></td>
                         </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nom du vaccin</th>
-                          <th>Description</th>
-                          <th>Nombre de rappel</th>
-                          <th>Intervalle de rappel</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                      <?php
-                      $sql = "SELECT * FROM vaccins";
-                      $query = $pdo->prepare($sql);
-                      $query->execute();
-                      $data = $query->fetchAll();
-                      foreach ($data as $value) {
-                      echo'<tr><td>'.$value['id'].'</td><td>'.$value['nomvaccin'].'</td><td>'.$value['description'].'</td><td>'.$value['nombrerappel'].'</td><td>'.$value['intervallerappel'].'</td></tr>';}
+                        <?php
+                      }
                       ?>
-                      <table>
-                        <td><a href="#" >Ajouter</a></td>
-                        <td><a href="#" >Modifier</a></td>
-                        <td><a href="#" >Suppprimer</a></td>
-                      </table>
-                    </tbody>
-                </table>
+                    </table>
+                </tbody>
             </div>
         </div>
     </div>

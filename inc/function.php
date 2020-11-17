@@ -12,12 +12,7 @@ function cleanXss($value){
 }
 
 
-function emptyError($errors,$value,$key){
-  if(empty($value)){
-    $errors[$key] = 'Ce champ ne doit pas être vide.';
-  }
-  return $errors;
-}
+
 
 function validText($errors,$value,$key,$min,$max){
   if(!empty($value)) {
@@ -114,7 +109,6 @@ function validDate($errors,$value,$key){
   return $errors;
 }
 
-
 function validPostal($errors,$value,$key){
   if(!empty($value)){
     if(!is_numeric($value) || strlen($value) != 5) {
@@ -156,11 +150,6 @@ function generateRandomString($length = 10) {
 function formatageDate($valueDate)
 {
   return date('d/m/Y à H:i',strtotime($valueDate));
-}
-
-function formatageShortDate($valueDate)
-{
-  return date('d/m/Y',strtotime($valueDate));
 }
 
 

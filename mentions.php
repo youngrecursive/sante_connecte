@@ -4,8 +4,6 @@ require('inc/function.php');
 include('inc/header.php'); ?>
 
 
-<section>
-
 
 <div class="wrap">
   <p>Mentions</p>

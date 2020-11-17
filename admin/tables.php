@@ -72,9 +72,14 @@
                       $sql = "SELECT * FROM nf_users";
                       $query = $pdo->prepare($sql);
                       $query->execute();
+
                       $users = $query->fetchAll();
 
                       foreach ($users as $user) { ?>
+
+                      $data = $query->fetchAll();
+                      for ($i=0; $i < count($data) ; $i++) { ?>
+
                         <tr>
                           <td><a href=details.php?id=<?php echo $user['id']; ?> >Voir</a></td>
                           <td><?= $user['id']; ?></td>

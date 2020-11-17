@@ -7,6 +7,7 @@ if(!isLoggedAdmin()) {
   header('Location: ../index.php');
   exit(); }
 
+
 //valiation du formulaire
 $errors = array();
 if (!empty($_POST['submitted'])) {
@@ -30,8 +31,6 @@ if (!empty($_POST['submitted'])) {
     $query->bindValue(':nomvaccin',$nomvaccin,PDO::PARAM_STR);
     $query->bindValue(':description',$description,PDO::PARAM_STR);
     $query->execute();
-
-      // die('You Died');
   }
 }
 
@@ -48,20 +47,21 @@ include('inc/header.php'); ?>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        </td>
-                      </tr>
+                  <!-- fin de l'en tête -->
+                  <!-- début du tableau (ici, organisation des colonnes) -->
                     <thead>
                         <tr>
                             <th>Nom du vaccin</th>
                             <th>Description</th>
                             <th>Nombre de rappel</th>
                             <th>Intervalle de rappel (en mois)</th>
+                            <th>Détails</th>
                         </tr>
                     </thead>
                     <tbody>
                       <?php
                       // $errors = array();
-
+                      // on récupère chaque vaccin dans la BDD et on les affiche)
                       $sql = "SELECT * FROM vaccins";
                       $query = $pdo->prepare($sql);
                       $query->execute();
@@ -72,6 +72,7 @@ include('inc/header.php'); ?>
                           <td><?php echo($data[$i]['description']); ?></td>
                           <td><?php echo($data[$i]['nombrerappel']); ?></td>
                           <td><?php echo($data[$i]['intervallerappel']); ?></td>
+                          <td><a href="details_vaccins.php?id=<?= print_r($i); ?>"><?php echo 'Détails' ?></a></td>
                         </tr>
                         <?php
                       }

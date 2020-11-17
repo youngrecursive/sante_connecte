@@ -7,7 +7,7 @@ include('inc/function.php');
 
 <?php
  if(isLoggedUser() || isLoggedAdmin()) {
-  if(!empty($_GET['id'] && is_numeric($_GET['id'])))
+  if(!empty($_GET['id']) && is_numeric($_GET['id']))
   {
     if($_SESSION['user']['id'] == $_GET['id']) { $id = $_GET['id']; }
     else { header('Location: 404.php'); exit(); }

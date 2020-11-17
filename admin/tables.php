@@ -2,11 +2,13 @@
 <?php require('../inc/function.php'); ?>
 <?php require('../inc/pdo.php'); ?>
 
+
 <?php if(!isLoggedAdmin()) {
   header('Location: ../index.php');
   exit(); } ?>
 
 <?php include('inc/header.php'); ?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -17,6 +19,7 @@
             href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
     <!-- TABLE UTILISATEURS -->
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Table des utilisateurs:</h6>
@@ -28,6 +31,7 @@
                       </tr>
                     <thead>
                         <tr>
+                            <th>Détails</th>
                             <th>ID</th>
                             <th>Nom</th>
                             <th>Prenom</th>
@@ -45,6 +49,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                          <th>Détails</th>
                           <th>ID</th>
                           <th>Nom</th>
                           <th>Prenom</th>
@@ -62,105 +67,38 @@
                     </tfoot>
                     <tbody>
                       <?php
-                      $errors = array();
+                      // $errors = array();
 
                       $sql = "SELECT * FROM nf_users";
                       $query = $pdo->prepare($sql);
                       $query->execute();
-                      $data = $query->fetchAll();
+                      $users = $query->fetchAll();
 
-                      for ($i=0; $i < count($data) ; $i++) { ?>
-
-                      foreach ($data as $value) {
-                      echo'<tr><td>'.$value['id'].'</td><td>'.$value['nom'].'</td><td>'.$value['prenom'].'</td><td>'.$value['civilitee'].'</td><td>'.$value['date_naissance'].'</td><td>'.$value['adresse1'].'</td><td>'.$value['adresse2'].'</td><td>'.$value['ville'].'</td><td>'.$value['codepostal'].'</td><td>'.$value['role'].'</td><td>'.$value['email'].'</td><td>'.$value['password'].'</td><td>'.$value['created_at'].'</td></tr>';
-                    }
-                      ?>
-                    <table>
-                      <td><a href="#" >Ajouter</a></td>
-                      <td><a href="#" >Modifier</a></td>
-                      <td><a href="#" >Suppprimer</a></td>
-                    </table>
-                </tbody>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- TABLE USERS VACCINES -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Table des utilisateurs vaccinés:</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+                      foreach ($users as $user) { ?>
                         <tr>
-                            <th>ID</th>
-                            <th>ID de l'utilisateur</th>
-                            <th>ID du vaccin</th>
-                            <th>Date de vaccination</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                          <th>ID</th>
-                          <th>ID de l'utilisateur</th>
-                          <th>ID du vaccin</th>
-                          <th>Date de vaccination</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                      <?php
-                      $sql = "SELECT * FROM vaccins_user";
-                      $query = $pdo->prepare($sql);
-                      $query->execute();
-                      $data = $query->fetchAll();
-                      foreach ($data as $value) {
-                      echo'<tr><td>'.$value['id'].'</td><td>'.$value['user_id'].'</td><td>'.$value['vaccin_id'].'</td><td>'.$value['date_vaccin'].'</td></tr>';}
-                      ?>
-                      <table>
-                        <td><a href="#" >Ajouter</a></td>
-                        <td><a href="#" >Modifier</a></td>
-                        <td><a href="#" >Suppprimer</a></td>
-                      </table>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!-- TABLE UTILISATEURS -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Table des vaccins:</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-
-                        <tr>
-                          <td><?php echo($data[$i]['id']); ?></td>
-                          <td><?php echo($data[$i]['nom']); ?></td>
-                          <td><?php echo($data[$i]['prenom']); ?></td>
-                          <td><?php echo($data[$i]['civilitee']); ?></td>
-                          <td><?php echo($data[$i]['date_naissance']); ?></td>
-                          <td><?php echo($data[$i]['adresse1']); ?></td>
-                          <td><?php echo($data[$i]['adresse2']); ?></td>
-                          <td><?php echo($data[$i]['ville']); ?></td>
-                          <td><?php echo($data[$i]['codepostal']); ?></td>
-                          <td><?php echo($data[$i]['role']); ?></td>
-                          <td><?php echo($data[$i]['email']); ?></td>
-                          <td><?php echo($data[$i]['password']); ?></td>
-                          <td><?php echo($data[$i]['created_at']); ?></td>
-                          <td><?php echo($data[$i]['updated_at']); ?></td>
-                          <td><a href=edit.php?m=<?php echo ($data[$i]['id']); ?> >Modifier</a></td>
-                          <td><a href=delete.php?m=<?php echo ($data[$i]['id']); ?> >Supprimer</a></td>
+                          <td><a href=details.php?id=<?php echo $user['id']; ?> >Voir</a></td>
+                          <td><?= $user['id']; ?></td>
+                          <td><?= $user['nom']; ?></td>
+                          <td><?= $user['prenom']; ?></td>
+                          <td><?= $user['civilitee']; ?></td>
+                          <td><?= $user['date_naissance']; ?></td>
+                          <td><?= $user['adresse1']; ?></td>
+                          <td><?= $user['adresse2']; ?></td>
+                          <td><?= $user['ville']; ?></td>
+                          <td><?= $user['codepostal']; ?></td>
+                          <td><?= $user['role']; ?></td>
+                          <td><?= $user['email']; ?></td>
+                          <td><?= $user['password']; ?></td>
+                          <td><?= $user['created_at']; ?></td>
+                          <td><?= $user['updated_at']; ?></td>
+                          <td><a href=edit1.php?id=<?php echo $user['id']; ?> >Modifier</a></td>
+                          <td><a href=delete.php?id=<?php echo $user['id']; ?> >Supprimer</a></td>
                         </tr>
                         <?php
                       }
                       ?>
                     </table>
+                    <td><a href=newuser.php?id=<?php echo $user['id']; ?> >Ajouter un utilisateur</a></td>
                 </tbody>
             </div>
         </div>

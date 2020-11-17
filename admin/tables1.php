@@ -45,15 +45,13 @@
                       $sql = "SELECT * FROM vaccins_user";
                       $query = $pdo->prepare($sql);
                       $query->execute();
-                      $data = $query->fetchAll();
-                      for ($i=0; $i < count($data) ; $i++) { ?>
+                      $users = $query->fetchAll();
+                      foreach ($users as $user) { ?>
                         <tr>
-                          <td><?php echo($data[$i]['id']); ?></td>
-                          <td><?php echo($data[$i]['user_id']); ?></td>
-                          <td><?php echo($data[$i]['vaccin_id']); ?></td>
-                          <td><?php echo($data[$i]['date_vaccin']); ?></td>
-                          <td><a href=edit.php?m=<?php echo ($data[$i]['id']); ?> >Modifier</a></td>
-                          <td><a href=delete.php?m=<?php echo ($data[$i]['id']); ?> >Supprimer</a></td>
+                          <td><?= $user['id']; ?></td>
+                          <td><?= $user['user_id']; ?></td>
+                          <td><?= $user['vaccin_id']; ?></td>
+                          <td><?= $user['date_vaccin']; ?></td>
                         </tr>
                         <?php
                       }

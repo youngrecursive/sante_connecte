@@ -21,14 +21,30 @@
         $userkey = $key;
       }
     }
+
     if(empty($userDetails)) {
       die('404');
     }
+
   } else {
     die('404');
   }
 
-include('inc/header.php'); ?>
+      $sql = "SELECT * FROM vaccins INNER JOIN vaccins_user ON vaccins.id = vaccins_user.vaccin_id WHERE user_id = '$id'";
+      $query = $pdo->prepare($sql);
+      $query->execute();
+      $madevaccins = $query->fetchAll();
+      if(!empty($madevaccins)){
+        $successvac = true;
+      }
+      // debug($madevaccins);
+    // if(!empty($successvac)){
+    //    $user_id = $user['id'];
+    //     foreach ($madevaccins as $madevaccin):
+    //     endforeach;
+    // }
+
+    include('inc/header.php'); ?>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -37,15 +53,12 @@ include('inc/header.php'); ?>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    </td>
-                  </tr>
                 <thead>
                   <tr>
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Civilite</th>
                     <th>Date de naissance</th>
-                    <th>Crée le:</th>
                     <th>Mis à jour le:</th>
                 </tr>
             </thead>
@@ -53,8 +66,27 @@ include('inc/header.php'); ?>
                   <td> <?= $userDetails['prenom']; ?></td>
                   <td> <?= $userDetails['civilitee']; ?></td>
                   <td> <?= $userDetails['date_naissance']; ?></td>
-                  <td> <?= $userDetails['created_at']; ?></td>
                   <td> <?= $userDetails['updated_at']; ?></td>
+            </table>
+
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Vaccin(s):</th>
+                  <th>Fait(s) le:</th>
+                </tr>
+              </thead>
+                  <?php if(!empty($successvac)){ ?>
+                    <?php $user_id = $_GET['id'];
+                    // debug($user_id);
+                      foreach ($madevaccins as $madevaccin): ?>
+                <tr>
+                  <td> <?= $madevaccin['nomvaccin'] ?></td>
+                  <td> <?= formatageShortDate($madevaccin['date_vaccin']) ?></td>
+                  <td><a href="user_delete_vac.foruser.php?id=<?= $user_id ?>/<?= $madevaccin['nomvaccin'] ?>">Retirer ce vaccin</a></td>
+                </tr>
+                <?php endforeach;
+              } ?>
                 </table>
 
 

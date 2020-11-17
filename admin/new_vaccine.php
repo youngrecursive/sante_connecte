@@ -7,7 +7,6 @@ if(!isLoggedAdmin()) {
   header('Location: ../index.php');
   exit(); }
 
-
 //valiation du formulaire
 $errors = array();
 if (!empty($_POST['submitted'])) {
@@ -31,6 +30,8 @@ if (!empty($_POST['submitted'])) {
     $query->bindValue(':nomvaccin',$nomvaccin,PDO::PARAM_STR);
     $query->bindValue(':description',$description,PDO::PARAM_STR);
     $query->execute();
+
+      // die('You Died');
   }
 }
 
@@ -47,8 +48,8 @@ include('inc/header.php'); ?>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <!-- fin de l'en tête -->
-                  <!-- début du tableau (ici, organisation des colonnes) -->
+                        </td>
+                      </tr>
                     <thead>
                         <tr>
                             <th>Nom du vaccin</th>
@@ -56,12 +57,14 @@ include('inc/header.php'); ?>
                             <th>Nombre de rappel</th>
                             <th>Intervalle de rappel (en mois)</th>
                             <th>Détails</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
                         </tr>
                     </thead>
                     <tbody>
                       <?php
                       // $errors = array();
-                      // on récupère chaque vaccin dans la BDD et on les affiche)
+
                       $sql = "SELECT * FROM vaccins";
                       $query = $pdo->prepare($sql);
                       $query->execute();
@@ -72,7 +75,9 @@ include('inc/header.php'); ?>
                           <td><?php echo($data[$i]['description']); ?></td>
                           <td><?php echo($data[$i]['nombrerappel']); ?></td>
                           <td><?php echo($data[$i]['intervallerappel']); ?></td>
-                          <td><a href="details_vaccins.php?id=<?= print_r($i); ?>"><?php echo 'Détails' ?></a></td>
+                          <td><a href="details_vaccine.php?id=<?php echo($data[$i]['id']); ?>"><?php echo 'Détails' ?></a></td>
+                          <td><a href="edit_vaccine.php?id=<?php echo($data[$i]['id']); ?>"><?php echo 'Modifier' ?></a></td>
+                          <td><a href="delete_vaccine.php?id=<?php echo($data[$i]['id']); ?>"><?php echo 'Supprimer' ?></a></td>
                         </tr>
                         <?php
                       }
@@ -112,7 +117,7 @@ include('inc/header.php'); ?>
 <!-- ajout de l'intervalle de rappel  et affichag des erreurs d'entrées-->
           <div class="form_group">
             <label for="intervallerappel">intervalle de rappel (mois)</label>
-            <input type="number" name="intervallerappel" value="0" min ="">
+            <input type="number" name="intervallerappel" value="0" min ="0  ">
             <span class="error_form"></span>
           </div>
 

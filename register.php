@@ -1,5 +1,4 @@
 <?php
-
 require('vendor/autoload.php');
 require('inc/pdo.php');
 require('inc/function.php');
@@ -106,7 +105,7 @@ include('inc/header.php'); ?>
   <p>Je créer mon compte</p>
 </div>
 <div class="boxregister">
-<form class="formulaire" action="" method="post">
+<form class="formulaire1" action="" method="post">
   <!-- PRENOM -->
 
   <label id="prenom"  for="prenom">Prenom</label>
@@ -152,7 +151,7 @@ include('inc/header.php'); ?>
   <span><?php if(!empty($errors['password2'])) { echo $errors['password2']; } ?></span>
 
   <!-- SUBMIT -->
-  <input class"go" type="submit" name="submitted" value="Envoyer">
+  <input class="go" type="submit" name="submitted" value="Envoyer">
 
 </form>
 </div>

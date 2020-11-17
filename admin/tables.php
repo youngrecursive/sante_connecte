@@ -2,11 +2,13 @@
 <?php require('../inc/function.php'); ?>
 <?php require('../inc/pdo.php'); ?>
 
+
 <?php if(!isLoggedAdmin()) {
   header('Location: ../index.php');
   exit(); } ?>
 
 <?php include('inc/header.php'); ?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -17,6 +19,7 @@
             href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
     <!-- TABLE UTILISATEURS -->
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Table des utilisateurs:</h6>
@@ -28,6 +31,7 @@
                       </tr>
                     <thead>
                         <tr>
+                            <th>Détails</th>
                             <th>ID</th>
                             <th>Nom</th>
                             <th>Prenom</th>
@@ -45,6 +49,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                          <th>Détails</th>
                           <th>ID</th>
                           <th>Nom</th>
                           <th>Prenom</th>
@@ -62,35 +67,43 @@
                     </tfoot>
                     <tbody>
                       <?php
-                      $errors = array();
+                      // $errors = array();
 
                       $sql = "SELECT * FROM nf_users";
                       $query = $pdo->prepare($sql);
                       $query->execute();
+
+                      $users = $query->fetchAll();
+
+                      foreach ($users as $user) { ?>
+
                       $data = $query->fetchAll();
                       for ($i=0; $i < count($data) ; $i++) { ?>
+
                         <tr>
-                          <td><?php echo($data[$i]['id']); ?></td>
-                          <td><?php echo($data[$i]['nom']); ?></td>
-                          <td><?php echo($data[$i]['prenom']); ?></td>
-                          <td><?php echo($data[$i]['civilitee']); ?></td>
-                          <td><?php echo($data[$i]['date_naissance']); ?></td>
-                          <td><?php echo($data[$i]['adresse1']); ?></td>
-                          <td><?php echo($data[$i]['adresse2']); ?></td>
-                          <td><?php echo($data[$i]['ville']); ?></td>
-                          <td><?php echo($data[$i]['codepostal']); ?></td>
-                          <td><?php echo($data[$i]['role']); ?></td>
-                          <td><?php echo($data[$i]['email']); ?></td>
-                          <td><?php echo($data[$i]['password']); ?></td>
-                          <td><?php echo($data[$i]['created_at']); ?></td>
-                          <td><?php echo($data[$i]['updated_at']); ?></td>
-                          <td><a href=edit.php?m=<?php echo ($data[$i]['id']); ?> >Modifier</a></td>
-                          <td><a href=delete.php?m=<?php echo ($data[$i]['id']); ?> >Supprimer</a></td>
+                          <td><a href=details.php?id=<?php echo $user['id']; ?> >Voir</a></td>
+                          <td><?= $user['id']; ?></td>
+                          <td><?= $user['nom']; ?></td>
+                          <td><?= $user['prenom']; ?></td>
+                          <td><?= $user['civilitee']; ?></td>
+                          <td><?= $user['date_naissance']; ?></td>
+                          <td><?= $user['adresse1']; ?></td>
+                          <td><?= $user['adresse2']; ?></td>
+                          <td><?= $user['ville']; ?></td>
+                          <td><?= $user['codepostal']; ?></td>
+                          <td><?= $user['role']; ?></td>
+                          <td><?= $user['email']; ?></td>
+                          <td><?= $user['password']; ?></td>
+                          <td><?= $user['created_at']; ?></td>
+                          <td><?= $user['updated_at']; ?></td>
+                          <td><a href=edit1.php?id=<?php echo $user['id']; ?> >Modifier</a></td>
+                          <td><a href=delete.php?id=<?php echo $user['id']; ?> >Supprimer</a></td>
                         </tr>
                         <?php
                       }
                       ?>
                     </table>
+                    <td><a href=newuser.php?id=<?php echo $user['id']; ?> >Ajouter un utilisateur</a></td>
                 </tbody>
             </div>
         </div>

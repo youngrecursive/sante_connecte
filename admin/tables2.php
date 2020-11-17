@@ -47,14 +47,18 @@
                       $sql = "SELECT * FROM vaccins";
                       $query = $pdo->prepare($sql);
                       $query->execute();
-                      $data = $query->fetchAll();
-                      foreach ($data as $value) {
-                      echo'<tr><td>'.$value['id'].'</td><td>'.$value['nomvaccin'].'</td><td>'.$value['description'].'</td><td>'.$value['nombrerappel'].'</td><td>'.$value['intervallerappel'].'</td></tr>';}
+                      $vaccins = $query->fetchAll();
+                      foreach ($vaccins as $vaccin) { ?>
+                        <tr>
+                          <td><?= $vaccin['id']; ?></td>
+                          <td><?= $vaccin['nomvaccin']; ?></td>
+                          <td><?= $vaccin['description']; ?></td>
+                          <td><?= $vaccin['nombrerappel']; ?></td>
+                          <td><?= $vaccin['intervallerappel']; ?></td>
+                        </tr>
+                        <?php
+                      }
                       ?>
-                      <table>
-                        <td><a href="#" >Ajouter</a></td>
-                        <td><a href="#" >Modifier</a></td>
-                        <td><a href="#" >Suppprimer</a></td>
                       </table>
                     </tbody>
                 </table>

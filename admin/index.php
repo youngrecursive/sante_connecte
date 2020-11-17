@@ -7,6 +7,12 @@ if(!isLoggedAdmin()) {
   header('Location: ../index.php');
   exit(); }
 
+
+include('../inc/pdo.php');
+include('../inc/function.php');
+// include('tables.php');
+?>
+
 include('inc/header.php'); ?>
   <div class="container-fluid">
     <h1></h1>
@@ -126,3 +132,4 @@ include('inc/header.php'); ?>
 
 
 <?php include('inc/footer.php'); ?>
+

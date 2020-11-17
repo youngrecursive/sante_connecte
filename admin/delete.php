@@ -9,18 +9,15 @@
 <?php include('inc/header.php');
 
 // <!-- SUPPRESSION VACCINS_USER -->
+$errors = array();
+if(count($errors) == 0) {
+  $sql = "DELETE FROM nf_users WHERE id = :id";
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':id', $_GET['id'],PDO::PARAM_INT);
+  $query->execute();
 
-
-$sql = "DELETE FROM vaccins_user WHERE id = :id";
-$query = $pdo->prepare($sql);
-$query->bindValue(':id', $_GET['m'],PDO::PARAM_INT);
-$query->execute();
-if(!$query) {
-  if confirm('Etes-vous sur de vouloir supprimer ?') {
-  return true;
-  }
-  else {
-  return false;
-  }
+        header('Location: tables.php');
+        die();
+ }
 
  include('inc/footer.php'); ?>

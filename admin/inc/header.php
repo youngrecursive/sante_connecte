@@ -113,7 +113,7 @@
                         <a class="collapse-item" href="../index.php">Accueil</a>
                         <a class="collapse-item" href="../login.php">Connexion</a>
                         <a class="collapse-item" href="../register.php">Inscription</a>
-                        <a class="collapse-item" href="forgot-password.html">Mot de passe oublié</a>
+                        <a class="collapse-item" href="../forgot_form_auth.php">Mot de passe oublié</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Autres pages:</h6>
                         <a class="collapse-item" href="404.php">404 Page</a>

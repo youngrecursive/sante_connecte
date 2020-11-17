@@ -15,9 +15,8 @@ if(count($errors) == 0) {
   $query = $pdo->prepare($sql);
   $query->bindValue(':id', $_GET['id'],PDO::PARAM_INT);
   $query->execute();
+} ?>
+  <h6>VOTRE REQUÊTE A BIEN ETE EFFECTUEE !</h6>
+  <li><a href="tables.php" title="Précédent">Précédent</a></li>
 
-        header('Location: tables.php');
-        die();
- }
-
- include('inc/footer.php'); ?>
+ <?php include('inc/footer.php');

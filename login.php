@@ -128,7 +128,7 @@ if(!empty($_POST['submitted'])) {
 
 
 include('inc/header.php'); ?>
-<section id="section1-login">
+<section id="section1-login" class="format">
 
 
   <?php
@@ -139,17 +139,17 @@ include('inc/header.php'); ?>
 
     <?php }
    ?>
-  <form action="" method="post">
+  <form action="" method="post" class="form">
     <h1>Connexion</h1>
     <!-- LOGIN -->
-    <div class="email">
+    <div>
       <label for="email">Email : </label>
       <input placeholder="Email" type="text" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
       <span class="error"><br><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
     </div>
 
     <!-- PASSWORD -->
-    <div class="password">
+    <div>
       <label for="password">Mot de passe : </label>
       <input placeholder="Mot de passe" type="password" name="password" id="password" class="form-control" value="" />
     </div>

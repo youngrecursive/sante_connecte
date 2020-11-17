@@ -39,8 +39,8 @@ $errors = array();
 
 
 include('inc/header.php'); ?>
-<section id="section1-forgot" class="background">
-  <form action="" method="post">
+<section id="section1-forgot" class="format">
+  <form action="" method="post" class="form">
     <h1>Mot de passe oublié</h1>
         <h2>Si tu as perdues ton mot de passe saisit ton Email et un mail va t'étre envoyer pour pouvoirs réinitialiser ton mot de passe</h2>
     <!-- EMAIL -->

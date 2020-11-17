@@ -74,4 +74,3 @@ if (!empty($_POST['submitted'])) {
   </div>
 
 <?php include('inc/footer.php'); ?>
-

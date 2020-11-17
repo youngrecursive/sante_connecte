@@ -45,6 +45,7 @@
                             <th>E-mail</th>
                             <th>Password</th>
                             <th>Crée le:</th>
+                            <th>Mis à jour le:</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -63,6 +64,7 @@
                           <th>E-mail</th>
                           <th>Password</th>
                           <th>Crée le:</th>
+                          <th>Mis à jour le:</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -72,11 +74,9 @@
                       $sql = "SELECT * FROM nf_users";
                       $query = $pdo->prepare($sql);
                       $query->execute();
-
                       $users = $query->fetchAll();
 
                       foreach ($users as $user) { ?>
-
                         <tr>
                           <td><a href=details.php?id=<?php echo $user['id']; ?> >Voir</a></td>
                           <td><?= $user['id']; ?></td>
@@ -93,7 +93,7 @@
                           <td><?= $user['password']; ?></td>
                           <td><?= $user['created_at']; ?></td>
                           <td><?= $user['updated_at']; ?></td>
-                          <td><a href=edit1.php?id=<?php echo $user['id']; ?> >Modifier</a></td>
+                          <td><a href=edit.php?id=<?php echo $user['id']; ?> >Modifier</a></td>
                           <td><a href=delete.php?id=<?php echo $user['id']; ?> >Supprimer</a></td>
                         </tr>
                         <?php

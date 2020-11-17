@@ -40,10 +40,12 @@
               </div>
             </div>
 
-        <div class="logo">
-          <img class="logo" src="asset/img/logo.png" alt="Logo">
-          <h1>VacBook</h1>
-        </div>
+            <a href="index.php">
+              <div class="logo">
+                <img class="logo" src="asset/img/logo.png" alt="Logo">
+                <h1>VacBook</h1>
+              </div>
+            </a>
       </div>
       <div class="mention">
         <p>

@@ -19,8 +19,8 @@ else {
   if(!empty($user)) { ?>
 
 
-    <section id="section1-mail">
-      <div class="block">
+    <section id="section1-mail" class="format">
+      <div class="form">
         <p>Un mail vient de vous être envoyé, veuillez cliquer dessus pour choisir votre nouveau mot de passe
           <br><a href="forgot_send_mail.php?id=<?= $user['id'] ?>">Recevoir de nouveau le mail</a></p>
 

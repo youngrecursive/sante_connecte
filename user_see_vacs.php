@@ -145,48 +145,71 @@ else {
 
 
 include('inc/header.php'); ?>
-<div class="wrap">
-  <p>Mon carnet de vaccination</p>
-</div>
+<section id="section-userseevac" class="format">
 
+<form class="form" action="" method="post">
+  <h1>Ajouter un vaccin</h1>
+
+  <!-- Choix du vaccin -->
+  <div class="gg">
+    <select class="" name="vaccin">
+      <option value="">Liste des vaccins</option>
+      <?php foreach ($vaccins as $vaccin): ?>
+        <option value="<?= $vaccin['id'] ?>"><?= $vaccin['nomvaccin'] ?></option>
+      <?php endforeach; ?>
+    </select>
+    <span class="error"><?php if(!empty($errors['vaccin'])) { echo $errors['vaccin']; } ?></span>
+
+    <!-- Date à laquelle la personne est vaccinée -->
+    <div class="date">
+      <label id="" for="date_vaccin">Date du vaccin : </label>
+      <input type="date" name="date_vaccin" max="9999-12-31" value="<?php if(!empty($_POST['date_vaccin'])) { echo $_POST['date_vaccin']; } ?>">
+      <span class="error"><?php if(!empty($errors['date_vaccin'])) { echo $errors['date_vaccin']; } ?></span>
+    </div>
+
+  <!-- Submit -->
+</div>
+  <input class="submit" type="submit" name="submitted" value="Envoyer">
 <?php
+
   if(!empty($flash)){ ?>
-    <span><?= $flash ?></span>
-   <?php }
-  if(!empty($successvac)){ ?>
-    <h7>Ma liste de vaccins</h7>
+    <span class="green"><?= $flash ?></span>
+   <?php } ?>
+
+</form>
+<div class="form tableau">
+
+<?php  if(!empty($successvac)){ ?>
+    <h1>Ma liste de vaccins</h1>
+    <table class="content-table">
+      <thead>
+        <tr>
+          <th>Vaccin</th>
+          <th>Fait le</th>
+          <th>Supprimer</th>
+        </tr>
+      </thead>
+    <tbody>
+
     <?php $user_id = $user['id'];
       foreach ($madevaccins as $madevaccin): ?>
-      <p><?= $madevaccin['nomvaccin'] ?></p>
-      <p>Fait le <?= formatageShortDate($madevaccin['date_vaccin']) ?></p>
-      <a href="user_delete_vac.php?id=<?= $user_id ?>/<?= $madevaccin['vaccin_id'] ?>">Retirer ce vaccin</a>
+        <tr>
+          <td><?= $madevaccin['nomvaccin'] ?></td>
+          <td><?= formatageShortDate($madevaccin['date_vaccin']) ?></td>
+          <td><a href="user_delete_vac.php?id=<?= $user_id ?>/<?= $madevaccin['vaccin_id'] ?>">Retirer ce vaccin</a></td>
+        </tr>
     <?php endforeach; ?>
   <?php } else { ?>
     <p>Vous n'avez pas encore renseigné de vaccins...</p>
   <?php } ?>
+</tbody>
+</table>
+</div>
 
 
 
-<form class="" action="" method="post">
-
-  <!-- Choix du vaccin -->
-  <select class="" name="vaccin">
-    <option value="">Liste des vaccins</option>
-    <?php foreach ($vaccins as $vaccin): ?>
-      <option value="<?= $vaccin['id'] ?>"><?= $vaccin['nomvaccin'] ?></option>
-    <?php endforeach; ?>
-  </select>
-  <span class="error"><?php if(!empty($errors['vaccin'])) { echo $errors['vaccin']; } ?></span>
-
-  <!-- Date à laquelle la personne est vaccinée -->
-  <label id="" for="date_vaccin">Date du vaccin</label>
-  <input type="date" name="date_vaccin" max="9999-12-31" value="<?php if(!empty($_POST['date_vaccin'])) { echo $_POST['date_vaccin']; } ?>">
-  <span class="error"><?php if(!empty($errors['date_vaccin'])) { echo $errors['date_vaccin']; } ?></span>
-
-  <!-- Submit -->
-  <input class"go" type="submit" name="submitted" value="Envoyer">
-</form>
 
 
+</section>
 <?php
 include('inc/footer.php');

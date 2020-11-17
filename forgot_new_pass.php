@@ -102,10 +102,10 @@ else {
 include('inc/header.php'); ?>
 
 <?php if(empty($perime)) { ?>
-  <section id="section1-forgot" class="backgrounda">
+  <section id="section1-forgotnew" class="format">
 
 
-  <form class="formulaire" action="" method="post">
+  <form class="form" action="" method="post">
     <h1 class="debug-forgot">Nouveau mot de passe</h1>
     <h2>Saisit ton nouveau mot de passe.</h2>
     <!-- EMAIL -->

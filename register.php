@@ -100,11 +100,12 @@ include('inc/header.php'); ?>
 
 <section id="mainSection">
   <div class="sectionBis">
-<div class="wrapregister">
-  <h1>Inscription</h1>
-  <p>Je créer mon compte</p>
-</div>
+
 <div class="boxregister">
+  <div class="wrapregister">
+    <h1>Inscription</h1>
+    <p>Je créer mon compte</p>
+  </div>
 <form class="formulaire1" action="" method="post">
   <!-- PRENOM -->
 
@@ -146,7 +147,8 @@ include('inc/header.php'); ?>
   <span><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
 
   <!-- CONFIRM PASSWORD -->
-  <label for="password2"></label>
+
+  <label for="password2">Confirmez votre mot de passe</label>
   <input type="password" name="password2" placeholder="Confirmation Mot de passe" value="<?php if(!empty($_POST['password2'])) { echo $_POST['password2']; } ?>">
   <span><?php if(!empty($errors['password2'])) { echo $errors['password2']; } ?></span>
 

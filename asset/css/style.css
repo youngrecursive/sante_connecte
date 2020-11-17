@@ -860,11 +860,7 @@ color: #fff;
 
 
 /* INSCRIPTION  */
-#mainSection label {
-	color:white;
-	font-size: 1.2em;
-	padding: 3% 0;
-}
+
 
 #mainSection .go {
 		box-shadow:inset 0px 1px 0px 0px #cf866c;
@@ -880,7 +876,10 @@ color: #fff;
 		font-weight:800;
 		letter-spacing: 5px;
 		height: 41px;
+
 }
+
+
 
 #mainSection .go:hover {
 	background-color:#ffffff;
@@ -933,13 +932,24 @@ color: #fff;
 	font-size: 2.2em;
 }
 
+.boxregister label {
+		font-family: 'roboto';
+		color:white;
+		font-size: 1.2em;
+		padding: 0 0;
+	}
+
+
+
 .boxregister .formulaire1  {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
-
+	height: 600px;
 }
+
+
 
 ::placeholder {
   font-family: 'Merriweather', serif;
@@ -950,12 +960,14 @@ color: #fff;
 }
 
 #mainSection {
-		padding-top: 80px;
+		padding: 60% 0 0 0 ;
     height: 45rem;
     width: 100%;
     background-image: url("../img/virus.jpg");
     background-size: cover;
 }
+
+
 
 .sectionBis {
   height : 100%;
@@ -1071,9 +1083,6 @@ text-align:center;
 
 /*  Contact  */
 
-
-
-
 .wrapcontact {
 	background-color: rgba(119, 140, 163,0.7);
 	padding: 2%;
@@ -1094,9 +1103,6 @@ text-align:center;
 	font-weight: 600;
 	font-family: 'Roboto', sans-serif;
 }
-
-
-
 
 #contact {
 	background-image: url("../img/background_section-forgot.jpg");
@@ -1182,4 +1188,90 @@ text-align:center;
 #contact a {
 	text-decoration: none;
 	color: white;
+}
+
+/* MENTIONS */
+
+.wrapmentions {
+	border-radius: 7.5px;
+	border: 1.5px solid black;
+
+}
+
+
+.wrapmentions h4 {
+	font-size: 1.3em;
+	font-weight: 600;
+	font-family: 'Roboto', sans-serif;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+	padding: 3px;
+	width: 100%;
+
+}
+
+
+.wrapmentions div{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+	padding: 40px;
+	width: 100%;
+}
+
+.mentions {
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 7%;
+	margin-bottom: 3%;
+	height: 100%;
+	background-size: 100%;
+	background-color: #DDDEE0;
+	font-family: 'Merriweather', serif;
+	font-family: 'Oswald', sans-serif;
+
+}
+
+/* Page 403  */
+
+
+
+.aza {
+font-size: 10em;
+font-weight:bold;
+font-family: 'Oswald', sans-serif;
+padding-left: 30px;
+}
+
+.az {
+	font-size: 3em;
+	font-weight:600;
+	font-family: 'Oswald', sans-serif;
+	padding-bottom: 700px;
+	padding-left: 30px;
+}
+
+/* Page 404 */
+
+.aza {
+font-size: 10em;
+font-weight:bold;
+font-family: 'Oswald', sans-serif;
+padding-left: 30px;
+}
+
+.az {
+	font-size: 3em;
+	font-weight:600;
+	font-family: 'Oswald', sans-serif;
+	padding-bottom: 700px;
+	padding-left: 30px;
 }

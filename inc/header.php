@@ -18,9 +18,13 @@
     <header id="header">
       <div class="wrap_header">
         <div class="menu">
-          <div class="logo">
 
-          </div>
+          <a href="index.php">
+            <div class="logo">
+
+            </div>
+
+          </a>
           <nav>
             <ul>
               <li class="underline"><a href="index.php">Home</a></li>

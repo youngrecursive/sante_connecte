@@ -6,14 +6,35 @@ include('inc/function.php');
 $errors = array();
 
 $successvac = false;
-$success = false;
+$xplode = explode('/', $_GET['id']);
+$getid = $xplode[0];
+$souschaine = '/';
+if (strpos($_GET['id'], $souschaine) !== FALSE) {
+  if(!empty($xplode[1])){
+    if($xplode[1] == 'success'){
+      $flash = 'Vous venez d\'ajouter un vaccin !';
+    }
+    elseif($xplode[1] == 'delete'){
+      $flash = 'Vous venez de retirer un vaccin !';
+    }
+    else {
+      header('Location: 404.php');
+      exit();
+    }
+  }
+}
+
+
+
+
 
 
 if(isLoggedUser() || isLoggedAdmin()){
-  if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
+  //if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
+  if(!empty($getid) && is_numeric($getid)) {
 
     // On vérifie que id concorde avec l'user connecté
-    if($_SESSION['user']['id'] == $_GET['id']) { $id = $_GET['id']; }
+    if($_SESSION['user']['id'] == $getid) { $id = $getid; }
     else { header('Location: 404.php'); exit(); }
     $pseudo = $_SESSION['user']['pseudo'];
 
@@ -31,12 +52,19 @@ if(isLoggedUser() || isLoggedAdmin()){
 
     // On vérifie si il y a des vaccins en BDD sait-on jamais...
     if(!empty($vaccins)){
-      $sql = "SELECT * FROM vaccins INNER JOIN vaccins_user ON vaccins.id = vaccins_user.vaccin_id";
+
+
+
+      $sql = "SELECT * FROM vaccins INNER JOIN vaccins_user ON vaccins.id = vaccins_user.vaccin_id WHERE user_id = '$id'";
       $query = $pdo->prepare($sql);
       $query->execute();
       $madevaccins = $query->fetchAll();
 
+
+
+
       if(!empty($madevaccins)){
+
 
         // IF TRUE ON AFFICHE LES VACCINS DE LA PERSONNE
         $successvac = true;
@@ -56,15 +84,30 @@ if(isLoggedUser() || isLoggedAdmin()){
         $errors = validDate($errors,$date_vaccin,'date_vaccin');
 
 
+
         if(count($errors) == 0){
-          $success = true;
-
-          $sql = "INSERT INTO vaccins_user (user_id,vaccin_id,date_vaccin) VALUES ('$user_id','$vaccin',:date_vaccin)";
-
-          // INSERT
+          $sql = "SELECT id FROM vaccins_user WHERE user_id = '$user_id' AND vaccin_id = '$vaccin'";
           $query = $pdo->prepare($sql);
-          $query->bindValue(':date_vaccin',$date_vaccin,PDO::PARAM_STR);
           $query->execute();
+          $UserVaccinExist = $query->fetch();
+
+          if(!empty($UserVaccinExist)){
+            $errors['vaccin'] = 'Vous avez déjà renseigné ce vaccin';
+          }
+
+          if(count($errors) == 0){
+
+            $sql = "INSERT INTO vaccins_user (user_id,vaccin_id,date_vaccin) VALUES ('$user_id','$vaccin',:date_vaccin)";
+
+            // INSERT
+            $query = $pdo->prepare($sql);
+            $query->bindValue(':date_vaccin',$date_vaccin,PDO::PARAM_STR);
+            $query->execute();
+
+            header('Location: user_see_vacs.php?id='.$_SESSION['user']['id'].'/success');
+            exit();
+          }
+
 
         }
 
@@ -128,9 +171,11 @@ include('inc/header.php'); ?>
 </div>
   <input class="submit" type="submit" name="submitted" value="Envoyer">
 <?php
-  if(!empty($success)){ ?>
-    <span class="green">Vous venez d'ajouter un vaccin !</span>
-  <?php } ?>
+
+  if(!empty($flash)){ ?>
+    <span class="green"><?= $flash ?></span>
+   <?php } ?>
+
 </form>
 <div class="form tableau">
 
@@ -145,6 +190,7 @@ include('inc/header.php'); ?>
         </tr>
       </thead>
     <tbody>
+
     <?php $user_id = $user['id'];
       foreach ($madevaccins as $madevaccin): ?>
         <tr>

@@ -22,7 +22,7 @@ if(isLoggedUser() || isLoggedAdmin()) {
       $query->bindValue(':vaccin_id', $vaccin_id,PDO::PARAM_INT);
       $query->execute();
 
-      header('Location: user_see_vacs.php?id='.$id.'');
+      header('Location: user_see_vacs.php?id='.$id.'/delete');
       exit();
     }
 

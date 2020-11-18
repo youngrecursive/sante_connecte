@@ -85,7 +85,7 @@ include('inc/header.php'); ?>
   <!-- PRENOM -->
   <div class="form_prenom form_ensemble">
     <label for="prenom">Prenom</label>
-    <input id="prenom" type="text" name="prenom" value="<?php if(!empty($_POST['prenom'])){echo $_POST['prenom'];} ?>">
+    <input id="prenom" type="text" name="prenom" value="<?php if(!empty($_POST['prenom'])){echo $_POST['prenom'];} else { echo $user['prenom']; } ?>">
     <span class="error_form"><?php if(!empty($errors['prenom'])){echo $errors['prenom'];} ?></span>
   </div>
   <!-- CIVILITEE -->

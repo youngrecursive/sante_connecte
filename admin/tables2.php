@@ -28,6 +28,7 @@
                             <th>Description</th>
                             <th>Nombre de rappel</th>
                             <th>Intervalle de rappel</th>
+                            <th>Détail</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -37,6 +38,7 @@
                           <th>Description</th>
                           <th>Nombre de rappel</th>
                           <th>Intervalle de rappel</th>
+                          <th>Détail</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -52,6 +54,7 @@
                           <td><?= $vaccin['description']; ?></td>
                           <td><?= $vaccin['nombrerappel']; ?></td>
                           <td><?= $vaccin['intervallerappel']; ?></td>
+                          <td><a href="details_vaccine.php?id=<?= $vaccin['id']; ?>">Détail</a></td>
                         </tr>
                         <?php
                       }

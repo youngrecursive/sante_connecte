@@ -12,7 +12,8 @@ if (!empty($_GET['id'])){
   $user = $query->fetch();
 
   // On vérifie que l'user est bien en cours de validation de création de compte même si ici le mail qui apparaît est fictif
-  if(!empty($user) && $user['role'] == 'user_novalid') { ?>
+  if(!empty($user) && $user['role'] == 'user_novalid') {
+    include('inc/header.php'); ?>
     <section id="section1-mail" class="format">
       <div class="form">
     <p>Un mail vient de vous être envoyé, il comporte un lien permettant l'activation de votre compte
@@ -24,7 +25,9 @@ if (!empty($_GET['id'])){
 
           </div>
       </section>
-  <?php }
+  <?php
+  include('inc/footer.php');
+ }
 
   else{
     header('Location: 404.php');

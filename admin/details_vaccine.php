@@ -1,19 +1,45 @@
-<?php
-session_start();
-require('../inc/function.php');
-require('../inc/pdo.php');
+  <?php
+  session_start();
+  require('../inc/function.php');
+  require('../inc/pdo.php');
 
-if(!isLoggedAdmin()) {
-  header('Location: ../index.php');
-  exit(); }
+  if(!isLoggedAdmin()) {
+    header('Location: ../index.php');
+    exit(); }
 
 
-//on récupère l'ID dans l'url
-  $errors=array();
-  if(!empty($_GET['id']) && is_numeric($_GET['id'])){
-    $id = $_GET['id'];
-    //fetch le vaccin dans la BDD
+  //on récupère l'ID dans l'url
+    $errors=array();
+    if(!empty($_GET['id']) && is_numeric($_GET['id'])){
+      $id = $_GET['id'];
+      //fetch le vaccin dans la BDD
+
+    $sql = "SELECT * FROM vaccins WHERE id = :id";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':id',$id,PDO::PARAM_INT);
+    $query->execute();
+    $vaccins = $query->fetch();
+
+    $sql = "SELECT * FROM nf_users INNER JOIN vaccins_user ON nf_users.id = vaccins_user.user_id WHERE vaccin_id = '$id'";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $users = $query->fetchAll();
+    // debug($users);
+    if(!empty($users)){
+      $userVaccin = array();
+      $userkey = '';
+      foreach ($users as $key => $user) {
+        if($user['id'] == $id) {
+          $userVaccin = $user;
+          $userkey = $key;
+        }
+      }
+    }
+  } else {
+    header('Location: 404.php');
+    exit();
   }
+
   $sql = "SELECT * FROM vaccins WHERE id = :id";
   $query = $pdo->prepare($sql);
   $query->bindValue(':id',$id,PDO::PARAM_INT);
@@ -31,11 +57,35 @@ include('inc/header.php'); ?>
     <!-- boutton back stylisé via boostrap -->
     <div class="my-2"></div>
     <a href="new_vaccine.php" class="btn btn-light btn-icon-split">
-        <span class="icon text-gray-600">
-            <i class="fas fa-arrow-right"></i>
-        </span>
-        <span class="text">Retourner sur la table des vaccins</span>
-  </div>
+      <span class="icon text-gray-600">
+        <i class="fas fa-arrow-right"></i>
+      </span>
+      <span class="text">Retourner sur la table des vaccins</span>
+    </div>
+
+
+
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Nom de l'utilisateur</th>
+        <th>ID de l'utilisateur:</th>
+        <th>Date de mise à jour:</th>
+        <th>Date de vaccination:</th>
+      </tr>
+    </thead>
+    <?php $user_id = $_GET['id'];
+    foreach ($users as $user): ?>
+        <tr>
+          <td> <?= $user['nom'] ?></td>
+          <td> <?= $user['user_id'] ?></td>
+          <td> <?= $user['updated_at'] ?></td>
+          <td> <?= formatageShortDate($user['date_vaccin']) ?></td>
+        </tr>
+        <?php endforeach;
+         ?>
+      </table>
+
 
 
 <?php include('inc/footer.php'); ?>

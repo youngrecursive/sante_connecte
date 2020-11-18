@@ -88,7 +88,7 @@ include('inc/header.php'); ?>
 
         <div class="">
           <label for="adresse1">Adresse 1</label>
-          <input type="text" name="adresse1" value="<?php if(!empty($user['adresse1'])) { echo $user['adresse1']; } ?>">
+          <input type="text" name="adresse1" value="<?php if(empty($adresse1)) { if(!empty($user['adresse1'])) { echo $user['adresse1']; } } else { echo $adresse1; } ?>">
           <span class="error"><?php if(!empty($errors['adresse1'])) { echo $errors['adresse1']; } ?></span>
         </div>
         <!-- Adresse2 -->

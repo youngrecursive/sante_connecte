@@ -15,8 +15,13 @@ if(count($errors) == 0) {
   $query = $pdo->prepare($sql);
   $query->bindValue(':id', $_GET['id'],PDO::PARAM_INT);
   $query->execute();
+  if($sql == true){
+    echo '<div class="alert alert-success">Votre requête a bien été effectuée !</div>'; ?>
+    <a href="tables.php" title="Précédent">Précédent</a>
+    <?php
+  }
 } ?>
-  <h6>VOTRE REQUÊTE A BIEN ETE EFFECTUEE !</h6>
-  <li><a href="tables.php" title="Précédent">Précédent</a></li>
+
+
 
  <?php include('inc/footer.php');

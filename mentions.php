@@ -13,9 +13,17 @@ include('inc/header.php'); ?>
   <div class="content5">
     <h4>Informations prestataires</h4>
 
-<p>Le développement est assuré par l'équipe 3 composées de : Basile,Théo,Taïr,Benjamin et Azad.</p>
-<p>La répartions du travail se fait comme suit :  Theo & Azad  pour le front.</p>
-<p>Taïr, Basile et Benjamin pour le back</p>
+<p>Le développement est assuré par l'équipe 3 composées de : </p>
+<div class="Team3">
+  <ol>
+    <li>Basile</li>
+    <li>Azad</li>
+    <li>Benjamin</li>
+    <li>Theo</li>
+    <li>Pape</li>
+  </ol>
+  <img src="asset/img/masque.jpg" alt="hommes masqués">
+</div>
 
   </div>
     <br>
@@ -58,6 +66,6 @@ La mise en place de lien vers le site vacbook.fr n’est conditionnée à aucun 
     et engager la responsabilité de Vacbook</p> </div>
 
     </div>
-
+</section>
 <?php
 include('inc/footer.php');

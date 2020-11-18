@@ -139,12 +139,12 @@ include('inc/header.php'); ?>
   <!-- EMAIL -->
   <label id="email" for="email">Email</label>
   <input type="text" name="email"  value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
-  <span><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+  <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
 
   <!-- PASSWORD -->
   <label for="password">Mot de passe</label>
   <input type="password" name="password" placeholder="7 caractères min"value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
-  <span><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
+  <span class="error"><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
 
   <!-- CONFIRM PASSWORD -->
 

@@ -57,28 +57,37 @@ include('inc/header.php'); ?>
       <!-- formulaire pour la modification du fichier -->
       <form class="" method="POST">
         <label for="vaccin">Nom du vaccin</label>
-          <input type="text" name="nomvaccin" id="nomvaccin" value="<?php if(!empty($_POST['nomvaccin'])) { echo $_POST['nomvaccin']; } ?>">
+        
+          <input type="text" name="nomvaccin" id="nomvaccin" value="<?php if(!empty($_POST['nomvaccin'])) { echo $_POST['nomvaccin'];} else {echo $vaccins['nomvaccin'];} ?>">
+
           <span class="error_form"><?php if(!empty($errors['nomvaccin'])) { echo $errors['nomvaccin']; } ?></span>
 
   <!-- modification d'une description, et affichage des erreurs d'entrées -->
         <div class="form_group">
           <label for="description">Description</label>
-          <textarea name="description" id="description" rows="8" cols="80" value"<?php if(!empty($_POST['description'])) { echo $_POST['description']; } ?>"></textarea>
+
+          <textarea name="description" id="description" rows="8" cols="80" ><?php if(!empty($_POST['description'])) { echo $_POST['description'];} else {echo $vaccins['description'];} ?></textarea>
+
           <span class="error_form"><?php if(!empty($errors['description'])) { echo $errors['description']; } ?></span>
         </div>
 
   <!-- modification des rappels, et affichagedes erreurs d'entrées -->
         <div class="form_group">
           <label for="nombrerappel">Nombre de rappel</label>
-          <input type="number" name="nombrerappel" id="nombrerappel" value="0" min ="0" >
-          <span class="error_form"></span>
+
+          <input type="number" name="nombrerappel" id="nombrerappel" value="<?php if(!empty($_POST['nombrerappel'])) { echo $_POST['nombrerappel'];} else {echo $vaccins['nombrerappel'];}?>" >
+
+          <span class="error_form"><?php if(!empty($errors['nombrerappel'])) { echo $errors['nombrerappel']; } ?></span>
         </div>
+
 
   <!-- modification de l'intervalle de rappel  et affichag des erreurs d'entrées-->
         <div class="form_group">
           <label for="intervallerappel">Intervalle de rappel (mois)</label>
-          <input type="number" name="intervallerappel" value="0" min ="0  ">
-          <span class="error_form"></span>
+
+          <input type="number" name="intervallerappel" value="<?php if(!empty($_POST['intervallerappel'])) { echo $_POST['intervallerappel'];} else {echo $vaccins['intervallerappel'];}?>">
+
+          <span class="error_form"><?php if(!empty($errors['intervallerappel'])) { echo $errors['intervallerappel']; } ?></span>
         </div>
 
         <input type="submit" name="submitted" value="Modifier un vaccin">

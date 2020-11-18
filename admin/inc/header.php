@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="startbootstrap-sb-admin-2-gh-pages/index.html">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Tableau de bord</span></a>
             </li>
@@ -139,6 +139,7 @@
                         <a class="collapse-item" href="../admin/tables.php">Liste des utilisateurs</a>
                         <a class="collapse-item" href="../admin/tables1.php">Utilisateurs vaccinés</a>
                         <a class="collapse-item" href="../admin/tables2.php">Liste des vaccins</a>
+                        <a class="collapse-item" href="../admin/new_vaccine.php">Créer un nouveau vaccin</a>
                     </div>
                 </div>
             </li>

@@ -28,7 +28,14 @@ include('inc/header.php'); ?>
     <p>Description : <?= $vaccins['description'];?></p>
     <p><?= $vaccins['nombrerappel'];?> rappels à effectuer.</p>
     <p>Un rappel tous les <?= $vaccins['intervallerappel'];?> mois à effectuer</p>
-    <a href="new_vaccine.php">Retourner sur la table des vaccins</a>
+    <!-- boutton back stylisé via boostrap -->
+    <div class="my-2"></div>
+    <a href="new_vaccine.php" class="btn btn-light btn-icon-split">
+        <span class="icon text-gray-600">
+            <i class="fas fa-arrow-right"></i>
+        </span>
+        <span class="text">Retourner sur la table des vaccins</span>
   </div>
+
 
 <?php include('inc/footer.php'); ?>

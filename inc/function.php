@@ -139,7 +139,18 @@ function validPostalNull($errors,$value,$key){
 }
 
 
-
+function validNumber($errors,$value,$key,$min,$max){
+  if (!empty($value)){
+    if ($value < $min) {
+      $errors[$key] = 'Veuillez renseigner '.$min.' minimum .';
+    }elseif ($value > $max) {
+      $errors[$key] = 'Veuillez renseigner moins de '.$max.' .';
+    }
+  }else {
+    $errors[$key] = 'Veuillez renseigner une valeur .';
+  }
+  return $errors;
+}
 
 
 function generateRandomString($length = 10) {

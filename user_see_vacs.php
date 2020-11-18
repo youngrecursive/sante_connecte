@@ -7,6 +7,7 @@ $errors = array();
 
 $successvac = false;
 $xplode = explode('/', $_GET['id']);
+// Même si il n'y a pas de slash xplode[0] fonctionne quand même
 $getid = $xplode[0];
 $souschaine = '/';
 if (strpos($_GET['id'], $souschaine) !== FALSE) {
@@ -17,15 +18,15 @@ if (strpos($_GET['id'], $souschaine) !== FALSE) {
     elseif($xplode[1] == 'delete'){
       $flash = 'Vous venez de retirer un vaccin !';
     }
+    elseif($xplode[1] == 'update'){
+      $flash = 'Vaccin mis à jour !';
+    }
     else {
       header('Location: 404.php');
       exit();
     }
   }
 }
-
-
-
 
 
 
@@ -45,6 +46,7 @@ if(isLoggedUser() || isLoggedAdmin()){
     $user = $query->fetch();
 
     // On récupère tous les vaccins
+    //$sql = "SELECT * FROM vaccins";
     $sql = "SELECT * FROM vaccins";
     $query = $pdo->prepare($sql);
     $query->execute();
@@ -59,6 +61,7 @@ if(isLoggedUser() || isLoggedAdmin()){
       $query = $pdo->prepare($sql);
       $query->execute();
       $madevaccins = $query->fetchAll();
+
 
 
 
@@ -153,10 +156,19 @@ include('inc/header.php'); ?>
   <!-- Choix du vaccin -->
   <div class="gg">
     <select class="" name="vaccin">
-      <option value="">Liste des vaccins</option>
-      <?php foreach ($vaccins as $vaccin): ?>
-        <option value="<?= $vaccin['id'] ?>"><?= $vaccin['nomvaccin'] ?></option>
-      <?php endforeach; ?>
+      <option value="">Liste des vaccins non effectués</option>
+      <?php foreach ($vaccins as $vaccin) {
+        $made = false;
+        foreach($madevaccins as $madevaccin) {
+           ?>
+            <?php
+             if (in_array($madevaccin['nomvaccin'], $vaccin)) {
+              $made = true;
+               } ?>
+          <?php
+        } ?>
+        <option <?php if(empty($made)) { ?> style="display: block;" <?php } else { ?> style="display: none;" <?php } ?> value="<?= $vaccin['id'] ?>"><?= $vaccin['nomvaccin'] ?></option>
+      <?php } ?>
     </select>
     <span class="error"><?php if(!empty($errors['vaccin'])) { echo $errors['vaccin']; } ?></span>
 
@@ -186,18 +198,34 @@ include('inc/header.php'); ?>
         <tr>
           <th>Vaccin</th>
           <th>Fait le</th>
+          <th>Expire le</th>
+          <th>Actualiser</th>
           <th>Supprimer</th>
         </tr>
       </thead>
     <tbody>
 
-    <?php $user_id = $user['id'];
+    <?php
+      $user_id = $user['id'];
+      $now = new DateTime("now");
       foreach ($madevaccins as $madevaccin): ?>
         <tr>
           <td><?= $madevaccin['nomvaccin'] ?></td>
           <td><?= formatageShortDate($madevaccin['date_vaccin']) ?></td>
+          <?php   $perime = New DateTime($madevaccin['date_vaccin']);
+                  if(!empty($madevaccin['peremption'])){
+                    $perime->add(new DateInterval('P'.$madevaccin['peremption'].'Y'));
+                  }
+                  else {
+                    $perime->add(new DateInterval('P10Y'));
+                  }
+          ?>
+          <td <?php if($perime < $now) {echo 'style="color:#FF0000"';} ?>><?= $perime->format('d/m/Y') ?> </td>
+          <td><?php if($perime < $now){ ?> <a href="user_update_vac.php?id=<?= $user_id ?>/<?= $madevaccin['vaccin_id'] ?>">Mettre à jour</a> <?php } else { ?> <p style="color:#008000">Vaccin à jour</p> <?php } ?></td>
           <td><a href="user_delete_vac.php?id=<?= $user_id ?>/<?= $madevaccin['vaccin_id'] ?>">Retirer ce vaccin</a></td>
+
         </tr>
+
     <?php endforeach; ?>
   <?php } else { ?>
     <p>Vous n'avez pas encore renseigné de vaccins...</p>
@@ -206,7 +234,7 @@ include('inc/header.php'); ?>
 </table>
 </div>
 
-
+<?php debug($madevaccins); echo '<br>'; debug($vaccins); ?>
 
 
 

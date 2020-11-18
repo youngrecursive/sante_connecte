@@ -2,21 +2,18 @@
 <?php require('../inc/function.php'); ?>
 <?php require('../inc/pdo.php'); ?>
 
-
 <?php if(!isLoggedAdmin()) {
   header('Location: ../index.php');
   exit(); } ?>
 
 <?php include('inc/header.php'); ?>
 
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Base de données</h1>
-    <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank"
-            href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
     <!-- TABLE UTILISATEURS -->
 
@@ -27,6 +24,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <!-- <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"> -->
                         </td>
                       </tr>
                     <thead>
@@ -41,9 +39,7 @@
                             <th>Adresse Secondaire</th>
                             <th>Ville</th>
                             <th>CP</th>
-                            <th>Role</th>
                             <th>E-mail</th>
-                            <th>Password</th>
                             <th>Crée le:</th>
                             <th>Mis à jour le:</th>
                         </tr>
@@ -60,17 +56,14 @@
                           <th>Adresse Secondaire</th>
                           <th>Ville</th>
                           <th>CP</th>
-                          <th>Role</th>
                           <th>E-mail</th>
-                          <th>Password</th>
                           <th>Crée le:</th>
                           <th>Mis à jour le:</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                      <?php
-                      // $errors = array();
 
+                      <?php
                       $sql = "SELECT * FROM nf_users";
                       $query = $pdo->prepare($sql);
                       $query->execute();
@@ -88,9 +81,7 @@
                           <td><?= $user['adresse2']; ?></td>
                           <td><?= $user['ville']; ?></td>
                           <td><?= $user['codepostal']; ?></td>
-                          <td><?= $user['role']; ?></td>
                           <td><?= $user['email']; ?></td>
-                          <td><?= $user['password']; ?></td>
                           <td><?= $user['created_at']; ?></td>
                           <td><?= $user['updated_at']; ?></td>
                           <td><a href=edit.php?id=<?php echo $user['id']; ?> >Modifier</a></td>
@@ -100,7 +91,7 @@
                       }
                       ?>
                     </table>
-                    <td><a href=newuser.php?id=<?php echo $user['id']; ?> >Ajouter un utilisateur</a></td>
+                    <button><td><a href=newuser.php?id=<?php echo $user['id']; ?> >Ajouter un utilisateur</a></td></button>
                 </tbody>
             </div>
         </div>

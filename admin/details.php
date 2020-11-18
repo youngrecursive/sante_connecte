@@ -37,12 +37,6 @@
       if(!empty($madevaccins)){
         $successvac = true;
       }
-      // debug($madevaccins);
-    // if(!empty($successvac)){
-    //    $user_id = $user['id'];
-    //     foreach ($madevaccins as $madevaccin):
-    //     endforeach;
-    // }
 
     include('inc/header.php'); ?>
 
@@ -78,7 +72,6 @@
               </thead>
                   <?php if(!empty($successvac)){ ?>
                     <?php $user_id = $_GET['id'];
-                    // debug($user_id);
                       foreach ($madevaccins as $madevaccin): ?>
                 <tr>
                   <td> <?= $madevaccin['nomvaccin'] ?></td>
@@ -88,6 +81,7 @@
                 <?php endforeach;
               } ?>
                 </table>
+            <a href="tables.php">&larr; Retour à la liste des utilisateurs</a>
 
 
 <?php include('inc/footer.php');

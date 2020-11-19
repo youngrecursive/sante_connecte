@@ -31,7 +31,7 @@ include('inc/header.php'); ?>
   <form  action="message" method="post">
     <div class="w50">
       <label for="name">Votre nom</label>
-      <input class="inputerror" type="text" name="name"  value="">
+      <input class="inputerror" type="text" name="name" value="" placeholder="Nom">
     </div>
     <div class="w100">
         <label class="w100label" for="message">Votre message</label>

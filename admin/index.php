@@ -42,7 +42,7 @@ include('inc/header.php'); ?>
                                     <a class="dropdown-item" href="tables2.php">Voir tous les vaccins</a>
                                 </div>
                             </div>
-                      </div>
+                          </div>
                           <div class="card-body">
                               <div class="table-responsive">
                                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -166,21 +166,5 @@ include('inc/header.php'); ?>
 
       </div>
       <!-- End of Main Content -->
-      <!-- Bootstrap core JavaScript-->
-      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
-      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-      <!-- Core plugin JavaScript-->
-      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-      <!-- Custom scripts for all pages-->
-      <script src="startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js"></script>
-
-      <!-- Page level plugins -->
-      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/chart.js/Chart.min.js"></script>
-
-      <!-- Page level custom scripts -->
-      <script src="startbootstrap-sb-admin-2-gh-pages/js/demo/chart-area-demo.js"></script>
-      <script src="startbootstrap-sb-admin-2-gh-pages/js/demo/chart-pie-demo.js"></script>
 
 <?php include('inc/footer.php'); ?>

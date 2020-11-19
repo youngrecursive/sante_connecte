@@ -38,22 +38,47 @@
         $successvac = true;
       }
 
+      /////// STATS ////////
+
+      ///// NOMBRE TOTAL DE VACCIN
+      $sql = "SELECT COUNT(id) FROM vaccins";
+      $query = $pdo->prepare($sql);
+      $query->execute();
+      $nbrvaccins = $query->fetchcolumn();
+
+
+      ///// NOMBRE DE VACCIN FAIT POUR TEL USER?
+      $id = $_GET ['id'];
+      $sql = "SELECT COUNT(vaccins.id) FROM vaccins INNER JOIN vaccins_user ON vaccins.id = vaccins_user.vaccin_id WHERE user_id = '$id'";
+      $query = $pdo->prepare($sql);
+      $query->execute();
+      $vaccinusers = $query->fetchcolumn();
+
+      //// POURCENTAGE DE VACCINS FAIT PAR TEL USER
+
+      $prctg = $vaccinusers / $nbrvaccins * 100;
+      $prctgleft = 100 - $prctg;
+
+
+
     include('inc/header.php'); ?>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Détails de l'utilisateur:</h6>
+        <h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-success">Pourcentage de vaccins effectués : <?= $prctg.'%'; ?></span></h6>
+        <br><h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-danger">Pourcentage de vaccins non effectués : <?= $prctgleft.'%'; ?></span></h6></br>
+        <h6 class="m-0 font-weight-bold text-primary"><br>Détails de l'utilisateur:</br></h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Civilite</th>
-                    <th>Date de naissance</th>
-                    <th>Mis à jour le:</th>
+                    <th class="text-primary">Nom</th>
+                    <th class="text-primary">Prenom</th>
+                    <th class="text-primary">Civilite</th>
+                    <th class="text-primary">Date de naissance</th>
+                    <th class="text-primary">Mis à jour le:</th>
                 </tr>
             </thead>
                   <td> <?= $userDetails['nom']; ?></td>
@@ -66,8 +91,8 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Vaccin(s):</th>
-                  <th>Fait(s) le:</th>
+                  <th class="text-primary">Vaccin(s):</th>
+                  <th class="text-primary">Fait(s) le:</th>
                 </tr>
               </thead>
                   <?php if(!empty($successvac)){ ?>
@@ -84,4 +109,4 @@
             <a href="tables.php">&larr; Retour à la liste des utilisateurs</a>
 
 
-<?php include('inc/footer.php');
+      <?php include('inc/footer.php');

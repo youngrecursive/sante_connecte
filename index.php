@@ -52,7 +52,75 @@ include('inc/header.php'); ?>
 </section>
 
 <section id="section3">
+  <div class="titre">
+    <p><span>Ils ont testé VacBook :</span></p>
+  </div>
+  <div class="flexbox">
 
+    <div class="comment">
+      <div class="main">
+        <div class="profil-picture profil-picture1">
+
+        </div>
+        <div class="textarea">
+          <div class="user">
+            <p>Michel, 38 ans</p>
+          </div>
+          <div class="text">
+            <p>Vacbbok c'est trop bien voila bonjour bonjour bonjour bonjour lorem lorem lorem lorem lorem lorem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comment">
+      <div class="main">
+        <div class="profil-picture profil-picture2">
+
+        </div>
+        <div class="textarea">
+          <div class="user">
+            <p>Michel, 38 ans</p>
+          </div>
+          <div class="text">
+            <p>Vacbbok c'est trop bien voila bonjour bonjour bonjour bonjour lorem lorem lorem lorem lorem lorem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comment">
+      <div class="main">
+        <div class="profil-picture profil-picture3">
+
+        </div>
+        <div class="textarea">
+          <div class="user">
+            <p>Michel, 38 ans</p>
+          </div>
+          <div class="text">
+            <p>Vacbbok c'est trop bien voila bonjour bonjour bonjour bonjour lorem lorem lorem lorem lorem lorem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comment">
+      <div class="main">
+        <div class="profil-picture profil-picture4">
+
+        </div>
+        <div class="textarea">
+          <div class="user">
+            <p>Michel, 38 ans</p>
+          </div>
+          <div class="text">
+            <p>Vacbbok c'est trop bien voila bonjour bonjour bonjour bonjour lorem lorem lorem lorem lorem lorem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 

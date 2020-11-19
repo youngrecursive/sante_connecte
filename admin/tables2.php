@@ -36,40 +36,6 @@
                               <th class="text-primary">Supprimer</th>
                           </tr>
                       </thead>
-                      <tbody>
-
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Table des vaccins:</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <tfoot>
-                        <tr>
-                          <th class="text-primary">ID</th>
-                          <th class="text-primary">Nom du vaccin</th>
-                          <th class="text-primary">Description</th>
-                          <th class="text-primary">Nombre de rappel</th>
-                          <th class="text-primary">Intervalle de rappel</th>
-                          <th class="text-primary">Détails</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                      <?php
-                      $sql = "SELECT * FROM vaccins";
-                      $query = $pdo->prepare($sql);
-                      $query->execute();
-                      $vaccins = $query->fetchAll();
-                      foreach ($vaccins as $vaccin) { ?>
-                        <tr>
-                          <td><?= $vaccin['id']; ?></td>
-                          <td><?= $vaccin['nomvaccin']; ?></td>
-                          <td><?= $vaccin['description']; ?></td>
-                          <td><?= $vaccin['nombrerappel']; ?></td>
-                          <td><?= $vaccin['intervallerappel']; ?></td>
-                          <td><a href="details_vaccine.php?id=<?= $vaccin['id']; ?>">Voir</a></td>
-                        </tr>
-
                         <?php
                         // $errors = array();
 

@@ -72,16 +72,17 @@ include('inc/header.php');
 ?>
 
 
-<form class="" action="" method="post">
-  <div class="date">
-    <label id="" for="date_vaccin">Date du vaccin : </label>
-    <input type="date" name="date_vaccin" max="9999-12-31" value="<?php if(!empty($_POST['date_vaccin'])) { echo $_POST['date_vaccin']; } ?>">
-    <span class="error"><?php if(!empty($errors['date_vaccin'])) { echo $errors['date_vaccin']; } ?></span>
-  </div>
+<section id="section-userupdatevac" class="format">
+  <form class="form" action="" method="post">
+    <div class="date">
+      <h1 id="" for="date_vaccin">Date du vaccin : </h1>
+      <input type="date" name="date_vaccin" max="9999-12-31" value="<?php if(!empty($_POST['date_vaccin'])) { echo $_POST['date_vaccin']; } ?>">
+      <span class="error"><?php if(!empty($errors['date_vaccin'])) { echo $errors['date_vaccin']; } ?></span>
+    </div>
   <input class="submit" type="submit" name="submitted" value="Envoyer">
 </form>
 
-
+</section>
 
 
 <?php

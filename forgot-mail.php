@@ -22,7 +22,7 @@ else {
     <section id="section1-mail" class="format">
       <div class="form">
         <p>Un mail vient de vous être envoyé, veuillez cliquer dessus pour choisir votre nouveau mot de passe
-          <a href="forgot_send_mail.php?id=<?= $user['id'] ?>">Recevoir de nouveau le mail</a></p>
+          <a href="forgot_send_mail.php?id=<?= $user['id'] ?>">Recevoir de nouveau le mail</a></p><br>
 
    <p>Bonjour <?= $user['prenom'] ?> Voici le lien vous permettant de créer un nouveau mot de passe. A l'avenir, pensez à la conserver préciseusement.
               <a href="forgot_new_pass.php?id=<?= $user['token'] ?>">Lien</a></p>

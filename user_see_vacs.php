@@ -156,7 +156,7 @@ include('inc/header.php'); ?>
   <!-- Choix du vaccin -->
   <div class="gg">
     <select class="" name="vaccin">
-      <option value="">Liste des vaccins non effectués</option>
+      <option style="display: none;" value="">Liste des vaccins non effectués</option>
       <?php foreach ($vaccins as $vaccin) {
         $made = false;
         foreach($madevaccins as $madevaccin) {
@@ -189,9 +189,9 @@ include('inc/header.php'); ?>
    <?php } ?>
 
 </form>
-<div class="form tableau">
 
 <?php  if(!empty($successvac)){ ?>
+  <div class="form tableau">
     <h1>Ma liste de vaccins</h1>
     <table class="content-table">
       <thead>
@@ -227,12 +227,14 @@ include('inc/header.php'); ?>
         </tr>
 
     <?php endforeach; ?>
-  <?php } else { ?>
-    <p>Vous n'avez pas encore renseigné de vaccins...</p>
-  <?php } ?>
-</tbody>
+  </tbody>
 </table>
 </div>
+  <?php } else { ?>
+    <div class="form tableau">
+      <h2>Vous n'avez pas encore renseigné de vaccins...</h2>
+    </div>
+  <?php } ?>
 
 <?php debug($madevaccins); echo '<br>'; debug($vaccins); ?>
 

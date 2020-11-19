@@ -98,66 +98,75 @@ if(!empty($_POST['submitted'])){
 <?php
 include('inc/header.php'); ?>
 
-<section id="mainSection">
-  <div class="sectionBis">
+<section id="section-password" class="format">
 
-<div class="boxregister">
-  <div class="wrapregister">
-    <h1>Inscription</h1>
-    <p>Je créer mon compte</p>
-  </div>
-<form class="formulaire1" action="" method="post">
+
+
+<form class="form" action="" method="post">
   <!-- PRENOM -->
-
-  <label id="prenom"  for="prenom">Prenom</label>
-  <input class="inputa" type="text" name="prenom"   value="<?php if(!empty($_POST['prenom'])) { echo $_POST['prenom']; } ?>">
-  <span class="error"><?php if(!empty($errors['prenom'])) { echo $errors['prenom']; } ?></span>
+  <h1>Inscription</h1>
+  <div class="flexbox">
+  <div class="">
+    <label id="prenom"  for="prenom">Prénom : </label>
+    <input class="inputa" type="text" name="prenom" placeholder="Prénom" value="<?php if(!empty($_POST['prenom'])) { echo $_POST['prenom']; } ?>">
+    <span class="error"><?php if(!empty($errors['prenom'])) { echo $errors['prenom']; } ?>&nbsp;</span>
+  </div>
 
   <!-- NOM -->
-
-  <label id="nom" for="nom">Nom</label>
-  <input type="text" name="nom"  value="<?php if(!empty($_POST['nom'])) { echo $_POST['nom']; } ?>">
-  <span class="error"><?php if(!empty($errors['nom'])) { echo $errors['nom']; } ?></span>
+  <div class="">
+    <label id="nom" for="nom">Nom :</label>
+    <input type="text" name="nom" placeholder="Nom" value="<?php if(!empty($_POST['nom'])) { echo $_POST['nom']; } ?>">
+    <span class="error"><?php if(!empty($errors['nom'])) { echo $errors['nom']; } ?>&nbsp;</span>
+  </div>
 
   <!-- CIVILITEE -->
-
-  <label id="civilitee" for="civlitee">Civilitée</label>
-  <select name="civilitee">
-    <option value="">--Veuillez choisir une option--</option>
-    <option value="Homme" <?php if(!empty($_POST['civilitee']) && $_POST['civilitee'] == 'Homme') { echo 'selected'; } ?> >Homme</option>
-    <option value="Femme" <?php if(!empty($_POST['civilitee']) && $_POST['civilitee'] == 'Femme') { echo 'selected'; } ?> >Femme</option>
-    <option value="Transgenre" <?php if(!empty($_POST['civilitee']) && $_POST['civilitee'] == 'Transgenre') { echo 'selected'; } ?>>Transgenre</option>
-  </select>
-  <span class="error"><?php if(!empty($errors['civilitee'])) { echo $errors['civilitee']; } ?></span>
+  <div class="">
+    <label id="civilitee" for="civlitee">Civilitée :</label>
+    <select name="civilitee">
+      <option value="">Veuillez choisir une option</option>
+      <option value="Homme" <?php if(!empty($_POST['civilitee']) && $_POST['civilitee'] == 'Homme') { echo 'selected'; } ?> >Homme</option>
+      <option value="Femme" <?php if(!empty($_POST['civilitee']) && $_POST['civilitee'] == 'Femme') { echo 'selected'; } ?> >Femme</option>
+      <option value="Transgenre" <?php if(!empty($_POST['civilitee']) && $_POST['civilitee'] == 'Transgenre') { echo 'selected'; } ?>>Transgenre</option>
+    </select>
+    <span class="error"><?php if(!empty($errors['civilitee'])) { echo $errors['civilitee']; } ?>&nbsp;</span>
+  </div>
 
   <!-- DATE NAISSANCE -->
-
-  <label id="datenaissance" for="datenaissance">Date de naissance</label>
-  <input type="date" name="datenaissance" max="9999-12-31" value="<?php if(!empty($_POST['datenaissance'])) { echo $_POST['datenaissance']; } ?>">
-  <span class="error"><?php if(!empty($errors['datenaissance'])) { echo $errors['datenaissance']; } ?></span>
+  <div class="">
+    <label id="datenaissance" for="datenaissance">Date de naissance :</label>
+    <input type="date" name="datenaissance" max="9999-12-31" value="<?php if(!empty($_POST['datenaissance'])) { echo $_POST['datenaissance']; } ?>">
+    <span class="error"><?php if(!empty($errors['datenaissance'])) { echo $errors['datenaissance']; } ?>&nbsp;</span>
+  </div>
 
   <!-- EMAIL -->
-  <label id="email" for="email">Email</label>
-  <input type="text" name="email"  value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
-  <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+  <div class="">
+    <label id="email" for="email">Email :</label>
+    <input type="text" placeholder="Email" name="email"  value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
+    <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?>&nbsp;</span>
+  </div>
 
   <!-- PASSWORD -->
-  <label for="password">Mot de passe</label>
-  <input type="password" name="password" placeholder="7 caractères min"value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
-  <span class="error"><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
+  <div class="">
+    <label for="password">Mot de passe :</label>
+    <input type="password" name="password" placeholder="Mot de passe" value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
+    <span class="error"><?php if(!empty($errors['password'])) { echo $errors['password']; } ?>&nbsp;</span>
+  </div>
+  <div class="null">
 
+  </div>
   <!-- CONFIRM PASSWORD -->
 
-  <label for="password2">Confirmez votre mot de passe</label>
-  <input type="password" name="password2" placeholder="Confirmation Mot de passe" value="<?php if(!empty($_POST['password2'])) { echo $_POST['password2']; } ?>">
-  <span><?php if(!empty($errors['password2'])) { echo $errors['password2']; } ?></span>
-
+  <div class="">
+    <label class="debug1" for="password2">Confirmez votre mot de passe :</label>
+    <input type="password" name="password2" placeholder="Confirmation Mot de passe" value="<?php if(!empty($_POST['password2'])) { echo $_POST['password2']; } ?>">
+    <span><?php if(!empty($errors['password2'])) { echo $errors['password2']; } ?>&nbsp;</span>
+  </div>
+    </div>
   <!-- SUBMIT -->
-  <input class="go" type="submit" name="submitted" value="Envoyer">
+  <input class="submit" type="submit" name="submitted" value="Envoyer">
 
 </form>
-</div>
-</div>
+</section>
 
 
 <?php

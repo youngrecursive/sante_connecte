@@ -586,9 +586,155 @@
 
 /* SECTION 3 */
 
+#section3{
+	background-color: #ecf0f1;
+}
+
+#section3 .titre {
+	height: 6em;
+	padding: 40px 0 0 20px;
+}
+
+#section3 .titre p span{
+	text-transform: uppercase;
+	font-family: 'Overpass', sans-serif;
+	font-size: 3em;
+	color: #2c3e50;
+	border-bottom: 2px solid #2c3e50;
+}
+
+#section3 .flexbox{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: 20em;
+}
+
+#section3 .comment{
+	width: 50%;
+}
+
+#section3 .main{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	margin-left: 10%;
+	width: 80%;
+}
+
+#section3 .profil-picture{
+	height: 120px;
+	width: 120px;
+	min-height: 120px;
+	min-width: 120px;
+	border-radius: 50%;
+	background-size: cover;
+}
+
+#section3 .profil-picture:hover{
+	position: relative;
+	top: 1px;
+	filter: brightness(1.30);
+	transition-duration: 0.5s;
+}
+
+#section3 .profil-picture1{
+	background-image: url("../img/face1.jpg");
+}
+
+#section3 .profil-picture2{
+	background-image: url("../img/face2.jpg");
+}
+
+#section3 .profil-picture3{
+	background-image: url("../img/face3.jpg");
+}
+
+#section3 .profil-picture4{
+	background-image: url("../img/face4.jpg");
+}
+
+#section3 .user{
+	margin-bottom: 10px;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+#section3 .text{
+}
+
+#section3 .textarea{
+	background-color: #bdc3c7;
+	border-radius: 19px;
+	padding: 8px;
+	width: 120%;
+	font-family: 'Roboto', sans-serif;
+	color: #2c3e50;
+	margin-left: 2%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+
+#section3 .textarea:hover{
+	position: relative;
+	top: 1px;
+}
+
+/* RESPONSIVE SECTION3 */
+@media screen and (max-width:850px){
+		#section3 .flexbox{
+		flex-direction: column;
+		flex-wrap: nowrap;
+		height: auto;
+	}
+	#section3 .comment{
+		width: 100%;
+		margin: 20px 0;
+	}
+}
+@media screen and (max-width:640px){
+	#section3 .titre p span{
+		font-size: 2em;
+	}
+	#section3 .main{
+		margin-left: 2%;
+	}
+	#section3 .text{
+		font-size: 0.8em;
+	}
+	#section3 .textarea{
+		width: 100%;
+	}
+}
+
+@media screen and (max-width:440px){
+	#section3 .titre p span{
+		font-size: 1.4em;
+	}
+	#section3 .user{
+		margin-bottom: 10px;
+		font-weight: 600;
+		letter-spacing: 1px;
+		font-size: 0.9em;
+	}
+}
+
+@media screen and (max-width:305px){
+	#section3 .titre p span{
+		font-size: 1.1em;
+	}
+}
 
 
 /* Généralités */
+::selection {
+  color: none;
+  background: rgba(26, 188, 156,0.5)
+}
 
 .format{
 	margin: 0;
@@ -883,6 +1029,9 @@ color: #fff;
 		height: auto;
 		width: 90%;
 	}
+	#section1-forgotnew h1{
+		font-size: 1.5em;
+	}
 	#section1-forgotnew{
 		padding-top: 15em;
 	}
@@ -891,6 +1040,16 @@ color: #fff;
 			height: auto;
 			width: 100%;
 			border-radius: 0;
+		}
+		#section1-forgotnew h1{
+			font-size: 1.2em;
+		}
+		#section1-forgotnew h2{
+			font-size: 1em;
+		}
+		#section1-forgotnew label{
+			letter-spacing: 1px;
+			font-size: 1em;
 		}
 	}
 }
@@ -919,10 +1078,13 @@ color: #fff;
 
 /* Responsive USER PROFIL  */
 
-@media screen and (max-width:1000px){
+@media screen and (max-width:1100px){
 	#section-user_profil form div.bis{
 		flex-direction: column;
 		width: 35em;
+	}
+	#section-user_profil form{
+		width: 80%;
 	}
 	#section-user_profil form h1{
 		font-size: 1.3em;
@@ -941,8 +1103,13 @@ color: #fff;
 		position: relative;
 		bottom: 4px;
 	}
+	#section-user_profil form{
+		width: 100%;
+		border-radius: 0;
+	}
 	#section-user_profil form h1{
 		font-size: 1em;
+		text-align: center;
 	}
 }
 
@@ -1020,7 +1187,6 @@ color: #fff;
   margin: 25px 0;
 	width: 45em;
   font-size: 0.9em;
-  min-width: 400px;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -1075,6 +1241,82 @@ color: #fff;
 	flex-direction: column;
 }
 
+/* RESPONSIVES USER SEE VAC */
+
+@media screen and (max-width:1000px){
+	#section-userseevac .form{
+		width: 90%;
+		height: auto;
+	}
+	#section-userseevac{
+		padding-top: 10em;
+	}
+	#section-userseevac .tableau{
+		width: 100%;
+		border-radius: 0;
+	}
+	#section-userseevac .tableau table{
+		width: 90%;
+	}
+}
+
+@media screen and (max-width:600px){
+	#section-userseevac .form{
+		width: 100%;
+		height: auto;
+		border-radius: 0;
+	}
+	#section-userseevac h1{
+		font-size: 1.5em;
+	}
+	#section-userseevac form .gg{
+		width: 100%;
+		align-items: center;
+		justify-content: space-between;
+	}
+	#section-userseevac .tableau table{
+		font-size: 0.6em;
+	}
+}
+
+
+@media screen and (max-width:440px){
+	#section-userseevac form select{
+		width: 200px;
+	}
+	#section-userseevac form div.date{
+		flex-direction: column;
+	}
+	#section-userseevac h1{
+		font-size: 1.2em;
+		text-align: center;
+	}
+	#section-userseevac .tableau table th:nth-child(2){
+		display: none;
+	}
+	#section-userseevac .tableau table td:nth-child(2){
+		display: none;
+	}
+}
+
+@media screen and (max-width:400px){
+	#section-userseevac table, thead, tbody, th, td, tr {
+		display: block;
+		width: 100%;
+		padding: 0;
+	}
+	#section-userseevac table{
+		min-width: 0px;
+		padding: 0 auto;
+		margin: 0 0;
+	}
+	#section-userseevac .tableau table th:nth-child(2){
+		display: block;
+	}
+	#section-userseevac .tableau table td:nth-child(2){
+		display: block;
+	}
+}
 
 /* USER update VAC */
 
@@ -1090,12 +1332,104 @@ color: #fff;
 
 
 
+/* INSCRIPTION THEO */
+
+#section-password{
+	background-image: url("../img/background-register.jpg");
+	padding: 15% 0 5% 0;
+}
+
+#section-password form select{
+	padding: 3%;
+	border: 0px;
+	border-radius: 5px;
+	background-color:#22A6B3;
+	width: 250px;
+}
+
+#section-password form input[type="date"]{
+	color: #fff;
+}
+
+#section-password form input[type="date"]:focus{
+	transition-duration: 0.5s;
+	color: #2c3e50;
+}
+
+#section-password form select{
+	outline: none;
+	color:#fff;
+}
+
+#section-password form select option:nth-child(1){
+	display: none;
+}
+
+#section-password form select:focus{
+	background-color:rgba(200, 214, 229);
+	transition-duration: 0.5s;
+	color: #2c3e50;
+}
+
+#section-password form div.flexbox{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#section-password form div.flexbox div{
+	width: 50%;
+	height: 9em;
+}
+
+/* INSCRIPTION THEO RESPONSIVE */
+@media screen and (max-width:1160px){
+	#section-password form{
+		width: 80%;
+	}
+}
 
 
+@media screen and (max-width:860px){
+	#section-password form div.flexbox{
+		flex-direction: column;
+		flex-wrap: nowrap;
+	}
+	#section-password form div.flexbox div{
+		width: 100%;
+	}
+	#section-password form div.flexbox div.null{
+		display: none;
+	}
+}
 
+@media screen and (max-width:600px){
+	#section-password form input{
+		width: 100%;
+	}
+	#section-password{
+		padding-top: 10em;
+	}
+	#section-password form select{
+		width: 100%;
+	}
+}
 
+@media screen and (max-width:426px){
+	#section-password label.debug1{
+		font-size: 0.9em;
+	}
+}
 
-
+@media screen and (max-width:376px){
+	#section-password form{
+		border-radius: 0;
+		width: 100%;
+	}
+	#section-password label.debug1{
+		font-size: 0.7em;
+	}
+}
 
 
 

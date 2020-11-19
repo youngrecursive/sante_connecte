@@ -135,16 +135,16 @@ include('inc/header.php'); ?>
 <section id="section1-login" class="format">
 
 
-  <?php
-    if (!empty($success)) { ?>
-      <div class="">
-        <?= $flash['message']; ?>
-      </div>
-
-    <?php }
-   ?>
   <form action="" method="post" class="form">
     <h1>Connexion</h1>
+    <?php
+    if (!empty($success)) { ?>
+      <h2>ddd
+        <?= $flash['message']; ?>
+      </h2>
+
+    <?php }
+    ?>
     <!-- LOGIN -->
     <div>
       <label for="email">Email : </label>

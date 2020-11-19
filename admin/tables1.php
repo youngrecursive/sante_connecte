@@ -3,7 +3,7 @@
 <?php require('../inc/pdo.php'); ?>
 
 <?php if(!isLoggedAdmin()) {
-  header('Location: ../index.php');
+  header('Location: 403.php');
   exit(); } ?>
 
 <?php include('inc/header.php'); ?>
@@ -23,19 +23,19 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>ID de l'utilisateur</th>
-                            <th>ID du vaccin</th>
-                            <th>Date de vaccination</th>
+                          <th class="text-primary">ID</th>
+                          <th class="text-primary">ID de l'utilisateur</th>
+                          <th class="text-primary">ID du vaccin</th>
+                          <th class="text-primary">Date de vaccination</th>
                         </tr>
                     </thead>
                     <tfoot>
-                        <tr>
-                          <th>ID</th>
-                          <th>ID de l'utilisateur</th>
-                          <th>ID du vaccin</th>
-                          <th>Date de vaccination</th>
-                        </tr>
+                      <tr>
+                          <th class="text-primary">ID</th>
+                          <th class="text-primary">ID de l'utilisateur</th>
+                          <th class="text-primary">ID du vaccin</th>
+                          <th class="text-primary">Date de vaccination</th>
+                      </tr>
                     </tfoot>
                     <tbody>
                       <?php

@@ -3,7 +3,7 @@
 <?php require('../inc/pdo.php'); ?>
 
 <?php if(!isLoggedAdmin()) {
-  header('Location: ../index.php');
+  header('Location: 403.php');
   exit(); } ?>
 
 <?php include('inc/header.php'); ?>
@@ -24,42 +24,45 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <!-- <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"> -->
                         </td>
                       </tr>
                     <thead>
-                        <tr>
-                            <th>Détails</th>
-                            <th>ID</th>
-                            <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Civilite</th>
-                            <th>Date de naissance</th>
-                            <th>Adresse Principale</th>
-                            <th>Adresse Secondaire</th>
-                            <th>Ville</th>
-                            <th>CP</th>
-                            <th>E-mail</th>
-                            <th>Crée le:</th>
-                            <th>Mis à jour le:</th>
-                        </tr>
+                      <tr>
+                          <th class="text-primary">ID</th>
+                          <th class="text-primary">Nom</th>
+                          <th class="text-primary">Prenom</th>
+                          <th class="text-primary">Civilité</th>
+                          <th class="text-primary">Date de naissance</th>
+                          <th class="text-primary">Adresse Principale</th>
+                          <th class="text-primary">Adresse Secondaire</th>
+                          <th class="text-primary">Ville</th>
+                          <th class="text-primary">CP</th>
+                          <th class="text-primary">E-mail</th>
+                          <th class="text-primary">Crée le</th>
+                          <th class="text-primary">Mis à jour le</th>
+                          <th class="text-primary">Détails</th>
+                          <th class="text-primary">Modifier</th>
+                          <th class="text-primary">Supprimer</th>
+                      </tr>
                     </thead>
                     <tfoot>
-                        <tr>
-                          <th>Détails</th>
-                          <th>ID</th>
-                          <th>Nom</th>
-                          <th>Prenom</th>
-                          <th>Civilite</th>
-                          <th>Date de naissance</th>
-                          <th>Adresse Principale</th>
-                          <th>Adresse Secondaire</th>
-                          <th>Ville</th>
-                          <th>CP</th>
-                          <th>E-mail</th>
-                          <th>Crée le:</th>
-                          <th>Mis à jour le:</th>
-                        </tr>
+                          <tr>
+                              <th class="text-primary">ID</th>
+                              <th class="text-primary">Nom</th>
+                              <th class="text-primary">Prenom</th>
+                              <th class="text-primary">Civilité</th>
+                              <th class="text-primary">Date de naissance</th>
+                              <th class="text-primary">Adresse Principale</th>
+                              <th class="text-primary">Adresse Secondaire</th>
+                              <th class="text-primary">Ville</th>
+                              <th class="text-primary">CP</th>
+                              <th class="text-primary">E-mail</th>
+                              <th class="text-primary">Crée le</th>
+                              <th class="text-primary">Mis à jour le</th>
+                              <th class="text-primary">Détails</th>
+                              <th class="text-primary">Modifier</th>
+                              <th class="text-primary">Supprimer</th>
+                          </tr>
                     </tfoot>
                     <tbody>
 
@@ -71,7 +74,6 @@
 
                       foreach ($users as $user) { ?>
                         <tr>
-                          <td><a href=details.php?id=<?php echo $user['id']; ?> >Voir</a></td>
                           <td><?= $user['id']; ?></td>
                           <td><?= $user['nom']; ?></td>
                           <td><?= $user['prenom']; ?></td>
@@ -84,14 +86,32 @@
                           <td><?= $user['email']; ?></td>
                           <td><?= $user['created_at']; ?></td>
                           <td><?= $user['updated_at']; ?></td>
-                          <td><a href=edit.php?id=<?php echo $user['id']; ?> >Modifier</a></td>
-                          <td><a href=delete.php?id=<?php echo $user['id']; ?> >Supprimer</a></td>
-                        </tr>
+                          <!-- bouton détails stylisé via le bootsrap -->
+                          <td><a href="details.php?id=<?php echo($user['id']); ?>" class="btn btn-info btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span class="text"><?php echo 'Voir' ?></span>
+                            </a></td>
+                          <!-- bouton modifier stylysé via le bootstrap -->
+                          <td><a href="edit.php?id=<?php echo($user['id']); ?>" class="btn btn-secondary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span class="text"><?php echo 'Modifier' ?></span>
+                            </a></td>
+                          <!-- bouton delete stylysé via le bootstrap -->
+                          <td><a href="delete.php?id=<?php echo($user['id']); ?>" class="btn btn-danger btn-icon-split">
+                          <span class="icon text-white-50">
+                              <i class="fas fa-trash"></i>
+                          </span>
+                          <span class="text"><?php echo 'Supprimer' ?></span>
+                          </a></td>
                         <?php
                       }
                       ?>
                     </table>
-                    <button><td><a href=newuser.php?id=<?php echo $user['id']; ?> >Ajouter un utilisateur</a></td></button>
+
                 </tbody>
             </div>
         </div>

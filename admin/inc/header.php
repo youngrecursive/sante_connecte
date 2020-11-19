@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,15 +68,8 @@
                 <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Ecrans de connexion:</h6>
                         <a class="collapse-item" href="../index.php">Accueil</a>
-                        <a class="collapse-item" href="../login.php">Connexion</a>
-                        <a class="collapse-item" href="../register.php">Inscription</a>
-                        <a class="collapse-item" href="forgot-password.html">Mot de passe oublié</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Autres pages:</h6>
-                        <a class="collapse-item" href="404.php">404 Page</a>
-                        <a class="collapse-item active" href="blank.php">Blank Page</a>
+
                     </div>
                 </div>
             </li>
@@ -98,10 +92,29 @@
                         <a class="collapse-item" href="../admin/tables1.php">Utilisateurs vaccinés</a>
                         <a class="collapse-item" href="../admin/tables2.php">Liste des vaccins</a>
                         <a class="collapse-item" href="../admin/new_vaccine.php">Créer un nouveau vaccin</a>
+                        <a class="collapse-item" href="../admin/newuser.php">Créer un nouvel utilisateur</a>
                     </div>
                 </div>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Fonctionnalités</span>
+                </a>
+                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Outils:</h6>
+                        <a class="collapse-item" href="../admin/newuser.php">Créer un nouvel utilisateur</a>
+                        <a class="collapse-item" href="../admin/new_vaccine.php">Créer un nouveau vaccin</a>
+                    </div>
+                </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -133,6 +146,7 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
+
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -140,27 +154,6 @@
                                 <img class="img-profile rounded-circle"
                                     src="../admin/startbootstrap-sb-admin-2-gh-pages/img/undraw_profile.svg">
                             </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profil
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Paramètres
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Journal d'activité
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Déconnexion
-                                </a>
-                            </div>
                         </li>
 
                     </ul>

@@ -4,7 +4,7 @@
   require('../inc/pdo.php');
 
   if(!isLoggedAdmin()) {
-    header('Location: ../index.php');
+    header('Location: 403.php');
     exit(); }
 
 
@@ -46,6 +46,27 @@
   $query->execute();
   $vaccins = $query->fetch();
 
+
+  /// NOMBRE TOTAL DE USER
+  $sql = "SELECT COUNT(id) FROM nf_users";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+  $nbrusers = $query->fetchcolumn();
+
+
+  //// NOMBRE DE PERSONNE VACCINE POUR TEL VACCIN
+  $id = $_GET ['id'];
+  $sql = "SELECT COUNT(nf_users.id) FROM nf_users INNER JOIN vaccins_user ON nf_users.id = vaccins_user.user_id WHERE vaccin_id = '$id'";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+  $uservacs = $query->fetchcolumn();
+
+  ///// POURCENTAGE DE PERSONNE QUI ONT FAIT TEL VACCIN ARRONDI A L'ENTIER INF
+  $prctg = $uservacs / $nbrusers * 100;
+  ///// POURCENTAGE DE PERSONNE QUI N'ONT PAS FAIT TEL VACCIN ARRONDI A L'ENTIER INF
+  $prctgleft = 100 - $prctg;
+
+
 include('inc/header.php'); ?>
 <!-- on utilise les données qu'on a fetch et on les affiches -->
   <div class="container-fluid">
@@ -71,7 +92,9 @@ include('inc/header.php'); ?>
 <div class="container-fluid">
     <div class="card shadow mb-4">
       <div class="d-block card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Liste des vaccins :</h6>
+            <h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-success">Pourcentage d'utilisateurs vaccinés : <?= floor($prctg).'%'; ?></span></h6>
+            <br><h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-danger">Pourcentage d'utilisateurs non vaccinés : <?= floor($prctgleft).'%'; ?></span></h6></br>
+            <h6 class="m-0 font-weight-bold text-primary"><br>Liste des vaccins :</br></h6>
       </div>
     <div class="card-body">
         <div class="table-responsive">

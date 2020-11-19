@@ -4,7 +4,7 @@ require('../inc/function.php');
 require('../inc/pdo.php');
 
 if(!isLoggedAdmin()) {
-  header('Location: ../index.php');
+  header('Location: 403.php');
   exit(); }
 
 
@@ -21,6 +21,7 @@ if(!isLoggedAdmin()) {
   if(!empty($vaccins)){//le vaccin existe dans la BDD
     if(!empty($_POST['submitted'])){//Le formulaire est soumis
       //on se protège des failles xss
+      $success=true;
       $nomvaccin   = cleanXss($_POST['nomvaccin']);
       $description = cleanXss($_POST['description']);
       $nombrerappel = cleanXss($_POST['nombrerappel']);
@@ -47,7 +48,7 @@ if(!isLoggedAdmin()) {
         $query->bindValue(':id',$id,PDO::PARAM_INT);
         $query->execute();
 
-        header('Location: new_vaccine.php');
+        header('Location: tables2.php');
       }
     }
   }else{ //il n'existe pas, 404.
@@ -98,7 +99,7 @@ include('inc/header.php'); ?>
 
 <!-- date de péremption -->
         <div class="control-form">
-          <label class="form-check-label text-dark" for="intervallerappel">Péremption( mois)</label>
+          <label class="form-check-label text-dark" for="intervallerappel">Péremption (en années)</label>
           <input class="form-control w-50" type="number" name="peremption" value="<?php if(!empty($_POST['peremption'])) { echo $_POST['peremption'];} else {echo $vaccins['peremption'];}?>">
           <span class="error_form text-danger"><?php if(!empty($errors['peremption'])) { echo $errors['premption']; } ?></span>
         </div>
@@ -111,8 +112,6 @@ include('inc/header.php'); ?>
         <input class="btn btn-success btn-icon-split" type="submit" name="submitted" value="  Modifier un vaccin  ">
         </div>
 
-
-
       </form>
       <div class="my-2"></div>
       <a href="new_vaccine.php" class="btn btn-light btn-icon-split">
@@ -121,7 +120,11 @@ include('inc/header.php'); ?>
         </span>
         <span class="text">Retourner sur la table des vaccins</span>
       </a>
-      </div>
+      <div class="control-form">
+
+    </div>
+
+
   </div>
 
 

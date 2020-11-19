@@ -55,25 +55,16 @@ if(isLoggedUser() || isLoggedAdmin()){
     // On vérifie si il y a des vaccins en BDD sait-on jamais...
     if(!empty($vaccins)){
 
-
-
       $sql = "SELECT * FROM vaccins INNER JOIN vaccins_user ON vaccins.id = vaccins_user.vaccin_id WHERE user_id = '$id'";
       $query = $pdo->prepare($sql);
       $query->execute();
       $madevaccins = $query->fetchAll();
 
-
-
-
-
       if(!empty($madevaccins)){
-
 
         // IF TRUE ON AFFICHE LES VACCINS DE LA PERSONNE
         $successvac = true;
-
       }
-
     }
 
     // Si user existe
@@ -82,10 +73,8 @@ if(isLoggedUser() || isLoggedAdmin()){
         $user_id = $user['id'];
         $vaccin = cleanXss($_POST['vaccin']);
         $date_vaccin = cleanXss($_POST['date_vaccin']);
-
         $errors = emptyError($errors,$vaccin,'vaccin');
         $errors = validDate($errors,$date_vaccin,'date_vaccin');
-
 
 
         if(count($errors) == 0){
@@ -234,7 +223,6 @@ include('inc/header.php'); ?>
 </table>
 </div>
 
-<?php debug($madevaccins); echo '<br>'; debug($vaccins); ?>
 
 
 

@@ -144,43 +144,24 @@ include('inc/header.php'); ?>
           <?php  $sql = "SELECT COUNT(id) FROM nf_users";
                   $query = $pdo->prepare($sql);
                   $query->execute();
-                  $data = $query->fetchColumn();
-                  // debug($data);
+                  $donnees = $query->fetchColumn();
             ?>
             <?php $sql = "SELECT COUNT(DISTINCT user_id) FROM vaccins_user";
                   $query = $pdo->prepare($sql);
                   $query->execute();
                   $data = $query->fetchColumn();
-                  // echo $data;
               ?>
+
               <?php
                 $sql = "SELECT date_vaccin FROM vaccins_user";
                 $query = $pdo->prepare($sql);
                 $query->execute();
                 $datevaccins = $query->fetchAll();
-                debug($datevaccins);
-                // debug($datevaccins);
                 ?>
 
           <!-- /.container-fluid -->
 
       </div>
-      <!-- End of Main Content -->
-      <!-- Bootstrap core JavaScript-->
-      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
-      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-      <!-- Core plugin JavaScript-->
-      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-      <!-- Custom scripts for all pages-->
-      <script src="startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js"></script>
-
-      <!-- Page level plugins -->
-      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/chart.js/Chart.min.js"></script>
-
-      <!-- Page level custom scripts -->
-      <script src="startbootstrap-sb-admin-2-gh-pages/js/demo/chart-area-demo.js"></script>
-      <script src="startbootstrap-sb-admin-2-gh-pages/js/demo/chart-pie-demo.js"></script>
 
 <?php include('inc/footer.php'); ?>

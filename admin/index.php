@@ -4,7 +4,7 @@ require('../inc/function.php');
 require('../inc/pdo.php');
 
 if(!isLoggedAdmin()) {
-  header('Location: 403.php');
+  header('Location: ../index.php');
   exit(); }
 
   $formbyyear = false;
@@ -175,10 +175,9 @@ include('inc/header.php'); ?>
                                     aria-labelledby="dropdownMenuLink">
                                     <div class="dropdown-header">Plus d'actions</div>
                                     <a class="dropdown-item" href="tables2.php">Voir tous les vaccins</a>
-                                    <a class="dropdown-item" href="new_vaccine.php">Ajouter un vaccin</a>
                                 </div>
                             </div>
-                          </div>
+                      </div>
                           <div class="card-body">
                               <div class="table-responsive">
                                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -189,20 +188,23 @@ include('inc/header.php'); ?>
                                               <th class="text-primary">Nom du vaccin</th>
                                               <th class="text-primary">Nombre de rappel</th>
                                               <th class="text-primary">Intervalle de rappel (en mois)</th>
-                                              <th class="text-primary">Péremption (en année)</th>
+                                              <th class="text-primary">Péremption (en mois)</th>
                                           </tr>
                                       </thead>
                                       <tbody>
                                         <?php
                                         // $errors = array();
 
-
-                                        for ($i=0; $i < 5 ; $i++) { ?>
+                                        $sql = "SELECT * FROM vaccins ORDER BY id desc LIMIT 5";
+                                        $query = $pdo->prepare($sql);
+                                        $query->execute();
+                                        $vaccins = $query->fetchAll();
+                                        foreach ($vaccins as $vaccin) { ?>
                                           <tr>
-                                            <td><?php echo($data[$i]['nomvaccin']); ?></td>
-                                            <td><?php echo($data[$i]['nombrerappel']); ?></td>
-                                            <td><?php echo($data[$i]['intervallerappel']); ?></td>
-                                            <td><?php echo($data[$i]['peremption']); ?></td>
+                                            <td><?php echo($vaccin['nomvaccin']); ?></td>
+                                            <td><?php echo($vaccin['nombrerappel']); ?></td>
+                                            <td><?php echo($vaccin['intervallerappel']); ?></td>
+                                            <td><?php echo($vaccin['peremption']); ?></td>
                                           </tr>
                                           <?php
                                         }
@@ -240,7 +242,7 @@ include('inc/header.php'); ?>
                                       </tr>
                                     <thead>
                                         <tr>
-                                            <th class="text-primary">Nom </th>
+                                            <th class="text-primary" >Nom </th>
                                             <th class="text-primary">Prénom</th>
                                             <th class="text-primary">Civilitée</th>
                                             <th class="text-primary">Ville</th>
@@ -251,17 +253,17 @@ include('inc/header.php'); ?>
                                       <?php
                                       // $errors = array();
 
-                                      $sql = "SELECT * FROM nf_users ORDER BY created_at desc";
+                                      $sql = "SELECT * FROM nf_users ORDER BY created_at desc LIMIT 5";
                                       $query = $pdo->prepare($sql);
                                       $query->execute();
-                                      $data = $query->fetchAll();
-                                      for ($i=0; $i <= 5; $i++) { ?>
+                                      $users = $query->fetchAll();
+                                      foreach ($users as $user) { ?>
                                         <tr>
-                                          <td><?php echo($data[$i]['nom']); ?></td>
-                                          <td><?php echo($data[$i]['prenom']); ?></td>
-                                          <td><?php echo($data[$i]['civilitee']); ?></td>
-                                          <td><?php echo($data[$i]['ville']); ?></td>
-                                          <td><?php echo($data[$i]['created_at']); ?></td>
+                                          <td><?php echo($user['nom']); ?></td>
+                                          <td><?php echo($user['prenom']); ?></td>
+                                          <td><?php echo($user['civilitee']); ?></td>
+                                          <td><?php echo($user['ville']); ?></td>
+                                          <td><?php echo($user['created_at']); ?></td>
                                         </tr>
                                         <?php
                                       }
@@ -275,11 +277,26 @@ include('inc/header.php'); ?>
                 </div>
           </div>
 
+
           <!-- /.container-fluid -->
 
       </div>
-
       <!-- End of Main Content -->
+      <!-- Bootstrap core JavaScript-->
+      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
+      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+      <!-- Core plugin JavaScript-->
+      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+      <!-- Custom scripts for all pages-->
+      <script src="startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js"></script>
+
+      <!-- Page level plugins -->
+      <script src="startbootstrap-sb-admin-2-gh-pages/vendor/chart.js/Chart.min.js"></script>
+
+      <!-- Page level custom scripts -->
+      <script src="startbootstrap-sb-admin-2-gh-pages/js/demo/chart-area-demo.js"></script>
+      <script src="startbootstrap-sb-admin-2-gh-pages/js/demo/chart-pie-demo.js"></script>
 
 <?php include('inc/footer.php'); ?>

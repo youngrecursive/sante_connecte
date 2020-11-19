@@ -30,13 +30,16 @@
                               <th class="text-primary">Description</th>
                               <th class="text-primary">Nombre de rappel</th>
                               <th class="text-primary">Intervalle de rappel (en mois)</th>
-                              <th class="text-primary">Péremption (en mois)</th>
+                              <th class="text-primary">Péremption (en année)</th>
                               <th class="text-primary">Détails</th>
                               <th class="text-primary">Modifier</th>
                               <th class="text-primary">Supprimer</th>
                           </tr>
+
+
                       </thead>
                         <?php
+
                         // $errors = array();
 
                         $sql = "SELECT * FROM vaccins";

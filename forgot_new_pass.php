@@ -101,8 +101,8 @@ else {
 
 include('inc/header.php'); ?>
 
+<section id="section1-forgotnew" class="format">
 <?php if(empty($perime)) { ?>
-  <section id="section1-forgotnew" class="format">
 
 
   <form class="form" action="" method="post">
@@ -132,13 +132,15 @@ include('inc/header.php'); ?>
     <!-- SUBMIT -->
     <input class="submit go" type="submit" name="submitted" value="Envoyer">
   </form>
-  </section>
 
 
 <?php } else { ?>
-  <p>Le lien de changement de mot de passe a expiré...</p>
-  <p>Recevoir de nouveau le mail <a href="forgot_send_mail.php?id=<?= $user['token'] ?>">Recevoir de nouveau le mail</a></p>
+  <div class="form">
+    <h2>Le lien de changement de mot de passe a expiré...</h2>
+    <p>Recevoir de nouveau le mail <a href="forgot_send_mail.php?id=<?= $user['token'] ?>">Recevoir de nouveau le mail</a></p>
+  </div>
 <?php } ?>
+</section>
 
 
 <?php

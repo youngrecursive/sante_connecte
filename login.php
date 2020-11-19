@@ -154,32 +154,35 @@ include('inc/header.php'); ?>
       <input placeholder="Mot de passe" type="password" name="password" id="password" class="form-control" value="" />
     </div>
 
+
     <input type="submit" name="submitted" value="Connexion" class="submit"/>
+    <h3><a href="forgot_form_auth.php">Mot de passe oublié ?</a><h3>
 
   </form>
 
 </section>
 <section id="section2-login">
-  <div class="box box1">
+  <a href="forgot_form_auth.php">
+    <div class="box box1">
     <p class="titre">
       <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="18" y1="8" x2="23" y2="13"></line><line x1="23" y1="8" x2="18" y2="13"></line></svg>
       <span>Mot de passe oublié ?</span>
     </p>
-    <p class="text">Si tu as oubliés ton mot de passe pas de panique tu as juste à
-      <a href="forgot_form_auth.php">cliquer ici.</a>
+    <p class="text">Si tu as oubliés ton mot de passe pas de panique tu as juste à cliquer ici.
     </p>
 
   </div>
+</a>
+<a href="register.php">
   <div class="box box2">
     <p class="titre">
       <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
       <span>Pas encore Inscrit</span>
     </p>
-    <p class="text">Si tu n'es pas encore inscrit, tu peux t'inscrire en
-      <a href="register.php">cliquant ici.</a>
+    <p class="text">Si tu n'es pas encore inscrit, tu peux t'inscrire en cliquant ici.
     </p>
   </div>
-
+</a>
 </section>
 
 

@@ -3,7 +3,7 @@
 <?php require('../inc/pdo.php'); ?>
 
 <?php if(!isLoggedAdmin()) {
-  header('Location: ../index.php');
+  header('Location: 403.php');
   exit(); } ?>
 
 <?php include('inc/header.php'); ?>

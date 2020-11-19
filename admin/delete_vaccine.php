@@ -4,7 +4,7 @@ require('../inc/function.php');
 require('../inc/pdo.php');
 
 if(!isLoggedAdmin()) {
-  header('Location: ../index.php');
+  header('Location: 403.php');
   exit(); }
 
   //on récupère l'ID dans l'url pour afficher le vaccin a delete

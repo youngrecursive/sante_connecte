@@ -3,7 +3,7 @@ session_start();
 require('../inc/pdo.php');
 require('../inc/function.php');
 if(!isLoggedAdmin()) {
- header('Location: ../index.php');
+ header('Location: 403.php');
  exit(); }
 
 

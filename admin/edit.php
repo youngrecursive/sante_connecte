@@ -73,76 +73,88 @@ if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
 }
 
 include('inc/header.php'); ?>
-<h1 class="h3 mb-2 text-gray-800">Modifier les informations:</h1>
+<div class="container-fluid">
+
+<h1 class="text-dark">Modifier les informations:</h1>
 
 <form class="formulaire" action="" method="post">
   <!-- NOM -->
   <div class="form_nom form_ensemble">
-    <label for="nom">Nom</label>
-    <input id="nom" type="text" name="nom" value="<?php if(!empty($_POST['nom'])){echo $_POST['nom'];} else { echo $user['nom']; } ?>">
+    <label class="form-check-label text-dark" for="nom">Nom:</label>
+    <input class="form-control w-50" id="nom" type="text" name="nom" value="<?php if(!empty($_POST['nom'])){echo $_POST['nom'];} else { echo $user['nom']; } ?>">
     <span class="error_form"><?php if(!empty($errors['nom'])){echo $errors['nom'];} ?></span>
-  </div>
+  </div><br>
   <!-- PRENOM -->
   <div class="form_prenom form_ensemble">
-    <label for="prenom">Prenom</label>
-    <input id="prenom" type="text" name="prenom" value="<?php if(!empty($_POST['prenom'])){echo $_POST['prenom'];} else { echo $user['prenom']; } ?>">
+    <label class="form-check-label text-dark" for="prenom">Prenom:</label>
+    <input class="form-control w-50" id="prenom" type="text" name="prenom" value="<?php if(!empty($_POST['prenom'])){echo $_POST['prenom'];} else { echo $user['prenom']; } ?>">
     <span class="error_form"><?php if(!empty($errors['prenom'])){echo $errors['prenom'];} ?></span>
-  </div>
+  </div><br>
   <!-- CIVILITEE -->
   <div class="form_civilitee form_ensemble">
-    <label for="civilitee">Civilitée</label>
-    <input id="civilitee" type="text" name="civilitee" value="<?php if(!empty($_POST['civilitee'])){echo $_POST['civilitee'];} else {echo $user['civilitee'];} ?>">
+    <label class="form-check-label text-dark" for="civilitee">Civilité:</label>
+    <input class="form-control w-50" id="civilitee" type="text" name="civilitee" value="<?php if(!empty($_POST['civilitee'])){echo $_POST['civilitee'];} else {echo $user['civilitee'];} ?>">
     <span class="error_form"><?php if(!empty($errors['civilitee'])){echo $errors['civilitee'];} ?></span>
-  </div>
+  </div><br>
   <!-- DATE DE NAISSANCE -->
   <div class="form_civilitee form_ensemble">
-    <label for="date_naissance">Date de naissance</label>
-    <input id="date_naissance" type="text" name="date_naissance" value="<?php if(!empty($_POST['date_naissance'])){echo $_POST['date_naissance'];} else {echo $user['date_naissance'];} ?>">
+    <label class="form-check-label text-dark" for="date_naissance">Date de naissance:</label>
+    <input class="form-control w-50" id="date_naissance" type="text" name="date_naissance" value="<?php if(!empty($_POST['date_naissance'])){echo $_POST['date_naissance'];} else {echo $user['date_naissance'];} ?>">
     <span class="error_form"><?php if(!empty($errors['date_naissance'])){echo $errors['date_naissance'];} ?></span>
-  </div>
+  </div><br>
   <!-- ADRESSE PRINCIPALE -->
   <div class="form_adresse1 form_ensemble">
-    <label for="adresse1">Adresse Principale</label>
-    <input id="adresse1" type="text" name="adresse1" value="<?php if(!empty($_POST['adresse1'])){echo $_POST['adresse1'];} else {echo $user['adresse1'];} ?>">
+    <label class="form-check-label text-dark" for="adresse1">Adresse Principale:</label>
+    <input class="form-control w-50" id="adresse1" type="text" name="adresse1" value="<?php if(!empty($_POST['adresse1'])){echo $_POST['adresse1'];} else {echo $user['adresse1'];} ?>">
     <span class="error_form"><?php if(!empty($errors['adresse1'])){echo $errors['adresse1'];} ?></span>
-  </div>
+  </div><br>
   <!-- ADRESSE SECONDAIRE -->
   <div class="form_adresse2 form_ensemble">
-    <label for="adresse2">Adresse Secondaire</label>
-    <input id="adresse2" type="text" name="adresse2" value="<?php if(!empty($_POST['adresse2'])){echo $_POST['adresse2'];} else {echo $user['adresse2'];} ?>">
+    <label class="form-check-label text-dark" for="adresse2">Adresse Secondaire:</label>
+    <input class="form-control w-50" id="adresse2" type="text" name="adresse2" value="<?php if(!empty($_POST['adresse2'])){echo $_POST['adresse2'];} else {echo $user['adresse2'];} ?>">
     <span class="error_form"><?php if(!empty($errors['adresse2'])){echo $errors['adresse2'];} ?></span>
-  </div>
+  </div><br>
   <!-- VILLE -->
   <div class="form_ville form_ensemble">
-    <label for="ville">Ville</label>
-    <input id="ville" type="text" name="ville" value="<?php if(!empty($_POST['ville'])){echo $_POST['ville'];} else {echo $user['ville'];} ?>">
+    <label class="form-check-label text-dark" for="ville">Ville:</label>
+    <input class="form-control w-50" id="ville" type="text" name="ville" value="<?php if(!empty($_POST['ville'])){echo $_POST['ville'];} else {echo $user['ville'];} ?>">
     <span class="error_form"><?php if(!empty($errors['ville'])){echo $errors['ville'];} ?></span>
-  </div>
+  </div><br>
   <!-- CODE POSTAL -->
   <div class="form_codepostal form_ensemble">
-    <label for="codepostal">Code Postal</label>
-    <input id="codepostal" type="text" name="codepostal" value="<?php if(!empty($_POST['codepostal'])){echo $_POST['codepostal'];} else {echo $user['codepostal'];} ?>">
+    <label class="form-check-label text-dark" for="codepostal">Code Postal:</label>
+    <input class="form-control w-50" id="codepostal" type="text" name="codepostal" value="<?php if(!empty($_POST['codepostal'])){echo $_POST['codepostal'];} else {echo $user['codepostal'];} ?>">
     <span class="error_form"><?php if(!empty($errors['codepostal'])){echo $errors['codepostal'];} ?></span>
-  </div>
+  </div><br>
   <!-- ROLE -->
   <div class="form_role form_ensemble">
-    <label for="role">Role</label>
-    <input id="role" type="text" name="role" value="<?php if(!empty($_POST['role'])){echo $_POST['role'];} else {echo $user['role'];} ?>">
+    <label class="form-check-label text-dark" for="role">Role:</label>
+    <input class="form-control w-50" id="role" type="text" name="role" value="<?php if(!empty($_POST['role'])){echo $_POST['role'];} else {echo $user['role'];} ?>">
     <span class="error_form"><?php if(!empty($errors['role'])){echo $errors['role'];} ?></span>
-  </div>
+  </div><br>
   <!-- EMAIL -->
   <div class="form_email form_ensemble">
-    <label for="email">Email</label>
-    <input id="email" type="email" name="email" value="<?php if(!empty($_POST['email'])){echo $_POST['email'];} else {echo $user['email'];} ?>">
+    <label class="form-check-label text-dark" for="email">Email:</label>
+    <input class="form-control w-50" id="email" type="email" name="email" value="<?php if(!empty($_POST['email'])){echo $_POST['email'];} else {echo $user['email'];} ?>">
     <span class="error_form"><?php if(!empty($errors['email'])){echo $errors['email'];} ?></span>
-  </div>
+  </div><br>
   <!-- SUBMIT -->
-  <div class="form_submit form_ensemble">
-    <input type="submit" name="submitted" value="Modifier">
-  </div>
-  <a href="tables.php">&larr; Retour à la liste des utilisateurs</a>
-</form>
+    <div class="my-2"></div>
+    <div class="btn btn-success btn-icon-split">
+    <span class="icon text-white-50">
+      <i class="fas fa-check"></i>
+    </span>
+    <input class="btn btn-success btn-icon-split" type="submit" name="submitted" value="Modifier l'utilisateur">
+    </div>
 
+    <!-- ANNULATION -->
+    <td><a href="tables.php" class="btn btn-secondary btn-icon-split">
+      <span class="icon text-white-50">
+          <i class="fas fa-arrow-right"></i>
+      </span>
+      <span class="text"><?php echo 'Annuler' ?></span>
+      </a></td>
+</form>
 
 
 <?php include('inc/footer.php');

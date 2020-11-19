@@ -23,22 +23,22 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Nom du vaccin</th>
-                            <th>Description</th>
-                            <th>Nombre de rappel</th>
-                            <th>Intervalle de rappel</th>
-                            <th>Détail</th>
+                            <th class="text-primary">ID</th>
+                            <th class="text-primary">Nom du vaccin</th>
+                            <th class="text-primary">Description</th>
+                            <th class="text-primary">Nombre de rappel</th>
+                            <th class="text-primary">Intervalle de rappel</th>
+                            <th class="text-primary">Détails</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                          <th>ID</th>
-                          <th>Nom du vaccin</th>
-                          <th>Description</th>
-                          <th>Nombre de rappel</th>
-                          <th>Intervalle de rappel</th>
-                          <th>Détail</th>
+                          <th class="text-primary">ID</th>
+                          <th class="text-primary">Nom du vaccin</th>
+                          <th class="text-primary">Description</th>
+                          <th class="text-primary">Nombre de rappel</th>
+                          <th class="text-primary">Intervalle de rappel</th>
+                          <th class="text-primary">Détails</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -54,7 +54,7 @@
                           <td><?= $vaccin['description']; ?></td>
                           <td><?= $vaccin['nombrerappel']; ?></td>
                           <td><?= $vaccin['intervallerappel']; ?></td>
-                          <td><a href="details_vaccine.php?id=<?= $vaccin['id']; ?>">Détail</a></td>
+                          <td><a href="details_vaccine.php?id=<?= $vaccin['id']; ?>">Voir</a></td>
                         </tr>
                         <?php
                       }

@@ -3,6 +3,10 @@
 session_start();
 include('inc/pdo.php');
 include('inc/function.php');
+
+if(isLoggedAdmin() || isLoggedUser()) {
+  header('Location: 403.php');
+  exit(); }
 $errors = array();
 $flash = array();
 

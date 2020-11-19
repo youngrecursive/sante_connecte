@@ -225,9 +225,8 @@ include('inc/header.php'); ?>
     </div>
   <?php } ?>
 
-
-
-
 </section>
+
+
 <?php
 include('inc/footer.php');

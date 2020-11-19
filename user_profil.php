@@ -97,10 +97,15 @@ include('inc/header.php'); ?>
         <!-- Adresse2 -->
         <div class="boxuser">
           <label for="adresse2">Adresse 2</label>
-          <input type="text" name="adresse2" value="<?php if(!empty($user['adresse2'])) { echo $user['adresse2']; } ?>">
+          <input type="text" name="adresse2" value="<?php if(empty($adresse2)) { if(!empty($user['adresse2'])) { echo $user['adresse2']; } } else { echo $adresse2; } ?>">
+          
+        
         </div>
         <div class="">
           <span class="error"><?php if(!empty($errors['adresse2'])) { echo $errors['adresse2']; } ?>&nbsp;</span>
+
+
+          
 
         </div>
         <!-- Ville -->
@@ -111,19 +116,22 @@ include('inc/header.php'); ?>
 
         <div class="">
           <label for="ville">Ville</label>
-          <input type="text" name="ville" value="<?php if(!empty($user['ville'])) { echo $user['ville']; } ?>">
+
+          <input type="text" name="ville" value="<?php if(empty($ville)) { if(!empty($user['ville'])) { echo $user['ville']; } } else { echo $ville; } ?>">
         </div>
         <div class="">
           <span class="error"><?php if(!empty($errors['ville'])) { echo $errors['ville']; } ?>&nbsp;</span>
+
 
         </div>
         <!-- Code postal -->
         <div class="">
           <label for="codepostal">Code postal</label>
-          <input type="text" name="codepostal" maxlength="5" value="<?php if(!empty($user['codepostal'])) { echo $user['codepostal']; } ?>">
+          <input type="text" name="codepostal" maxlength="5" value="<?php if(empty($codepostal)) { if(!empty($user['codepostal'])) { echo $user['codepostal']; } } else { echo $codepostal; } ?>">
         </div>
         <div class="">
           <span class="error"><?php if(!empty($errors['codepostal'])) { echo $errors['codepostal']; } ?>&nbsp;</span>
+
 
         </div>
       </div>

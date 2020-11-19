@@ -4,7 +4,7 @@
   require('../inc/pdo.php');
 
   if(!isLoggedAdmin()) {
-    header('Location: ../index.php');
+    header('Location: 403.php');
     exit(); }
 
 

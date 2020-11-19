@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="../admin/startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="asset/css/style-back.css" rel="stylesheet">
 
 </head>
 

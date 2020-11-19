@@ -1,0 +1,42 @@
+.graphique {
+  background-color: #F5F5DC;
+  padding: 25px 0;
+}
+
+
+.nbrvacs {
+  color: #007bff;
+  padding-bottom: 20px;
+}
+
+.info-stat {
+  font-size: 18px;
+}
+
+.nbrvacs, .container_graph {
+  margin-left: 2%;
+}
+
+.stats_index {
+  padding-bottom: 30px;
+}
+
+
+.container_graph {
+  display: flex;
+}
+
+.graph_courbe {
+  background-color: #FF33D0;
+  border: 3px #33FFF4 solid;
+}
+
+.graph {
+  margin-right: 1%;
+}
+
+
+
+/* .petit-container-content .graph_courbe {
+  align-self: flex-end;
+} */

@@ -30,12 +30,14 @@ if (!empty($_GET['id'])){
     // Ici on utilise $_SERVER pour que le lien marche chez tout le monde en dev
     $link = '<a href="http://localhost'.dirname($_SERVER['PHP_SELF']).'/forgot_new_pass.php?id='. $user['token'].'">Lien</a>';
 
+    $date = New DateTime("now");
+    $date->add(new DateInterval('PT3M'));
 
     $mailexpediteur = getenv('COMP_MAIL');
     $passwordmail = getenv('MAIL_PASS');
     $mailrecepteur = getenv('PERSO_MAIL');
     $object = 'Votre nouveau mot de passe';
-    $message = 'Veuillez cliquer sur ce '.$link.' afin de choisir un nouveau mot de passe';
+    $message = 'Veuillez cliquer sur ce '.$link.' afin de choisir un nouveau mot de passe.<br>Attention, le lien expire le '.$date->format('d-m-Y à H:i:s').' !';
 
 
     sendMailer($mailexpediteur,$passwordmail,$mailrecepteur,$object,$message);

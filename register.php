@@ -1,7 +1,12 @@
 <?php
+session_start();
 require('vendor/autoload.php');
 require('inc/pdo.php');
 require('inc/function.php');
+
+if(isLoggedAdmin() || isLoggedUser()) {
+  header('Location: 403.php');
+  exit(); }
 ?>
 
 

@@ -7,6 +7,35 @@ if(!isLoggedAdmin()) {
   header('Location: ../index.php');
   exit(); }
 
+  $formbyyear = false;
+  if(!empty($_GET['id'])) {
+    $formbyyear = true;
+    $xplode = explode('/',$_GET['id']);
+    $annee = $xplode[0];
+    $xplodate = explode('-',$annee);
+
+    $id = $xplode[1];
+
+
+
+
+
+  }
+
+    $sql = "SELECT * FROM vaccins ORDER BY ID desc";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $data = $query->fetchAll();
+    //debug($data);
+
+    if(!empty($_POST['submitted'])){
+
+        header('Location: index.php?id='.$_POST['year'].'/'.$_POST['vaccin'].'');
+        exit();
+    }
+
+
+
 include('inc/header.php'); ?>
   <div class="container-fluid">
     <h1></h1>
@@ -23,6 +52,112 @@ include('inc/header.php'); ?>
               <div class="d-sm-flex align-items-center justify-content-between mb-4">
                   <h1 class="h3 mb-0 text-gray-800">Index</h1>
               </div>
+
+              <?php
+                // NBR TOTAL D'USER
+                $sql = "SELECT COUNT(id) FROM nf_users";
+                      $query = $pdo->prepare($sql);
+                      $query->execute();
+                      $nbrusers = $query->fetchColumn();
+
+
+                      // NBR TOTAL USERS VACCINES
+                      $sql = "SELECT COUNT(DISTINCT user_id) FROM vaccins_user";
+                      $query = $pdo->prepare($sql);
+                      $query->execute();
+                      $nbruservaccs = $query->fetchColumn();
+
+                      $prctg_user_vaccs = $nbruservaccs / $nbrusers * 100;
+
+                  ?>
+
+                  <div class="stats_index">
+
+
+                    <span class="badge badge-pill badge-success info-stat"><?= round($prctg_user_vaccs,1); ?> % des utilisateurs ont renseigné au moins un vaccin</span>
+                    <span class="badge badge-pill badge-danger info-stat"><?= 100 - round($prctg_user_vaccs,1); ?> % des utilisateurs n'ont pas renseigné de vaccin</span>
+                  </div>
+
+
+
+                    <div class="graphique">
+
+
+                      <h1 class="nbrvacs">Nombre de vaccins en <?= date('Y'); ?></h1>
+                      <form class="" action="" method="post">
+                        <input type="date" name="year" value="">
+                        <select class="" name="vaccin">
+                          <option value="vaccin">Vaccins</option>
+                          <?php foreach ($data as $dat): ?>
+                            <option value="<?= $dat['id'] ?>"><?= $dat['nomvaccin']; ?></option>
+                          <?php endforeach; ?>
+                          <input type="submit" name="submitted" value="Envoyer">
+                        </select>
+                      </form>
+                      <div class="container_graph">
+
+
+                      <?php
+                      $mois = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+
+                      foreach ($mois as $moi) {
+                         ?>
+
+                        <div class="graph">
+
+                          <?php
+                          //$month = $datevaccin['MONTH(date_vaccin)']; ?>
+                          <div class="petit-container-month">
+
+
+                            <p><?= monthIntegerToString($moi); ?></p>
+                          </div>
+                          <?php
+                          if(empty($formbyyear)) {
+                            $sql = "SELECT COUNT(id) FROM vaccins_user WHERE MONTH(date_vaccin) = '$moi' AND YEAR(date_vaccin) = YEAR(NOW()) ORDER BY MONTH(date_vaccin) ASC";
+                            $query = $pdo->prepare($sql);
+                            $query->execute();
+                            $userpermonth = $query->fetchcolumn();
+                          }
+                          else {
+                            $sql = "SELECT COUNT(id) FROM vaccins_user WHERE vaccin_id = '$id' AND MONTH(date_vaccin) = '$moi' AND YEAR(date_vaccin) = YEAR('$annee/02/02') ORDER BY MONTH(date_vaccin) ASC";
+                            $query = $pdo->prepare($sql);
+                            $query->execute();
+                            $userpermonth = $query->fetchcolumn();
+                            debug($userpermonth);
+                          }
+
+
+                          ?>
+
+
+                          <div class="petit-container-content">
+
+
+                            <p class="badge badge-pill badge-primary"><?= $userpermonth; ?> Vaccins</p>
+
+                            <p class="graph_courbe" style=" padding:<?= $userpermonth*20; ?>px 0px;">
+
+                          </p>
+
+                          </div>
+
+                        </div>
+
+
+                      <?php } ?>
+
+                    </div>
+
+                  </div>
+
+
+              <!-- END OF STATS -->
+
+              <!-- HTML CONTENT -->
+
+
 
               <div class="row">
                 <div class="col-xl-6  col-lg-4">
@@ -60,10 +195,7 @@ include('inc/header.php'); ?>
                                         <?php
                                         // $errors = array();
 
-                                        $sql = "SELECT * FROM vaccins ORDER BY ID desc";
-                                        $query = $pdo->prepare($sql);
-                                        $query->execute();
-                                        $data = $query->fetchAll();
+
                                         for ($i=0; $i < 5 ; $i++) { ?>
                                           <tr>
                                             <td><?php echo($data[$i]['nomvaccin']); ?></td>
@@ -141,26 +273,7 @@ include('inc/header.php'); ?>
                     </div>
                 </div>
           </div>
-          <?php  $sql = "SELECT COUNT(id) FROM nf_users";
-                  $query = $pdo->prepare($sql);
-                  $query->execute();
-                  $data = $query->fetchColumn();
-                  // debug($data);
-            ?>
-            <?php $sql = "SELECT COUNT(DISTINCT user_id) FROM vaccins_user";
-                  $query = $pdo->prepare($sql);
-                  $query->execute();
-                  $data = $query->fetchColumn();
-                  // echo $data;
-              ?>
-              <?php
-                $sql = "SELECT date_vaccin FROM vaccins_user";
-                $query = $pdo->prepare($sql);
-                $query->execute();
-                $datevaccins = $query->fetchAll();
-                debug($datevaccins);
-                // debug($datevaccins);
-                ?>
+
 
           <!-- /.container-fluid -->
 

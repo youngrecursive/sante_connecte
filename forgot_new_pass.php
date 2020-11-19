@@ -24,7 +24,7 @@ else {
 
     $now = New DateTime("now");
     $tokenlimit = New DateTime($user['token_at']);
-    $tokenlimit->add(new DateInterval('PT1M'));
+    $tokenlimit->add(new DateInterval('PT3M'));
 
     // SI LE LIEN N'EST PAS PERIME
     if($now < $tokenlimit == true){

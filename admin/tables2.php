@@ -35,7 +35,11 @@
                               <th class="text-primary">Modifier</th>
                               <th class="text-primary">Supprimer</th>
                           </tr>
-                      <?php
+
+
+                      </thead>
+                        <?php
+
                         // $errors = array();
 
                         $sql = "SELECT * FROM vaccins";

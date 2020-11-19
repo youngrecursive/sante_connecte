@@ -1,4 +1,5 @@
 <?php
+
 function debug($array)
 {
   echo '<pre>';
@@ -214,4 +215,18 @@ function isLoggedAdmin()
     return false;
   }
 
+}
+
+function statistiques()
+{
+  require('pdo.php');
+  $sql = "SELECT date_vaccin FROM vaccins_user";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+  $data = $query->fetchAll();
+  // debug($data);
+  $pmonth = array();
+  foreach ($data as $key => $value) {
+    $pmonth[explode('-',$value['date_vaccin'])[1]]++;
+  }
 }

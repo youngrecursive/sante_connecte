@@ -21,7 +21,7 @@ if(!isLoggedAdmin()) {
     $query->bindValue(':id',$id,PDO::PARAM_INT);
     $query->execute();
 
-    header('Location: new_vaccine.php');
+    header('Location: tables2.php');
 
 include('inc/header.php');
 

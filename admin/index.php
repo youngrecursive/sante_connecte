@@ -40,6 +40,7 @@ include('inc/header.php'); ?>
                                     aria-labelledby="dropdownMenuLink">
                                     <div class="dropdown-header">Plus d'actions</div>
                                     <a class="dropdown-item" href="tables2.php">Voir tous les vaccins</a>
+                                    <a class="dropdown-item" href="new_vaccine.php">Ajouter un vaccin</a>
                                 </div>
                             </div>
                           </div>
@@ -53,7 +54,7 @@ include('inc/header.php'); ?>
                                               <th class="text-primary">Nom du vaccin</th>
                                               <th class="text-primary">Nombre de rappel</th>
                                               <th class="text-primary">Intervalle de rappel (en mois)</th>
-                                              <th class="text-primary">Péremption (en mois)</th>
+                                              <th class="text-primary">Péremption (en année)</th>
                                           </tr>
                                       </thead>
                                       <tbody>
@@ -107,7 +108,7 @@ include('inc/header.php'); ?>
                                       </tr>
                                     <thead>
                                         <tr>
-                                            <th class="text-primary" >Nom </th>
+                                            <th class="text-primary">Nom </th>
                                             <th class="text-primary">Prénom</th>
                                             <th class="text-primary">Civilitée</th>
                                             <th class="text-primary">Ville</th>
@@ -158,7 +159,6 @@ include('inc/header.php'); ?>
                 $query = $pdo->prepare($sql);
                 $query->execute();
                 $datevaccins = $query->fetchAll();
-                debug($datevaccins);
                 // debug($datevaccins);
                 ?>
 

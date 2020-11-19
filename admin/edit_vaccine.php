@@ -23,17 +23,23 @@ if(!isLoggedAdmin()) {
       //on se protège des failles xss
       $nomvaccin   = cleanXss($_POST['nomvaccin']);
       $description = cleanXss($_POST['description']);
+      $nombrerappel = cleanXss($_POST['nombrerappel']);
+      $intervallerappel = cleanXss($_POST['intervallerappel']);
+      $peremption = cleanXss($_POST['peremption']);
       //on valide avec les mêmes condition qu'avant
       //validation nomvaccin  (min 2,max 50)
       $errors = validText($errors,$nomvaccin,'nomvaccin',2,50);
       //validation description (min 2 , max 500)
       $errors = validText($errors,$description,'description',2,500);
+      $errors = validNumber($errors,$nombrerappel,'nombrerappel',0,50);
+      $errors = validNumber($errors,$intervallerappel,'intervallerappel',0,100);
+      $errors = validNumber($errors,$peremption,'peremption',0,100);
       //si tout est bon on update
       if (count($errors) == 0) {
         $nombrerappel = $_POST['nombrerappel'];
         $intervallerappel = $_POST ['intervallerappel'];
         $sql = "UPDATE vaccins
-                SET nomvaccin = :nomvaccin, description = :description,nombrerappel=$nombrerappel,intervallerappel=$intervallerappel
+                SET nomvaccin = :nomvaccin, description = :description,nombrerappel=$nombrerappel,intervallerappel=$intervallerappel,peremption=$peremption
                 WHERE id = :id";
         $query = $pdo->prepare($sql);
         $query->bindValue(':nomvaccin',$nomvaccin,PDO::PARAM_STR);
@@ -53,46 +59,69 @@ if(!isLoggedAdmin()) {
 
 include('inc/header.php'); ?>
   <div class="container-fluid">
-    <h1>Modifier son vaccin</h1>
+    <h1 class="text-dark">Modifier son vaccin</h1>
       <!-- formulaire pour la modification du fichier -->
-      <form class="" method="POST">
-        <label for="vaccin">Nom du vaccin</label>
-        
-          <input type="text" name="nomvaccin" id="nomvaccin" value="<?php if(!empty($_POST['nomvaccin'])) { echo $_POST['nomvaccin'];} else {echo $vaccins['nomvaccin'];} ?>">
+      <form class="form-check" method="POST">
 
-          <span class="error_form"><?php if(!empty($errors['nomvaccin'])) { echo $errors['nomvaccin']; } ?></span>
-
+        <!-- modification d'un nom de vaccin -->
+        <div class="control-form">
+          <label class="form-check-label text-dark" for="vaccin">Nom du vaccin</label>
+          <input class="form-control w-50" type="text" name="nomvaccin" id="nomvaccin" value="<?php if(!empty($_POST['nomvaccin'])) { echo $_POST['nomvaccin'];} else {echo $vaccins['nomvaccin'];} ?>">
+          <span class="error_form text-danger"><?php if(!empty($errors['nomvaccin'])) { echo $errors['nomvaccin']; } ?></span>
+        </div>
   <!-- modification d'une description, et affichage des erreurs d'entrées -->
-        <div class="form_group">
-          <label for="description">Description</label>
+        <div class="control-form">
+          <label class="form-check-label text-dark" for="description">Description</label>
+          <textarea class="form-control form-text w-50" name="description" id="description" rows="8" cols="80" ><?php if(!empty($_POST['description'])) { echo $_POST['description'];} else {echo $vaccins['description'];} ?></textarea>
 
-          <textarea name="description" id="description" rows="8" cols="80" ><?php if(!empty($_POST['description'])) { echo $_POST['description'];} else {echo $vaccins['description'];} ?></textarea>
-
-          <span class="error_form"><?php if(!empty($errors['description'])) { echo $errors['description']; } ?></span>
+          <span class="error_form text-danger"><?php if(!empty($errors['description'])) { echo $errors['description']; } ?></span>
         </div>
 
   <!-- modification des rappels, et affichagedes erreurs d'entrées -->
-        <div class="form_group">
-          <label for="nombrerappel">Nombre de rappel</label>
+        <div class="control-form">
+          <label class="form-check-label text-dark" for="nombrerappel">Nombre de rappel</label>
 
-          <input type="number" name="nombrerappel" id="nombrerappel" value="<?php if(!empty($_POST['nombrerappel'])) { echo $_POST['nombrerappel'];} else {echo $vaccins['nombrerappel'];}?>" >
+          <input class="form-control w-50" type="number" name="nombrerappel" id="nombrerappel" value="<?php if(!empty($_POST['nombrerappel'])) { echo $_POST['nombrerappel'];} else {echo $vaccins['nombrerappel'];}?>" >
 
-          <span class="error_form"><?php if(!empty($errors['nombrerappel'])) { echo $errors['nombrerappel']; } ?></span>
+          <span class="error_form text-danger"><?php if(!empty($errors['nombrerappel'])) { echo $errors['nombrerappel']; } ?></span>
         </div>
 
 
   <!-- modification de l'intervalle de rappel  et affichag des erreurs d'entrées-->
-        <div class="form_group">
-          <label for="intervallerappel">Intervalle de rappel (mois)</label>
+        <div class="control-form">
+          <label class="form-check-label text-dark" for="intervallerappel">Intervalle de rappel (mois)</label>
 
-          <input type="number" name="intervallerappel" value="<?php if(!empty($_POST['intervallerappel'])) { echo $_POST['intervallerappel'];} else {echo $vaccins['intervallerappel'];}?>">
+          <input class="form-control w-50" type="number" name="intervallerappel" value="<?php if(!empty($_POST['intervallerappel'])) { echo $_POST['intervallerappel'];} else {echo $vaccins['intervallerappel'];}?>">
 
-          <span class="error_form"><?php if(!empty($errors['intervallerappel'])) { echo $errors['intervallerappel']; } ?></span>
+          <span class="error_form text-danger"><?php if(!empty($errors['intervallerappel'])) { echo $errors['intervallerappel']; } ?></span>
         </div>
 
-        <input type="submit" name="submitted" value="Modifier un vaccin">
+<!-- date de péremption -->
+        <div class="control-form">
+          <label class="form-check-label text-dark" for="intervallerappel">Péremption( mois)</label>
+          <input class="form-control w-50" type="number" name="peremption" value="<?php if(!empty($_POST['peremption'])) { echo $_POST['peremption'];} else {echo $vaccins['peremption'];}?>">
+          <span class="error_form text-danger"><?php if(!empty($errors['peremption'])) { echo $errors['premption']; } ?></span>
+        </div>
+
+        <div class="my-2"></div>
+        <div class="btn btn-success btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-check"></i>
+        </span>
+        <input class="btn btn-success btn-icon-split" type="submit" name="submitted" value="  Modifier un vaccin  ">
+        </div>
+
+
+
       </form>
-    <a href="new_vaccine.php">Retourner sur la table des vaccins</a>
+      <div class="my-2"></div>
+      <a href="new_vaccine.php" class="btn btn-light btn-icon-split">
+        <span class="icon text-gray-600">
+          <i class="fas fa-arrow-right"></i>
+        </span>
+        <span class="text">Retourner sur la table des vaccins</span>
+      </a>
+      </div>
   </div>
 
 

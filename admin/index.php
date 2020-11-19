@@ -141,6 +141,26 @@ include('inc/header.php'); ?>
                     </div>
                 </div>
           </div>
+          <?php  $sql = "SELECT COUNT(id) FROM nf_users";
+                  $query = $pdo->prepare($sql);
+                  $query->execute();
+                  $data = $query->fetchColumn();
+                  // debug($data);
+            ?>
+            <?php $sql = "SELECT COUNT(DISTINCT user_id) FROM vaccins_user";
+                  $query = $pdo->prepare($sql);
+                  $query->execute();
+                  $data = $query->fetchColumn();
+                  // echo $data;
+              ?>
+              <?php
+                $sql = "SELECT date_vaccin FROM vaccins_user";
+                $query = $pdo->prepare($sql);
+                $query->execute();
+                $datevaccins = $query->fetchAll();
+                debug($datevaccins);
+                // debug($datevaccins);
+                ?>
 
           <!-- /.container-fluid -->
 

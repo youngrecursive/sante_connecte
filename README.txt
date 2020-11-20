@@ -2,6 +2,10 @@ Vacbook (PHP)
 Grouoe 3
 Azad, Théo, Benjamin, Basile, Taïr (Pape)
 
+README structuré en 2 parties.
+  I/ Guide pour faire fonctionner le site
+  II/ Technologies
+
 
 I/ Guide pour faire fonctionner le site
 
@@ -23,8 +27,24 @@ I/ Guide pour faire fonctionner le site
   composer require phpmailer/phpmailer
   composer require vlucas/phpdotenv
 
+  5/ Si pas de .env fonctionnel (lignes à commenter)
 
-  5) ENJOY
+    Il est nécessaire  de commenter certaines choses dans :
+
+    forgot_send_mail (racine du site)
+        de ligne 27 à 43 (la fonction sendMail ainsi que l'objet dotenv)
+
+    validate_register (racine du site)
+        de ligne 25 à 41
+
+
+    register.php (racine du site)
+        de ligne 64 à 70 commenter le if.
+        de ligne 71 à 74, enlever juste les écritures "else"
+        afin d'éxecuter le code sans conditions
+
+
+  6) ENJOY
 
 
 

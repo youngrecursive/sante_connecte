@@ -98,14 +98,14 @@ include('inc/header.php'); ?>
         <div class="boxuser">
           <label for="adresse2">Adresse 2</label>
           <input type="text" name="adresse2" value="<?php if(empty($adresse2)) { if(!empty($user['adresse2'])) { echo $user['adresse2']; } } else { echo $adresse2; } ?>">
-          
-        
+
+
         </div>
         <div class="">
           <span class="error"><?php if(!empty($errors['adresse2'])) { echo $errors['adresse2']; } ?>&nbsp;</span>
 
 
-          
+
 
         </div>
         <!-- Ville -->

@@ -7,32 +7,101 @@ if(!isLoggedAdmin()) {
   header('Location: ../index.php');
   exit(); }
 
-  $formbyyear = false;
-  if(!empty($_GET['id'])) {
-    $formbyyear = true;
-    $xplode = explode('/',$_GET['id']);
+/// STATS USER QUI ONT FAIT AU MOINS UN VACCIN ////
+
+// NBR TOTAL D'USER
+$sql = "SELECT COUNT(id) FROM nf_users";
+      $query = $pdo->prepare($sql);
+      $query->execute();
+      $nbrusers = $query->fetchColumn();
+
+
+// NBR TOTAL USERS VACCINES
+
+$sql = "SELECT COUNT(DISTINCT user_id) FROM vaccins_user";
+$query = $pdo->prepare($sql);
+$query->execute();
+$nbruservaccs = $query->fetchColumn();
+
+/// VALUE TO POURCENTAGE
+$prctg_user_vaccs = $nbruservaccs / $nbrusers * 100;
+
+
+
+///// PETIT DIAGRAMME /////
+//// Vérifs manquantes par manque de temps, notamment les vérifs URl, peut-être d'autres ?
+
+$affichage = 0;
+$formbyyear = false;
+if(!empty($_GET['id'])) {
+
+  $formbyyear = true;
+  $xplode = explode('/',$_GET['id']);
+  if (is_numeric($xplode[0])) {
     $annee = $xplode[0];
-    $xplodate = explode('-',$annee);
+    if(!empty($xplode[1])) {
+      if(is_numeric($xplode[1])) {
+        // SI ON RECUPERE ANNEE ET VACCIN
+        $id = $xplode[1];
+        $affichage = 2;
+        $sql = "SELECT nomvaccin FROM vaccins WHERE id = '$id'";
+        $query = $pdo->prepare($sql);
+        $query->execute();
+        $current_vaccin = $query->fetch();
 
-    $id = $xplode[1];
+        $sql = "SELECT count(id) FROM vaccins_user WHERE YEAR(date_vaccin) = YEAR('$annee/02/02') AND vaccin_id = '$id'";
+        $query = $pdo->prepare($sql);
+        $query->execute();
+        $count_total_each = $query->fetchcolumn();
+        debug($count_total_each);
+      }
+    }
+    // SI ON RECUPERE ANNEE MAIS PAS LE VACCIN
+    else {
+      $affichage = 1;
+      $sql = "SELECT count(id) FROM vaccins_user WHERE YEAR(date_vaccin) = YEAR('$annee/02/02')";
+      $query = $pdo->prepare($sql);
+      $query->execute();
+      $count_total = $query->fetchcolumn();
+    }
+  }
+
+  // NOT GET : DEFAUT : Tous les vaccins année courante
+  }
+  else {
+    $sql = "SELECT count(id) FROM vaccins_user WHERE YEAR(date_vaccin) = YEAR(NOW())";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $count_total_current = $query->fetchcolumn();
+  }
 
 
+  // LA REQUETE ICI NOUS SERT POUR AFFICHER LES VACCINS DANS LE SELECT DU FORMULAIRE DU PETIT DIAGRAMME
+  $sql = "SELECT * FROM vaccins ORDER BY ID desc";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+  $data = $query->fetchAll();
 
+  // VERIFS AVANT D'ENVOYER DANS L'URL des choses qui n'existeraient pas...
+  $errors = array();
+  if(!empty($_POST['submitted'])){
+    $year = $_POST['year'];
+    $errors = validYear($errors,$year,'year');
+
+    if(count($errors) == 0) {
+      if(!empty($_POST['vaccin'])) {
+        header('Location: index.php?id='.$_POST['year'].'/'.$_POST['vaccin'].'');
+        exit();
+      }
+      else {
+        header('Location: index.php?id='.$_POST['year'].'/');
+        exit();
+      }
+    }
 
 
   }
-
-    $sql = "SELECT * FROM vaccins ORDER BY ID desc";
-    $query = $pdo->prepare($sql);
-    $query->execute();
-    $data = $query->fetchAll();
-    //debug($data);
-
-    if(!empty($_POST['submitted'])){
-
-        header('Location: index.php?id='.$_POST['year'].'/'.$_POST['vaccin'].'');
-        exit();
-    }
+  //// FIN DU PHP DIAGRAMME ////
 
 
 
@@ -44,76 +113,59 @@ include('inc/header.php'); ?>
 
       <!-- Main Content -->
       <div id="content">
-
           <!-- Begin Page Content -->
           <div class="container-fluid">
-
               <!-- Page Heading -->
               <div class="d-sm-flex align-items-center justify-content-between mb-4">
                   <h1 class="h3 mb-0 text-gray-800">Index</h1>
               </div>
-
-              <?php
-                // NBR TOTAL D'USER
-                $sql = "SELECT COUNT(id) FROM nf_users";
-                      $query = $pdo->prepare($sql);
-                      $query->execute();
-                      $nbrusers = $query->fetchColumn();
-
-
-                      // NBR TOTAL USERS VACCINES
-                      $sql = "SELECT COUNT(DISTINCT user_id) FROM vaccins_user";
-                      $query = $pdo->prepare($sql);
-                      $query->execute();
-                      $nbruservaccs = $query->fetchColumn();
-
-                      $prctg_user_vaccs = $nbruservaccs / $nbrusers * 100;
-
-                  ?>
-
+                  <!-- STATS HTML -->
                   <div class="stats_index">
-
-
                     <span class="badge badge-pill badge-success info-stat"><?= round($prctg_user_vaccs,1); ?> % des utilisateurs ont renseigné au moins un vaccin</span>
                     <span class="badge badge-pill badge-danger info-stat"><?= 100 - round($prctg_user_vaccs,1); ?> % des utilisateurs n'ont pas renseigné de vaccin</span>
                   </div>
 
 
+                    <!--  DIAGRAMME HTML + PHP -->
 
+                    <!-- PAS DE RESPONSIVE, CSS A FAIRE -->
+
+                    <!-- Problème d'affichage coloration syntaxique sur atom mais fonctionne -->
                     <div class="graphique">
 
 
-                      <h1 class="nbrvacs">Nombre de vaccins en <?= date('Y'); ?></h1>
-                      <form class="" action="" method="post">
-                        <input type="date" name="year" value="">
-                        <select class="" name="vaccin">
-                          <option value="vaccin">Vaccins</option>
+                      <h1 class="nbrvacs">Nombre de vaccins <?php if($affichage == 2) { echo 'du '.$current_vaccin['nomvaccin'].' '; } ?> effectués en <?php if(!empty($annee)) { echo $annee; } else { echo date('Y');} if($affichage == 1) { echo ' ('.$count_total.')'; } elseif($affichage == 2) { echo ' ('.$count_total_each.')'; } elseif($affichage == 0) { echo ' ('.$count_total_current.')'; }
+                       ?>
+                      </h1>
+                      <!-- FORM DIAGRAMME -->
+                      <form class="diagramme-form" action="" method="post">
+                        <input class="inpt-year" placeholder="2020" type="text" maxlength = "4" name="year" value="<?php if(!empty($formbyyear) && $affichage == (1 || 2) ) { echo $annee; } if($affichage == 0) { echo date('Y');} ?>">
+                        <span><?php if(!empty($errors['year'])){ echo $errors['year']; } ?></span>
+                        <select class="inpt-vacc" name="vaccin">
+                          <option value="">All</option>
                           <?php foreach ($data as $dat): ?>
                             <option value="<?= $dat['id'] ?>"><?= $dat['nomvaccin']; ?></option>
                           <?php endforeach; ?>
-                          <input type="submit" name="submitted" value="Envoyer">
+                          <input class="btn btn-dark btn-icon-split inpt-submit" type="submit" name="submitted" value="Afficher">
                         </select>
                       </form>
                       <div class="container_graph">
 
 
                       <?php
+                      // ICI ON FAIT UN FOREACH DES MOIS POUR AFFICHER MEME LES MOIS OU IL N Y A PAS DE VACCINS FAITS.
+                      // Count peut renvoyer 0 donc pas de problème à ne niveau là.
                       $mois = [1,2,3,4,5,6,7,8,9,10,11,12];
-
-
                       foreach ($mois as $moi) {
                          ?>
 
                         <div class="graph">
-
-                          <?php
-                          //$month = $datevaccin['MONTH(date_vaccin)']; ?>
                           <div class="petit-container-month">
-
-
                             <p><?= monthIntegerToString($moi); ?></p>
                           </div>
                           <?php
+                          //// CI DESSOUS LES REQUETES SONT DIFFERENTES SELON L'URL,
+
                           if(empty($formbyyear)) {
                             $sql = "SELECT COUNT(id) FROM vaccins_user WHERE MONTH(date_vaccin) = '$moi' AND YEAR(date_vaccin) = YEAR(NOW()) ORDER BY MONTH(date_vaccin) ASC";
                             $query = $pdo->prepare($sql);
@@ -121,30 +173,28 @@ include('inc/header.php'); ?>
                             $userpermonth = $query->fetchcolumn();
                           }
                           else {
-                            $sql = "SELECT COUNT(id) FROM vaccins_user WHERE vaccin_id = '$id' AND MONTH(date_vaccin) = '$moi' AND YEAR(date_vaccin) = YEAR('$annee/02/02') ORDER BY MONTH(date_vaccin) ASC";
-                            $query = $pdo->prepare($sql);
-                            $query->execute();
-                            $userpermonth = $query->fetchcolumn();
-                            debug($userpermonth);
+                            if($affichage == 1){
+                              $sql = "SELECT COUNT(id) FROM vaccins_user WHERE MONTH(date_vaccin) = '$moi' AND YEAR(date_vaccin) = YEAR('$annee/02/02') ORDER BY MONTH(date_vaccin) ASC";
+                              $query = $pdo->prepare($sql);
+                              $query->execute();
+                              $userpermonth = $query->fetchcolumn();
+                            }
+                            elseif($affichage == 2){
+                              $sql = "SELECT COUNT(id) FROM vaccins_user WHERE vaccin_id = '$id' AND MONTH(date_vaccin) = '$moi' AND YEAR(date_vaccin) = YEAR('$annee/02/02') ORDER BY MONTH(date_vaccin) ASC";
+                              $query = $pdo->prepare($sql);
+                              $query->execute();
+                              $userpermonth = $query->fetchcolumn();
+                            }
                           }
 
-
                           ?>
-
-
+                          <!-- Padding relatif d'où le css dans le html ( :D ) -->
                           <div class="petit-container-content">
-
-
                             <p class="badge badge-pill badge-primary"><?= $userpermonth; ?> Vaccins</p>
-
                             <p class="graph_courbe" style=" padding:<?= $userpermonth*20; ?>px 0px;">
-
-                          </p>
-
+                            </p>
                           </div>
-
                         </div>
-
 
                       <?php } ?>
 
@@ -157,8 +207,7 @@ include('inc/header.php'); ?>
 
               <!-- HTML CONTENT -->
 
-
-
+              <!-- 5 DERNIERS VACCINS AJOUTES -->
               <div class="row">
                 <div class="col-xl-6  col-lg-4">
                     <div class="card shadow mb-4 border-left-info">
@@ -215,6 +264,8 @@ include('inc/header.php'); ?>
                           </div>
                       </div>
                   </div>
+
+              <!-- 5 DERNIERS USERS INSCRITS -->
 
               <div class="col-xl-6 col-lg-4 ">
                   <div class="card shadow mb-4 border-left-info">

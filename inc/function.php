@@ -149,6 +149,18 @@ function validPostalNull($errors,$value,$key){
     return $errors;
   }
 
+  function validYear($errors,$value,$key){
+    if(!empty($value)){
+      if(!is_numeric($value) || strlen($value) != 4) {
+        $errors[$key] = 'Veuillez renseigner une date à 4 chiffres';
+      }
+    }
+    else {
+      $errors[$key] = 'Veuillez renseigner une année';
+    }
+    return $errors;
+  }
+
 
 function generateRandomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

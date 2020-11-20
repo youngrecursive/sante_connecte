@@ -16,6 +16,25 @@ I/ Guide pour faire fonctionner le site
   https://github.com/startbootstrap/startbootstrap-sb-admin-2/archive/gh-pages.zip
   Remplacé le dossier récupéré via github par le dossier téléchargé, à la racine du dossier admin.
 
+  + Créer un fichier pdo.php dans le dossier inc
+  Il doit contenir :
+
+
+  ```
+  <?php
+    try {
+      $pdo = new PDO('mysql:host=localhost;dbname=namedatabase', "root", "", array(
+          PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+          PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
+      ));
+    }
+    catch (PDOException $e) {
+      echo 'Erreur de connexion : ' . $e->getMessage();
+    }
+
+  ````
+    
 
   3) Composer doit être installé sur votre ordinateur afin de faire fonctionner des dépendances.
   https://getcomposer.org/

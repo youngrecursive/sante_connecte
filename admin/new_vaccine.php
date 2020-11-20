@@ -37,6 +37,9 @@ if (!empty($_POST['submitted'])) {
     $query->bindValue(':description',$description,PDO::PARAM_STR);
     $query->execute();
 
+    header('Location: tables2.php');
+    exit();
+
       // die('You Died');
   }
 }
@@ -61,7 +64,7 @@ include('inc/header.php'); ?>
 <!-- ajout d'une description, et affichage des erreurs d'entrées -->
           <div class="control-form">
             <label class="form-check-label text-dark" for="description">Description</label>
-            <textarea class="form-control form-text w-50" name="description" id="description" rows="8" cols="80" value"<?php if(!empty($_POST['description'])) { echo $_POST['description']; } ?>"></textarea>
+            <textarea class="form-control form-text w-50" name="description" id="description" rows="8" cols="80" style=resize:none;><?php if(!empty($_POST['description'])) { echo $_POST['description']; } ?></textarea>
             <span class="error_form text-danger"><?php if(!empty($errors['description'])) { echo $errors['description']; } ?></span>
           </div>
 <!-- ajout des rappels, et affichagedes erreurs d'entrées -->

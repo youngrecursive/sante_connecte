@@ -78,7 +78,7 @@ include('inc/header.php'); ?>
     <p class="text-warning">Périmé au bout de  <?= $vaccins['intervallerappel'];?> mois.</p>
     <!-- boutton back stylisé via boostrap -->
     <div class="my-2"></div>
-    <a href="new_vaccine.php" class="btn btn-light btn-icon-split">
+    <a href="tables2.php" class="btn btn-light btn-icon-split">
       <span class="icon text-gray-600">
         <i class="fas fa-arrow-right"></i>
       </span>
@@ -92,8 +92,8 @@ include('inc/header.php'); ?>
 <div class="container-fluid">
     <div class="card shadow mb-4">
       <div class="d-block card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-success">Pourcentage d'utilisateurs vaccinés : <?= floor($prctg).'%'; ?></span></h6>
-            <br><h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-danger">Pourcentage d'utilisateurs non vaccinés : <?= floor($prctgleft).'%'; ?></span></h6></br>
+            <h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-success">Pourcentage d'utilisateurs vaccinés : <?= round($prctg,1).'%'; ?></span></h6>
+            <br><h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-danger">Pourcentage d'utilisateurs non vaccinés : <?= round($prctgleft,1).'%'; ?></span></h6></br>
             <h6 class="m-0 font-weight-bold text-primary"><br>Liste des vaccins :</br></h6>
       </div>
     <div class="card-body">

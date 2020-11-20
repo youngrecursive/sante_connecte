@@ -139,7 +139,7 @@ include('inc/header.php'); ?>
     <h1>Connexion</h1>
     <?php
     if (!empty($success)) { ?>
-      <h2>ddd
+      <h2>
         <?= $flash['message']; ?>
       </h2>
 

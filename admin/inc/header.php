@@ -89,10 +89,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tableaux:</h6>
                         <a class="collapse-item" href="../admin/tables.php">Liste des utilisateurs</a>
-                        <a class="collapse-item" href="../admin/tables1.php">Utilisateurs vaccinés</a>
                         <a class="collapse-item" href="../admin/tables2.php">Liste des vaccins</a>
-                        <a class="collapse-item" href="../admin/new_vaccine.php">Créer un nouveau vaccin</a>
-                        <a class="collapse-item" href="../admin/newuser.php">Créer un nouvel utilisateur</a>
                     </div>
                 </div>
             </li>

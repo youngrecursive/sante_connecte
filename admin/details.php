@@ -65,8 +65,8 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-success">Pourcentage de vaccins effectués : <?= $prctg.'%'; ?></span></h6>
-        <br><h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-danger">Pourcentage de vaccins non effectués : <?= $prctgleft.'%'; ?></span></h6></br>
+        <h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-success">Pourcentage de vaccins effectués : <?= round($prctg,1).'%'; ?></span></h6>
+        <br><h6 class="m-0 font-weight-bold text-primary"><span class="badge badge-danger">Pourcentage de vaccins non effectués : <?= round($prctgleft,1).'%'; ?></span></h6></br>
         <h6 class="m-0 font-weight-bold text-primary"><br>Détails de l'utilisateur:</br></h6>
     </div>
     <div class="card-body">

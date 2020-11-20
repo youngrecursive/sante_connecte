@@ -9,9 +9,9 @@ include('inc/header.php'); ?>
         <h3>Vacbook Campus St Marc</h3>
 
       <div class="content1">
-        <p> Vous souhaitez nous contacter ? Nous sommes disponnibles au Campus St marc au 24 Place Saint-Marc, 76000 Rouen ouvert de 8h à 18h30 du lundi au vendredi. </p>
-        <p> Numero de téléphone : 02 32 10 25 01</p>
-        <p>Disponnible également en visio-conférence</p>
+        <p> Vous souhaitez nous contacter ? Nous sommes disponibles au Campus St Marc ! 24 Place Saint-Marc, 76000 Rouen ouvert de 8h à 18h30, du lundi au vendredi. </p>
+        <p> Numéro de téléphone : 02 32 10 25 01</p>
+        <p>Disponible également en visio-conférence</p>
       </div>
 
       <div class="content2">
@@ -26,7 +26,7 @@ include('inc/header.php'); ?>
         <a href="#">Vacbook@hotmail.fr</a>
     </div>
 
-  <p class="textinto">Si vous voulez nous partager une information directement veuillez remplir ce formulaire</p>
+  <p class="textinto">Si vous voulez nous partager une information directement, veuillez remplir ce formulaire</p>
 
   <form  action="message" method="post">
     <div class="w50">

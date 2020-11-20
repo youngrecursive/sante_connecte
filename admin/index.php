@@ -281,7 +281,10 @@ include('inc/header.php'); ?>
           <!-- /.container-fluid -->
 
       </div>
+
+
       <!-- End of Main Content -->
+
 
 
 <?php include('inc/footer.php'); ?>

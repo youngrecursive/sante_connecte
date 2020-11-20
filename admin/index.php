@@ -282,4 +282,9 @@ include('inc/header.php'); ?>
 
       </div>
 
+
+      <!-- End of Main Content -->
+
+
+
 <?php include('inc/footer.php'); ?>

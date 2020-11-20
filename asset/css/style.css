@@ -184,7 +184,6 @@
 		top: -5000px;
 	}
 	#header .menuresponsive1 .menu-toggle {
-    padding: .5em 1em;
 		margin: 5px;
 		width: 100px;
 	}
@@ -207,6 +206,15 @@
 #header .menuresponsive1 label{
 	text-transform: uppercase;
 	font-family: 'Roboto', sans-serif;
+}
+
+
+#header label {
+	font-size: 1.3em;
+	font-weight: 600;
+	font-family: 'Roboto', sans-serif;
+	padding: 10px 0px 10px 0px;;
+	letter-spacing: 1px;
 }
 
 /* FOOTER */
@@ -889,6 +897,16 @@ color: #fff;
 	background-image: url("../img/background_section-login.jpg");
 }
 
+#section1-login .form{
+	height: 35em;
+}
+
+@media screen and (max-width: 1336px){
+	 #section1-login .form{
+		 height: 30em;
+	 }
+}
+
 /* SECTION 2 login */
 
 #section2-login{
@@ -942,7 +960,7 @@ color: #fff;
 #section2-login div p.titre span{
 	margin-left: 10px;
 }
-/* RESPONSIVE SECTION 2 LOGIN */
+/* RESPONSIVE SECTION LOGIN */
 @media screen and (max-width: 915px){
 	#section2-login{
 		height: 25em;
@@ -1088,6 +1106,12 @@ color: #fff;
 	}
 	#section-user_profil form h1{
 		font-size: 1.3em;
+	}
+}
+
+@media screen and (max-width:635px){
+	#section-user_profil{
+		height: 55em;
 	}
 }
 
@@ -1332,6 +1356,8 @@ color: #fff;
 
 
 
+
+
 /* INSCRIPTION THEO */
 
 #section-password{
@@ -1433,7 +1459,8 @@ color: #fff;
 
 
 
-/* INSCRIPTION  */
+/* CODE ? */
+
 
 
 #mainSection .go {
@@ -1705,7 +1732,7 @@ text-align:center;
 	border-radius: 10px;
 	}
 
-.wrapcontact  h3, label {
+.wrapcontact  h3,.wrapcontact label {
 	font-size: 1.3em;
 	font-weight: 600;
 	color: #FF5733;
@@ -1904,3 +1931,15 @@ padding-left: 30px;
 	padding-bottom: 700px;
 	padding-left: 30px;
 }
+
+
+/* SECTION RESPONSIVE THEO */
+
+div.wrapmentions{
+	width: 80%;
+}
+
+
+
+
+/* MENTIONS RESPONSIVE THEO */

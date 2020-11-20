@@ -35,6 +35,23 @@
   margin-right: 1%;
 }
 
+.diagramme-form {
+  padding-bottom: 20px;
+}
+
+.inpt-year {
+  margin-left: 2.5%;
+  margin-right: 0.75%;
+}
+
+.inpt-vacc {
+  padding: 2px 0;
+  margin-right: 0.75%;
+}
+
+
+
+
 
 
 /* .petit-container-content .graph_courbe {

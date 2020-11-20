@@ -31,7 +31,7 @@ if (strpos($_GET['id'], $souschaine) !== FALSE) {
 
 
 if(isLoggedUser() || isLoggedAdmin()){
-  //if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
+
   if(!empty($getid) && is_numeric($getid)) {
 
     // On vérifie que id concorde avec l'user connecté
